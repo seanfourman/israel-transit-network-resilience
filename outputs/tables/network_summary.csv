@@ -1,0 +1,2 @@
+﻿active_stops,directed_edges,undirected_edges,connected_components,largest_component_nodes,largest_component_share,weakly_connected_components,strongly_connected_components,largest_strong_component_nodes,average_degree,density,articulation_points,bridges,louvain_communities,largest_louvain_community_nodes
+30466,51999,51772,15,30237,0.9924834241449485,15,1518,28863,3.3986739315958774,0.0001115599518002914,900,971,91,1260
