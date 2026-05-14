@@ -14,7 +14,7 @@
 
 ## למה זה יותר ממדדי מרכזיות
 
-מדדים כמו degree, weighted degree, PageRank ו-betweenness משמשים כקו בסיס בלבד. הניסוי המרכזי מודד מה קורה אחרי הסרת תחנות:
+מדדים כמו מספר חיבורים, עומס שירות, PageRank והופעה על מסלולים קצרים משמשים כקו בסיס בלבד. הניסוי המרכזי מודד מה קורה אחרי הסרת תחנות:
 
 - עד כמה הרכיב הקשיר הגדול מתכווץ.
 - כמה תחנות נשארות נגישות בתוך סף זמן נתון.
@@ -77,6 +77,12 @@ python src/transit_resilience_analysis.py \
   --output-dir outputs
 ```
 
+יצירת גרפים מסבירים מתוך ההרצה הסופית:
+
+```bash
+python src/make_explanatory_figures.py
+```
+
 הרצה מהירה לחקירה ראשונית:
 
 ```bash
@@ -117,11 +123,27 @@ python src/transit_resilience_analysis.py \
 - `outputs/figures/single_segment_impact.png`
 - `outputs/figures/backup_links_map.png`
 
+גרפים מסבירים להרצה הסופית:
+
+- `outputs/final/explanatory_figures/01_research_flow.png`
+- `outputs/final/explanatory_figures/02_radius_choice.png`
+- `outputs/final/explanatory_figures/03_station_removal_strategies.png`
+- `outputs/final/explanatory_figures/04_stations_vs_segments.png`
+- `outputs/final/explanatory_figures/05_busy_vs_critical.png`
+- `outputs/final/explanatory_figures/06_critical_station_map.png`
+- `outputs/final/explanatory_figures/07_critical_station_zooms.png`
+- `outputs/final/explanatory_figures/08_segment_story.png`
+- `outputs/final/explanatory_figures/09_backup_links_before_after.png`
+- `outputs/final/explanatory_figures/top_critical_stations.csv`
+
 ## קבצי הפרויקט
 
 - [reports/proposal.md](reports/proposal.md): הצעת הפרויקט והיקף העבודה.
+- [reports/visual_explanation.md](reports/visual_explanation.md): הסבר פשוט לקריאת הגרפים החדשים.
+- [reports/final_findings.md](reports/final_findings.md): סיכום הממצאים המרכזיים.
 - [src/transit_resilience_analysis.py](src/transit_resilience_analysis.py): פייפליין ניתוח ו-CLI.
 - [src/run_sensitivity_experiments.py](src/run_sensitivity_experiments.py): ניסויי רגישות לרדיוס איחוד תחנות ולספי זמן נגישות.
+- [src/make_explanatory_figures.py](src/make_explanatory_figures.py): יצירת גרפים אינטואיטיביים להצגה ולדוח.
 - [notebooks/accessibility_resilience_analysis.ipynb](notebooks/accessibility_resilience_analysis.ipynb): מחברת להרצה והגשה בקורס.
 - `docs/Graph_Algo_project_guidelines_2026.pdf`: הנחיות הקורס.
 
@@ -138,5 +160,5 @@ python src/transit_resilience_analysis.py \
 
 - המודל משתמש בלוחות זמנים ולא בנתוני ביקוש נוסעים.
 - רדיוס איחוד התחנות יכול לאחד יותר מדי או פחות מדי תחנות.
-- betweenness מחושב בקירוב בגלל גודל הרשת.
+- מדד ההופעה על מסלולים קצרים מחושב בקירוב בגלל גודל הרשת.
 - קישורי הגיבוי הם מועמדים אלגוריתמיים ודורשים בדיקת היתכנות מציאותית.
