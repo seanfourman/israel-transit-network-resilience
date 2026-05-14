@@ -1,0 +1,6 @@
+﻿,degree,weighted_degree,pagerank,approx_betweenness,stop_use_count
+degree,1.0,0.4682,0.4879,0.5119,0.4573
+weighted_degree,0.4682,1.0,0.6085,0.1822,0.9943
+pagerank,0.4879,0.6085,1.0,0.3234,0.5933
+approx_betweenness,0.5119,0.1822,0.3234,1.0,0.1669
+stop_use_count,0.4573,0.9943,0.5933,0.1669,1.0
