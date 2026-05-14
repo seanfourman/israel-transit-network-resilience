@@ -1,0 +1,2 @@
+﻿stop_times_rows,active_stops,station_nodes,active_trips,directed_edges,undirected_edges,skipped_same_station_segments,non_contiguous_trip_rows,out_of_order_stop_sequences,min_stops_per_trip,mean_stops_per_trip,max_stops_per_trip,timed_edge_observations,fallback_impedance_seconds
+15711624,30466,21623,420133,47692,42418,282111,0,562,2,37.39678625578091,115,15009380,67.5986577181208

@@ -102,6 +102,7 @@ python src/transit_resilience_analysis.py \
 - `outputs/tables/unified_stations.csv`
 - `outputs/tables/station_metrics.csv`
 - `outputs/tables/resilience_curve.csv`
+- `outputs/tables/segment_resilience_curve.csv`
 - `outputs/tables/single_station_disruption_impact.csv`
 - `outputs/tables/single_segment_disruption_impact.csv`
 - `outputs/tables/recommended_backup_links.csv`
@@ -111,6 +112,7 @@ python src/transit_resilience_analysis.py \
 
 - `outputs/figures/unified_station_map.png`
 - `outputs/figures/resilience_curve.png`
+- `outputs/figures/segment_resilience_curve.png`
 - `outputs/figures/single_station_impact.png`
 - `outputs/figures/single_segment_impact.png`
 - `outputs/figures/backup_links_map.png`
@@ -119,6 +121,7 @@ python src/transit_resilience_analysis.py \
 
 - [reports/proposal.md](reports/proposal.md): הצעת הפרויקט והיקף העבודה.
 - [src/transit_resilience_analysis.py](src/transit_resilience_analysis.py): פייפליין ניתוח ו-CLI.
+- [src/run_sensitivity_experiments.py](src/run_sensitivity_experiments.py): ניסויי רגישות לרדיוס איחוד תחנות ולספי זמן נגישות.
 - [notebooks/accessibility_resilience_analysis.ipynb](notebooks/accessibility_resilience_analysis.ipynb): מחברת להרצה והגשה בקורס.
 - `docs/Graph_Algo_project_guidelines_2026.pdf`: הנחיות הקורס.
 

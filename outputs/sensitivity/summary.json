@@ -1,0 +1,14 @@
+{
+  "radii_meters": [
+    50.0,
+    80.0,
+    120.0
+  ],
+  "cutoffs_minutes": [
+    30.0,
+    60.0,
+    90.0
+  ],
+  "accessibility_sample": 64,
+  "seed": 42
+}

@@ -1,0 +1,3 @@
+﻿scenario,station_nodes,reference_station_nodes,connected_components,largest_component_nodes,largest_component_share,origins_evaluated,origins_missing,mean_reachable_stations,mean_reachable_share,mean_path_seconds_to_reachable
+before_backup_links,21603,21623,24,21493,0.9939878832724414,96,0,7476.260416666667,0.345770993278451,2400.690610969695
+after_backup_links,21603,21623,14,21557,0.9969476945844702,96,0,7494.34375,0.3466073328091757,2400.881589469622

@@ -91,6 +91,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--accessibility-cutoff-minutes", type=float, default=60.0)
     parser.add_argument("--resilience-removals", type=int, default=250)
     parser.add_argument("--resilience-steps", type=int, default=12)
+    parser.add_argument("--segment-removals", type=int, default=250)
+    parser.add_argument("--segment-steps", type=int, default=12)
     parser.add_argument("--random-trials", type=int, default=3)
     parser.add_argument("--single-disruption-candidates", type=int, default=80)
     parser.add_argument("--single-segment-candidates", type=int, default=80)
@@ -716,6 +718,109 @@ def resilience_curve(
     return pd.DataFrame(rows)
 
 
+def segment_ranking_lists(graph: nx.Graph) -> dict[str, list[tuple[str, str]]]:
+    edges = list(graph.edges(data=True))
+    bridges = {normalized_edge(source, target) for source, target in nx.bridges(graph)}
+    by_frequency = [
+        normalized_edge(source, target)
+        for source, target, _ in sorted(
+            edges,
+            key=lambda edge: edge[2].get("frequency", 0),
+            reverse=True,
+        )
+    ]
+    bridge_frequency = [
+        normalized_edge(source, target)
+        for source, target, _ in sorted(
+            edges,
+            key=lambda edge: (
+                normalized_edge(edge[0], edge[1]) in bridges,
+                edge[2].get("frequency", 0),
+            ),
+            reverse=True,
+        )
+    ]
+    return {
+        "segment_frequency": by_frequency,
+        "bridge_frequency": bridge_frequency,
+    }
+
+
+def segment_resilience_curve(
+    graph: nx.Graph,
+    rankings: dict[str, list[tuple[str, str]]],
+    origins: list[str],
+    cutoff_seconds: float,
+    max_removals: int,
+    steps: int,
+    random_trials: int,
+    seed: int,
+) -> pd.DataFrame:
+    reference_node_count = graph.number_of_nodes()
+    baseline = accessibility_snapshot(
+        graph,
+        origins,
+        cutoff_seconds,
+        reference_node_count=reference_node_count,
+    )
+    baseline_reachable_share = float(baseline["mean_reachable_share"])
+    baseline_largest_share = float(baseline["largest_component_share"])
+    max_removals = min(max_removals, max(graph.number_of_edges() - 1, 0))
+    removal_counts = sorted(set(linspace_int(0, max_removals, steps)))
+    rows = []
+
+    for strategy, ordered_edges in rankings.items():
+        for removed_count in removal_counts:
+            subgraph = graph.copy()
+            subgraph.remove_edges_from(ordered_edges[:removed_count])
+            snapshot = accessibility_snapshot(
+                subgraph,
+                origins,
+                cutoff_seconds,
+                reference_node_count=reference_node_count,
+            )
+            rows.append(
+                {
+                    "strategy": strategy,
+                    "removed_segments": removed_count,
+                    **snapshot,
+                    "largest_component_share_loss": baseline_largest_share
+                    - float(snapshot["largest_component_share"]),
+                    "reachable_share_loss": baseline_reachable_share
+                    - float(snapshot["mean_reachable_share"]),
+                }
+            )
+
+    rng = random.Random(seed)
+    edges = [normalized_edge(source, target) for source, target in graph.edges]
+    for removed_count in removal_counts:
+        trial_rows = []
+        for _ in range(random_trials):
+            subgraph = graph.copy()
+            subgraph.remove_edges_from(rng.sample(edges, removed_count))
+            trial_rows.append(
+                accessibility_snapshot(
+                    subgraph,
+                    origins,
+                    cutoff_seconds,
+                    reference_node_count=reference_node_count,
+                )
+            )
+        averaged = average_snapshots(trial_rows)
+        rows.append(
+            {
+                "strategy": "random_segment_mean",
+                "removed_segments": removed_count,
+                **averaged,
+                "largest_component_share_loss": baseline_largest_share
+                - float(averaged["largest_component_share"]),
+                "reachable_share_loss": baseline_reachable_share
+                - float(averaged["mean_reachable_share"]),
+            }
+        )
+    return pd.DataFrame(rows)
+
+
 def average_snapshots(snapshots: list[dict[str, float | int]]) -> dict[str, float]:
     if not snapshots:
         return {}
@@ -993,6 +1098,7 @@ def write_outputs(
     metrics: pd.DataFrame,
     community_summary: pd.DataFrame,
     resilience: pd.DataFrame,
+    segment_resilience: pd.DataFrame,
     single_impacts: pd.DataFrame,
     segment_impacts: pd.DataFrame,
     backup_links: pd.DataFrame,
@@ -1028,6 +1134,11 @@ def write_outputs(
     )
     community_summary.to_csv(tables_dir / "community_summary.csv", index=False, encoding="utf-8-sig")
     resilience.to_csv(tables_dir / "resilience_curve.csv", index=False, encoding="utf-8-sig")
+    segment_resilience.to_csv(
+        tables_dir / "segment_resilience_curve.csv",
+        index=False,
+        encoding="utf-8-sig",
+    )
     single_impacts.to_csv(
         tables_dir / "single_station_disruption_impact.csv",
         index=False,
@@ -1065,6 +1176,7 @@ def write_figures(
     output_dir: Path,
     metrics: pd.DataFrame,
     resilience: pd.DataFrame,
+    segment_resilience: pd.DataFrame,
     single_impacts: pd.DataFrame,
     segment_impacts: pd.DataFrame,
     backup_links: pd.DataFrame,
@@ -1073,6 +1185,7 @@ def write_figures(
     figures_dir.mkdir(parents=True, exist_ok=True)
     plot_station_map(metrics, figures_dir / "unified_station_map.png")
     plot_resilience(resilience, figures_dir / "resilience_curve.png")
+    plot_segment_resilience(segment_resilience, figures_dir / "segment_resilience_curve.png")
     plot_disruption_impacts(single_impacts, figures_dir / "single_station_impact.png")
     plot_segment_impacts(segment_impacts, figures_dir / "single_segment_impact.png")
     plot_backup_links(metrics, backup_links, figures_dir / "backup_links_map.png")
@@ -1122,6 +1235,29 @@ def plot_resilience(resilience: pd.DataFrame, path: Path) -> None:
     plt.xlabel("Removed stations")
     plt.ylabel("Mean reachable share within cutoff")
     plt.title("Accessibility Resilience Under Station Removal")
+    plt.ylim(0, 1.02)
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig(path, dpi=180)
+    plt.close()
+
+
+def plot_segment_resilience(segment_resilience: pd.DataFrame, path: Path) -> None:
+    if segment_resilience.empty:
+        return
+    plt.figure(figsize=(9, 6))
+    for strategy, group in segment_resilience.groupby("strategy"):
+        group = group.sort_values("removed_segments")
+        plt.plot(
+            group["removed_segments"],
+            group["mean_reachable_share"],
+            marker="o",
+            linewidth=1.6,
+            label=strategy,
+        )
+    plt.xlabel("Removed trip segments")
+    plt.ylabel("Mean reachable share within cutoff")
+    plt.title("Accessibility Resilience Under Segment Removal")
     plt.ylim(0, 1.02)
     plt.legend()
     plt.tight_layout()
@@ -1251,6 +1387,16 @@ def main() -> None:
         args.random_trials,
         args.seed,
     )
+    segment_resilience = segment_resilience_curve(
+        undirected,
+        segment_ranking_lists(undirected),
+        origins,
+        cutoff_seconds,
+        args.segment_removals,
+        args.segment_steps,
+        args.random_trials,
+        args.seed,
+    )
     single_impacts = single_station_disruptions(
         undirected,
         metrics,
@@ -1304,6 +1450,7 @@ def main() -> None:
         metrics,
         community_summary,
         resilience,
+        segment_resilience,
         single_impacts,
         segment_impacts,
         backup_links,
@@ -1314,6 +1461,7 @@ def main() -> None:
         args.output_dir,
         metrics,
         resilience,
+        segment_resilience,
         single_impacts,
         segment_impacts,
         backup_links,

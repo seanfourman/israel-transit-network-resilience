@@ -1,0 +1,69 @@
+{
+  "build_stats": {
+    "stop_times_rows": 15711624,
+    "active_stops": 30466,
+    "station_nodes": 21623,
+    "active_trips": 420133,
+    "directed_edges": 47692,
+    "undirected_edges": 42418,
+    "skipped_same_station_segments": 282111,
+    "non_contiguous_trip_rows": 0,
+    "out_of_order_stop_sequences": 562,
+    "min_stops_per_trip": 2,
+    "mean_stops_per_trip": 37.39678625578091,
+    "max_stops_per_trip": 115,
+    "timed_edge_observations": 15009380,
+    "fallback_impedance_seconds": 67.5986577181208
+  },
+  "network_summary": {
+    "station_nodes": 21623,
+    "directed_edges": 47692,
+    "undirected_edges": 42418,
+    "connected_components": 2,
+    "largest_component_nodes": 21620,
+    "largest_component_share": 0.9998612588447486,
+    "weakly_connected_components": 2,
+    "strongly_connected_components": 139,
+    "largest_strong_component_nodes": 21481,
+    "average_degree": 3.923414882301253,
+    "density": 0.00018145476284808312,
+    "articulation_points": 790,
+    "bridges": 492
+  },
+  "baseline_accessibility": {
+    "station_nodes": 21623,
+    "reference_station_nodes": 21623,
+    "connected_components": 2,
+    "largest_component_nodes": 21620,
+    "largest_component_share": 0.9998612588447486,
+    "origins_evaluated": 96,
+    "origins_missing": 0,
+    "mean_reachable_stations": 7577.71875,
+    "mean_reachable_share": 0.35046335907871623,
+    "mean_path_seconds_to_reachable": 2398.330232436518
+  },
+  "mitigation_before": {
+    "station_nodes": 21603,
+    "reference_station_nodes": 21623,
+    "connected_components": 24,
+    "largest_component_nodes": 21493,
+    "largest_component_share": 0.9939878832724414,
+    "origins_evaluated": 96,
+    "origins_missing": 0,
+    "mean_reachable_stations": 7476.260416666667,
+    "mean_reachable_share": 0.345770993278451,
+    "mean_path_seconds_to_reachable": 2400.690610969695
+  },
+  "mitigation_after": {
+    "station_nodes": 21603,
+    "reference_station_nodes": 21623,
+    "connected_components": 14,
+    "largest_component_nodes": 21557,
+    "largest_component_share": 0.9969476945844702,
+    "origins_evaluated": 96,
+    "origins_missing": 0,
+    "mean_reachable_stations": 7494.34375,
+    "mean_reachable_share": 0.3466073328091757,
+    "mean_path_seconds_to_reachable": 2400.881589469622
+  }
+}
