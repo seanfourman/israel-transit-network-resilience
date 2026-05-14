@@ -1,3 +1,0 @@
-israel-public-transportation/stop_times.txt filter=lfs diff=lfs merge=lfs -text
-israel-public-transportation/shapes.txt filter=lfs diff=lfs merge=lfs -text
-israel-public-transportation.zip filter=lfs diff=lfs merge=lfs -text
