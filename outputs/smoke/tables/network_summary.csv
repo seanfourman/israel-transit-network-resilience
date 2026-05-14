@@ -1,0 +1,2 @@
+﻿station_nodes,directed_edges,undirected_edges,connected_components,largest_component_nodes,largest_component_share,weakly_connected_components,strongly_connected_components,largest_strong_component_nodes,average_degree,density,articulation_points,bridges
+21623,47692,42418,2,21620,0.9998612588447486,2,139,21481,3.923414882301253,0.00018145476284808312,790,492

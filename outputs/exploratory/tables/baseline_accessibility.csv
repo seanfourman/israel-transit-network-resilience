@@ -1,0 +1,2 @@
+﻿station_nodes,reference_station_nodes,connected_components,largest_component_nodes,largest_component_share,origins_evaluated,origins_missing,mean_reachable_stations,mean_reachable_share,mean_path_seconds_to_reachable
+21623,21623,2,21620,0.9998612588447486,32,0,6645.625,0.3073547775413931,2412.4491743301255
