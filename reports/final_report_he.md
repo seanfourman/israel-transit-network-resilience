@@ -306,8 +306,13 @@ python src\transit_network_analysis.py `
   --data-dir israel-public-transportation `
   --output-dir outputs `
   --betweenness-samples 128 `
+  --harmonic-samples 512 `
+  --path-source-samples 128 `
   --resilience-removals 500 `
   --resilience-steps 25 `
+  --accessibility-pairs 300 `
+  --accessibility-removals 500 `
+  --accessibility-steps 10 `
   --random-trials 5
 ```
 
@@ -318,14 +323,22 @@ python src\transit_network_analysis.py `
 - `outputs/tables/top_weighted_degree_stops.csv`
 - `outputs/tables/top_pagerank_stops.csv`
 - `outputs/tables/top_approx_betweenness_stops.csv`
+- `outputs/tables/top_approx_harmonic_stops.csv`
 - `outputs/tables/top_articulation_points.csv`
 - `outputs/tables/community_summary.csv`
 - `outputs/tables/resilience_random_vs_targeted.csv`
+- `outputs/tables/accessibility_damage_by_removal.csv`
+- `outputs/tables/degree_distribution.csv`
+- `outputs/tables/network_model_comparison.csv`
 - `outputs/figures/active_stops_map.png`
 - `outputs/figures/top_weighted_degree_stops.png`
 - `outputs/figures/top_pagerank_stops.png`
+- `outputs/figures/top_approx_harmonic_stops.png`
 - `outputs/figures/top_communities.png`
 - `outputs/figures/resilience_curve.png`
+- `outputs/figures/accessibility_damage_curve.png`
+- `outputs/figures/degree_distribution_loglog.png`
+- `outputs/figures/network_model_comparison.png`
 
 ## מקורות
 

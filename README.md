@@ -2,6 +2,8 @@
 
 Project title: תחנות קריטיות: ניתוח מרכזיות ועמידות ברשת התחבורה הציבורית בישראל
 
+Decoded project title: תחנות קריטיות: ניתוח מרכזיות ועמידות ברשת התחבורה הציבורית בישראל
+
 This repository analyzes Israel's public transportation GTFS feed as a graph:
 
 - nodes are public-transport stops
@@ -46,12 +48,18 @@ python src\transit_network_analysis.py `
   --data-dir israel-public-transportation `
   --output-dir outputs `
   --betweenness-samples 128 `
+  --harmonic-samples 512 `
+  --path-source-samples 128 `
   --resilience-removals 500 `
   --resilience-steps 25 `
+  --accessibility-pairs 300 `
+  --accessibility-removals 500 `
+  --accessibility-steps 10 `
   --random-trials 5
 ```
 
-For a faster smoke run, lower `--betweenness-samples` and `--random-trials`.
+For a faster smoke run, lower `--betweenness-samples`, `--harmonic-samples`,
+`--path-source-samples`, `--accessibility-pairs`, and `--random-trials`.
 
 ## Outputs
 
@@ -69,14 +77,21 @@ Main tables:
 - `outputs/tables/resilience_random_vs_targeted.csv`
 - `outputs/tables/community_summary.csv`
 - `outputs/tables/centrality_correlation_spearman.csv`
+- `outputs/tables/degree_distribution.csv`
+- `outputs/tables/network_model_comparison.csv`
+- `outputs/tables/accessibility_damage_by_removal.csv`
 
 Main figures:
 
 - `outputs/figures/top_weighted_degree_stops.png`
 - `outputs/figures/top_pagerank_stops.png`
+- `outputs/figures/top_approx_harmonic_stops.png`
 - `outputs/figures/route_type_distribution.png`
 - `outputs/figures/top_communities.png`
 - `outputs/figures/resilience_curve.png`
+- `outputs/figures/accessibility_damage_curve.png`
+- `outputs/figures/degree_distribution_loglog.png`
+- `outputs/figures/network_model_comparison.png`
 - `outputs/figures/active_stops_map.png`
 
 ## Final Report
@@ -106,4 +121,10 @@ python reports\build_report_docx.py
 
 Exact betweenness centrality is expensive on a national network, so the pipeline computes approximate betweenness on the largest connected component using sampled source nodes. Increase `--betweenness-samples` for a more stable estimate.
 
+Harmonic centrality and global shortest-path statistics are also sampled. This keeps the run practical while still supporting the course themes of shortest paths, accessibility, and disconnected graphs.
+
 Resilience is measured by removing stops according to centrality rankings and tracking the size of the largest connected component. A random-removal mean is included as a baseline.
+
+Accessibility damage is measured on sampled origin-destination stop pairs by tracking which pairs remain reachable and how much shortest paths stretch after targeted removals.
+
+The pipeline also compares the real transit graph with reference network models: Erdos-Renyi, a degree-sequence configuration model, Barabasi-Albert preferential attachment, and Watts-Strogatz small-world.
