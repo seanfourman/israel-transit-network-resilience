@@ -1,0 +1,28 @@
+{
+  "LogisticRegression": {
+    "f1": 0.129,
+    "confusion": [
+      [
+        866,
+        25
+      ],
+      [
+        2,
+        2
+      ]
+    ]
+  },
+  "RandomForest": {
+    "f1": 0.0,
+    "confusion": [
+      [
+        891,
+        0
+      ],
+      [
+        4,
+        0
+      ]
+    ]
+  }
+}
