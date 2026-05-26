@@ -4,7 +4,8 @@ Project title: תחנות קריטיות: ניתוח מרכזיות ועמידו
 
 Decoded project title: תחנות קריטיות: ניתוח מרכזיות ועמידות ברשת התחבורה הציבורית בישראל
 
-This repository analyzes Israel's public transportation GTFS feed as a graph:
+This repository analyzes Israel's public transportation GTFS feed as a graph.
+The primary final-project analysis is the GTFS trip-adjacency graph:
 
 - nodes are public-transport stops
 - directed edges connect consecutive stops within each scheduled trip
@@ -12,11 +13,18 @@ This repository analyzes Israel's public transportation GTFS feed as a graph:
 
 The goal is to identify critical stations using centrality metrics and test network resilience under targeted stop removals.
 
+The repository also contains a staged exploratory pipeline under
+`public_transport_network_research/`. Its `02_graph_construction` stage builds a
+500-meter stop proximity graph from coordinates. That proximity graph is useful
+for spatial experiments, Node2Vec, and link-prediction extensions, but it is not
+the primary graph used for the final report results in `outputs/`.
+
 ## Repository Structure
 
 ```text
 israel-public-transportation/     GTFS data files
 src/transit_network_analysis.py   Reusable analysis pipeline and CLI
+public_transport_network_research/ Staged exploratory research pipeline
 notebooks/critical_stations_analysis.ipynb
 outputs/                          Generated tables and figures
 docs/                             Course instructions and reference material
@@ -61,7 +69,10 @@ python src\transit_network_analysis.py `
 For a faster smoke run, lower `--betweenness-samples`, `--harmonic-samples`,
 `--path-source-samples`, `--accessibility-pairs`, and `--random-trials`.
 
-## Outputs
+## Checked-In Outputs
+
+The current checked-in `outputs/` directory contains the results from the latest
+available full GTFS trip-adjacency run.
 
 Main tables:
 
@@ -77,22 +88,28 @@ Main tables:
 - `outputs/tables/resilience_random_vs_targeted.csv`
 - `outputs/tables/community_summary.csv`
 - `outputs/tables/centrality_correlation_spearman.csv`
-- `outputs/tables/degree_distribution.csv`
-- `outputs/tables/network_model_comparison.csv`
-- `outputs/tables/accessibility_damage_by_removal.csv`
 
 Main figures:
 
 - `outputs/figures/top_weighted_degree_stops.png`
 - `outputs/figures/top_pagerank_stops.png`
-- `outputs/figures/top_approx_harmonic_stops.png`
 - `outputs/figures/route_type_distribution.png`
 - `outputs/figures/top_communities.png`
 - `outputs/figures/resilience_curve.png`
+- `outputs/figures/active_stops_map.png`
+
+The current `src/transit_network_analysis.py` code can also produce these
+additional outputs after rerunning with the large GTFS `stop_times.txt` file
+available through Git LFS:
+
+- `outputs/tables/top_approx_harmonic_stops.csv`
+- `outputs/tables/degree_distribution.csv`
+- `outputs/tables/network_model_comparison.csv`
+- `outputs/tables/accessibility_damage_by_removal.csv`
+- `outputs/figures/top_approx_harmonic_stops.png`
 - `outputs/figures/accessibility_damage_curve.png`
 - `outputs/figures/degree_distribution_loglog.png`
 - `outputs/figures/network_model_comparison.png`
-- `outputs/figures/active_stops_map.png`
 
 ## Final Report
 

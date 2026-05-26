@@ -43,7 +43,7 @@
 - קבצי GTFS בשורה: stops → trips → stop_times → graph
 - גרף build_summary: |V|, |E|, density, SCC share
 
-**גרף/תמונה:** network_overview.png — ויזואליזציה כללית של הרשת
+**גרף/תמונה:** network_overview_map.png — ויזואליזציה כללית של הרשת
 
 ---
 
@@ -56,7 +56,7 @@
 - מספר Bridges
 - Average degree
 
-**גרף/תמונה:** degree_distribution_hist.png
+**גרף/תמונה:** degree_distribution.png
 
 ---
 
@@ -68,7 +68,7 @@
 - 2 רשימות קצרות: Top-5 Betweenness, Top-5 Degree
 - קורלציה בין המדדים (ערך Spearman)
 
-**גרף/תמונה:** centrality_scatter_degree_betweenness.png
+**גרף/תמונה:** centrality_scatter.png
 
 ---
 
@@ -104,7 +104,7 @@
 - מספר קהילות
 - ממצא: האם תואמות גיאוגרפיה?
 
-**גרף/תמונה:** community_map_geographic.png או community_network_plot.png
+**גרף/תמונה:** community_map_louvain.png
 
 ---
 

@@ -21,8 +21,11 @@
 | קובץ | תוכן |
 |------|------|
 | `outputs/stop_metrics.csv` | כל מדדי ה-centrality לכל תחנה |
-| `outputs/top10_by_metric.json` | Top 10 תחנות לכל מדד |
-| `outputs/centrality_correlation.csv` | מטריצת קורלציה בין מדדים |
+| `outputs/top_degree.csv` | התחנות המובילות לפי Degree |
+| `outputs/top_betweenness.csv` | התחנות המובילות לפי Betweenness |
+| `outputs/top_pagerank.csv` | התחנות המובילות לפי PageRank |
+| `outputs/top_harmonic.csv` | התחנות המובילות לפי Harmonic Centrality |
+| `outputs/centrality_correlation_spearman.csv` | מטריצת קורלציה בין מדדים |
 | `figures/04_centrality_analysis/` | גרפים ויזואליים |
 
 ## איך זה מקדם את שאלת המחקר?
@@ -92,24 +95,20 @@ x_v = (1/λ) × Σ_{u: (u,v)∈E} x_u
 
 ## קבצים/סקריפטים בחלק הזה
 
-- `scripts/01_compute_degree_centrality.py`
-- `scripts/02_compute_betweenness.py` (כולל approximation לרשתות גדולות)
-- `scripts/03_compute_closeness_harmonic.py`
-- `scripts/04_compute_pagerank.py`
-- `scripts/05_merge_centrality_metrics.py`
-- `scripts/06_plot_centrality.py`
+- `scripts/01_centrality.py` — computes Degree, Betweenness, Harmonic
+  Centrality, PageRank, correlation tables, and figures.
 
 ## ויזואליזציות נדרשות
 
 | גרף | תוכן | מתאים ל- |
 |-----|-------|----------|
-| `top10_degree_bar.png` | Top 10 לפי Degree | דוח + מצגת |
-| `top10_betweenness_bar.png` | Top 10 לפי Betweenness | דוח + מצגת |
-| `top10_pagerank_bar.png` | Top 10 לפי PageRank | דוח + מצגת |
-| `top10_harmonic_bar.png` | Top 10 לפי Harmonic Centrality | דוח |
+| `top_degree_bar.png` | Top לפי Degree | דוח + מצגת |
+| `top_betweenness_bar.png` | Top לפי Betweenness | דוח + מצגת |
+| `top_pagerank_bar.png` | Top לפי PageRank | דוח + מצגת |
+| `top_harmonic_bar.png` | Top לפי Harmonic Centrality | דוח |
 | `centrality_correlation_heatmap.png` | קורלציה בין מדדים | דוח |
-| `centrality_scatter_degree_betweenness.png` | פיזור Degree מול Betweenness | דוח + מצגת |
-| `network_centrality_colored.png` | מפת הרשת עם תחנות צבועות לפי centrality | מצגת |
+| `centrality_scatter.png` | פיזור Degree מול Betweenness ו-PageRank | דוח + מצגת |
+| `centrality_map_betweenness.png` | מפת התחנות המובילות לפי Betweenness | מצגת |
 
 ## מה צריך להופיע בדוח הסופי?
 
@@ -123,28 +122,31 @@ x_v = (1/λ) × Σ_{u: (u,v)∈E} x_u
 > **"האם תחנות מרכזיות לפי מדדי Centrality הן באמת תחנות קריטיות לתפקוד הרשת?"**
 > שאלה זו נענית בשלב 05.
 
-## TODO
+## TODO / Historical Plan
 
-- [ ] לחשב Degree, Betweenness, Closeness/Harmonic, PageRank לכל תחנה
-- [ ] לשמור stop_metrics.csv עם כל המדדים
-- [ ] לייצר כל הגרפים
-- [ ] לחשב קורלציות בין מדדים
-- [ ] לכתוב interpretation_guide.md עם פרשנות לכל מדד
+- [x] לחשב Degree, Betweenness, Harmonic, PageRank לכל תחנה
+- [x] לשמור stop_metrics.csv עם כל המדדים
+- [x] לייצר את גרפי המרכזיות הקיימים
+- [x] לחשב קורלציות בין מדדים
+- [x] לכתוב interpretation_guide.md עם פרשנות לכל מדד
 
 ## פלטים צפויים
 
 ```
 outputs/
 ├── stop_metrics.csv         (stop_id + כל מדדי centrality)
-├── top10_by_metric.json
-└── centrality_correlation.csv
+├── top_degree.csv
+├── top_betweenness.csv
+├── top_pagerank.csv
+├── top_harmonic.csv
+└── centrality_correlation_spearman.csv
 
 figures/04_centrality_analysis/
-├── top10_degree_bar.png
-├── top10_betweenness_bar.png
-├── top10_pagerank_bar.png
-├── top10_harmonic_bar.png
+├── top_degree_bar.png
+├── top_betweenness_bar.png
+├── top_pagerank_bar.png
+├── top_harmonic_bar.png
 ├── centrality_correlation_heatmap.png
-├── centrality_scatter_degree_betweenness.png
-└── network_centrality_colored.png
+├── centrality_scatter.png
+└── centrality_map_betweenness.png
 ```

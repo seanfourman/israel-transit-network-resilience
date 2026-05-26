@@ -34,9 +34,9 @@
 - [ ] components_summary_chart.png
 
 ### מרכזיות
-- [ ] top10_degree_bar.png
-- [ ] top10_betweenness_bar.png
-- [ ] top10_pagerank_bar.png
+- [x] top_degree_bar.png
+- [x] top_betweenness_bar.png
+- [x] top_pagerank_bar.png
 - [ ] centrality_correlation_scatter.png
 - [ ] station_map_centrality_colored.png (אופציונלי)
 
@@ -51,9 +51,9 @@
 - [ ] regional_vulnerability_map.png (אופציונלי)
 
 ### קהילות
-- [ ] community_network_plot.png
-- [ ] community_sizes_bar.png
-- [ ] inter_community_bridges.png
+- [x] community_map_louvain.png
+- [x] community_sizes_bar.png
+- [x] inter_community_nodes.png
 
 ### Graph Learning
 - [ ] tsne_embeddings.png
