@@ -1,0 +1,2 @@
+﻿num_nodes,num_edges_undirected,num_edges_directed,density,avg_degree,max_degree,min_degree,num_connected_components,largest_component_nodes,largest_component_share,num_weakly_connected,num_strongly_connected,largest_scc_nodes,num_articulation_points,num_bridges
+34932,286741,573482,0.00047,16.42,111,0,1981,4472,0.128,1981,1981,4472,659,932
