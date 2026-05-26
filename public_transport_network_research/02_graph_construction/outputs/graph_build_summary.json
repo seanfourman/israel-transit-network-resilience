@@ -1,0 +1,8 @@
+{
+  "num_nodes": 34932,
+  "num_edges_undirected": 286741,
+  "num_edges_directed": 573482,
+  "radius_m": 500,
+  "avg_degree": 16.42,
+  "density": 0.00047
+}

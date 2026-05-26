@@ -1,0 +1,17 @@
+{
+  "num_nodes": 34932,
+  "num_edges_undirected": 286741,
+  "num_edges_directed": 573482,
+  "density": 0.00047,
+  "avg_degree": 16.42,
+  "max_degree": 111,
+  "min_degree": 0,
+  "num_connected_components": 1981,
+  "largest_component_nodes": 4472,
+  "largest_component_share": 0.128,
+  "num_weakly_connected": 1981,
+  "num_strongly_connected": 1981,
+  "largest_scc_nodes": 4472,
+  "num_articulation_points": 659,
+  "num_bridges": 932
+}
