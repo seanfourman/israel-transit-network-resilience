@@ -26,7 +26,7 @@
 | קובץ | תוכן |
 |------|------|
 | `outputs/network_summary.json` | כל הסטטיסטיקות הבסיסיות |
-| `outputs/degree_distribution.csv` | התפלגות דרגות |
+| `outputs/network_summary.csv` | אותן סטטיסטיקות בפורמט טבלאי |
 | `outputs/articulation_points.csv` | רשימת Articulation Points |
 | `outputs/bridges.csv` | רשימת Bridges |
 | `figures/03_network_descriptive_analysis/` | כל גרפי הניתוח |
@@ -62,20 +62,17 @@
 
 ## קבצים/סקריפטים בחלק הזה
 
-- `scripts/01_compute_basic_stats.py` — סטטיסטיקות בסיסיות
-- `scripts/02_find_bridges_and_ap.py` — Bridges ו-Articulation Points
-- `scripts/03_degree_distribution.py` — התפלגות דרגות
-- `scripts/04_plot_network.py` — ויזואליזציית הרשת
+- `scripts/01_descriptive_analysis.py` — computes summary statistics,
+  bridges, articulation points, and descriptive figures.
 
 ## ויזואליזציות נדרשות
 
 | גרף | תיאור | מתאים ל- |
 |-----|--------|----------|
-| `degree_distribution_hist.png` | היסטוגרמה של התפלגות דרגות | דוח + מצגת |
-| `degree_distribution_loglog.png` | אותו גרף בסקלה לוג-לוג (לבדיקת Power Law) | דוח |
-| `network_overview.png` | ויזואליזציה כללית של הרשת | מצגת |
+| `degree_distribution.png` | היסטוגרמה וסקאלת log-log של התפלגות דרגות | דוח + מצגת |
+| `network_overview_map.png` | ויזואליזציה כללית של התחנות על מפה | מצגת |
 | `components_summary_bar.png` | גרף עמודות — גודל רכיבים קשורים | דוח |
-| `indegree_vs_outdegree.png` | פיזור In-degree מול Out-degree | דוח |
+| `stops_by_region.png` | התפלגות תחנות לפי אזור | דוח + מצגת |
 
 ## מה צריך להופיע בדוח הסופי?
 
@@ -85,12 +82,12 @@
 - כמה Bridges ו-Articulation Points נמצאו?
 - פרשנות: מה זה אומר על עמידות הרשת?
 
-## TODO
+## TODO / Historical Plan
 
-- [ ] לחשב את כל הסטטיסטיקות ולשמור ב-network_summary.json
-- [ ] לזהות את כל ה-Bridges ולשמור ב-bridges.csv
-- [ ] לזהות את כל ה-Articulation Points ולשמור ב-articulation_points.csv
-- [ ] לייצר את כל הגרפים ולשמור בtables/figures/
+- [x] לחשב את כל הסטטיסטיקות ולשמור ב-network_summary.json/csv
+- [x] לזהות את כל ה-Bridges ולשמור ב-bridges.csv
+- [x] לזהות את כל ה-Articulation Points ולשמור ב-articulation_points.csv
+- [x] לייצר את הגרפים הקיימים ולשמור ב-figures/
 - [ ] לבדוק האם ההתפלגות היא Power Law
 - [ ] לכתוב את הפרשנות ב-structural_statistics.md
 
@@ -99,14 +96,13 @@
 ```
 outputs/
 ├── network_summary.json
-├── degree_distribution.csv
+├── network_summary.csv
 ├── articulation_points.csv
 └── bridges.csv
 
 figures/03_network_descriptive_analysis/
-├── degree_distribution_hist.png
-├── degree_distribution_loglog.png
-├── network_overview.png
+├── degree_distribution.png
+├── network_overview_map.png
 ├── components_summary_bar.png
-└── indegree_vs_outdegree.png
+└── stops_by_region.png
 ```

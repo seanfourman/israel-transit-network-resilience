@@ -1,5 +1,11 @@
 # הגדרה פורמלית של הגרף
 
+> Scope note: this document describes the primary final-project graph definition:
+> a GTFS trip-adjacency graph where edges connect consecutive stops in scheduled
+> trips. The staged script in this directory, `scripts/01_build_graph.py`, is a
+> separate spatial extension that builds a 500-meter proximity graph. Do not mix
+> the two graph definitions in the final report or presentation.
+
 ## הגרף המכוון — G_directed
 
 ```

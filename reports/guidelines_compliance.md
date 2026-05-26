@@ -25,10 +25,10 @@ This file maps the course project requirements to concrete repository artifacts.
 | Presentation-ready figures | `outputs/figures/*.png`. |
 | Presentation-ready tables | `outputs/tables/*.csv`. |
 | Presentation outline up to 10 slides | `reports/presentation_outline_he.md`. |
-| Course theme: shortest paths | `src/transit_network_analysis.py` computes sampled path statistics and OD accessibility damage. |
+| Course theme: shortest paths | `src/transit_network_analysis.py` implements sampled path statistics and OD accessibility damage; current checked-in tables include the earlier resilience run, while the expanded accessibility table requires a full rerun with `stop_times.txt`. |
 | Course theme: centrality | Degree, weighted degree, PageRank, approximate betweenness, and approximate harmonic centrality are exported in `stop_metrics.csv`. |
 | Course theme: communities | Louvain community detection and community summaries are exported in `community_summary.csv`. |
-| Course theme: robustness | Targeted/random stop-removal simulations are exported in `resilience_random_vs_targeted.csv` and `accessibility_damage_by_removal.csv`. |
-| Course theme: network models | ER, configuration-model, BA, and WS comparisons are exported in `network_model_comparison.csv`. |
+| Course theme: robustness | Targeted/random stop-removal simulations are exported in `resilience_random_vs_targeted.csv`; OD accessibility damage is implemented and is produced after a full rerun with the large GTFS file restored. |
+| Course theme: network models | ER, configuration-model, BA, and WS comparisons are implemented in `src/transit_network_analysis.py` and are produced after a full rerun with the large GTFS file restored. |
 
 Before final submission, replace the placeholder student names and individual contributions with the real team members.

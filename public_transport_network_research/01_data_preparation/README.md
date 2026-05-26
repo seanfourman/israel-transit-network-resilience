@@ -32,9 +32,13 @@
 | קובץ | תוכן |
 |------|------|
 | `outputs/stops_clean.csv` | תחנות מנוקות עם קואורדינטות |
-| `outputs/stop_times_clean.csv` | זמני נסיעה מנוקים |
+| `outputs/routes_clean.csv` | קווים מנוקים |
 | `outputs/trips_clean.csv` | נסיעות תקינות |
+| `outputs/agencies_clean.csv` | מפעילי תחבורה |
 | `outputs/data_cleaning_report.json` | כמה שורות הוסרו ולמה |
+
+The current staged script does not export `stop_times_clean.csv`; the large
+`stop_times.txt` file is streamed directly by the primary pipeline in `src/`.
 
 ## איך זה מקדם את שאלת המחקר?
 
@@ -43,10 +47,8 @@
 
 ## קבצים/סקריפטים בחלק הזה
 
-- `scripts/01_load_gtfs.py` — טעינת קבצי GTFS
-- `scripts/02_clean_stops.py` — ניקוי תחנות
-- `scripts/03_clean_stop_times.py` — ניקוי זמני נסיעה
-- `scripts/04_merge_and_validate.py` — איחוד וולידציה
+- `scripts/01_load_and_clean.py` — loads stops, routes, trips, and agencies;
+  cleans stop coordinates; and assigns geographic region/metro labels.
 
 ## מה צריך להופיע בדוח הסופי?
 
@@ -55,22 +57,21 @@
 - כמה שורות הוסרו בכל שלב
 - validation שהדאטה המנוקה עדיין מייצגת את הרשת הכוללת
 
-## TODO
+## TODO / Historical Plan
 
-- [ ] לטעון את כל קבצי GTFS ולהדפיס גדלים
-- [ ] לזהות תחנות כפולות (parent_station)
-- [ ] לסנן trips שאינם פעילים לפי calendar.txt
-- [ ] לסנן תחנות ללא נסיעות מתועדות
-- [ ] לוודא שכל stop_id בstop_times.txt קיים גם בstops.txt
-- [ ] לייצר data_cleaning_report.json
+- [x] לטעון את קבצי GTFS העיקריים ולהדפיס גדלים
+- [x] לנקות תחנות ללא קואורדינטות תקינות
+- [x] להוסיף שיוך אזורי ומטרופוליני
+- [x] לייצר data_cleaning_report.json
 - [ ] לתעד את כל החלטות הניקוי בcleaning_decisions.md
 
 ## פלטים צפויים
 
 ```
 outputs/
-├── stops_clean.csv          (~2000-5000 תחנות)
-├── stop_times_clean.csv     (~מיליוני שורות)
-├── trips_clean.csv          (~אלפי נסיעות)
+├── agencies_clean.csv
+├── routes_clean.csv
+├── stops_clean.csv
+├── trips_clean.csv
 └── data_cleaning_report.json
 ```

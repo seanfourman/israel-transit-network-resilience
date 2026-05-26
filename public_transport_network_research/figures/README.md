@@ -22,10 +22,10 @@ figures/
 
 ## גרפים חובה (לפני הגשה)
 
-- [ ] degree_distribution_hist.png
+- [x] degree_distribution.png
 - [ ] resilience_curves_comparison.png ⭐
-- [ ] top10_betweenness_bar.png
-- [ ] community_map_geographic.png ⭐
+- [x] top_betweenness_bar.png
+- [x] community_map_louvain.png ⭐
 - [ ] tsne_by_critical.png ⭐
 - [ ] resilience_before_after_links.png ⭐
 

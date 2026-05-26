@@ -99,11 +99,9 @@ communities = next(girvan_newman(G_subgraph))
 
 | גרף | תוכן | מתאים ל- |
 |-----|-------|----------|
-| `community_network_plot.png` | גרף הרשת עם צמתים צבועים לפי קהילה | מצגת |
+| `community_map_louvain.png` | מפה גיאוגרפית עם תחנות צבועות לפי קהילה | מצגת |
 | `community_sizes_bar.png` | גרף עמודות — גודל כל קהילה | דוח |
-| `community_map_geographic.png` | מפה גיאוגרפית עם תחנות צבועות לפי קהילה | מצגת |
 | `inter_community_nodes.png` | תחנות שמחברות קהילות שונות | דוח |
-| `modularity_comparison.png` | השוואת Modularity בין שיטות שונות | דוח |
 
 ## מה צריך להופיע בדוח הסופי?
 
@@ -112,14 +110,14 @@ communities = next(girvan_newman(G_subgraph))
 - ניתוח: האם הקהילות הגיוניות? תואמות גיאוגרפיה?
 - טבלת תחנות בין-קהילתיות + ניתוח
 
-## TODO
+## TODO / Historical Plan
 
-- [ ] להריץ Louvain ולשמור community_id לכל תחנה
-- [ ] להריץ Label Propagation ולהשוות תוצאות
-- [ ] לזהות תחנות בין-קהילתיות
+- [x] להריץ Louvain ולשמור community_id לכל תחנה
+- [x] להריץ Label Propagation ולהשוות תוצאות
+- [x] לזהות תחנות בין-קהילתיות
 - [ ] לבדוק קורלציה בין קהילות לאזורים גיאוגרפיים
 - [ ] לבדוק קורלציה בין קהילות למפעילים
-- [ ] לייצר כל הגרפים
+- [x] לייצר את גרפי הקהילות הקיימים
 
 ## פלטים צפויים
 
@@ -130,9 +128,7 @@ outputs/
 └── inter_community_bridges.csv    (stop_id, community_a, community_b, betweenness)
 
 figures/07_community_detection/
-├── community_network_plot.png
+├── community_map_louvain.png
 ├── community_sizes_bar.png
-├── community_map_geographic.png
-├── inter_community_nodes.png
-└── modularity_comparison.png
+└── inter_community_nodes.png
 ```

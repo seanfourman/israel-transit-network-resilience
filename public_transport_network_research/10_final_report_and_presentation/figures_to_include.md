@@ -9,13 +9,13 @@
 
 ## שלב 03 — ניתוח תיאורי
 
-### G1 — degree_distribution_hist.png
+### G1 — degree_distribution.png
 - **מקור:** `figures/03_network_descriptive_analysis/`
 - **מה מוצג:** היסטוגרמה של התפלגות דרגות — כמה תחנות יש לכל מספר שכנים
 - **מסר:** "הרשת מאופיינת בפחות תחנות עם דרגה גבוהה ורבות עם דרגה נמוכה — מבנה Power-Law-like"
 - **מתאים ל:** דוח + מצגת (שקף 4)
 
-### G2 — network_overview.png
+### G2 — network_overview_map.png
 - **מקור:** `figures/03_network_descriptive_analysis/`
 - **מה מוצג:** ויזואליזציה כללית של הרשת (או מפת ישראל עם תחנות)
 - **מסר:** "הרשת מורכבת, עם ריכוז ברור באזור המרכז"
@@ -25,13 +25,13 @@
 
 ## שלב 04 — Centrality
 
-### G3 — top10_betweenness_bar.png
+### G3 — top_betweenness_bar.png
 - **מקור:** `figures/04_centrality_analysis/`
 - **מה מוצג:** 10 התחנות עם Betweenness הגבוה ביותר
 - **מסר:** "תחנות ה-Betweenness הגבוה הן [שמות] — אלו שיושבות על הכי הרבה מסלולים"
 - **מתאים ל:** דוח + מצגת (שקף 5)
 
-### G4 — top10_degree_bar.png
+### G4 — top_degree_bar.png
 - **מקור:** `figures/04_centrality_analysis/`
 - **מה מוצג:** 10 התחנות עם Degree הגבוה ביותר
 - **מסר:** "תחנות ה-Degree הגבוה — רבות מהן Hub בערים גדולות"
@@ -43,7 +43,7 @@
 - **מסר:** "Degree ו-PageRank מאוד מתואמים, אבל Betweenness מציג דפוס שונה"
 - **מתאים ל:** דוח
 
-### G6 — centrality_scatter_degree_betweenness.png
+### G6 — centrality_scatter.png
 - **מקור:** `figures/04_centrality_analysis/`
 - **מה מוצג:** scatter plot — Degree מול Betweenness (נקודה = תחנה)
 - **מסר:** "יש תחנות עם Degree נמוך אבל Betweenness גבוה — הן המעניינות!"
@@ -85,7 +85,7 @@
 
 ## שלב 07 — Community Detection
 
-### G11 — community_map_geographic.png ⭐
+### G11 — community_map_louvain.png ⭐
 - **מקור:** `figures/07_community_detection/`
 - **מה מוצג:** מפה גיאוגרפית עם תחנות צבועות לפי קהילה
 - **מסר:** "קהילות הרשת [תואמות / לא תואמות] אזורים גיאוגרפיים"
@@ -136,7 +136,7 @@
 | # | גרף | שקף |
 |---|-----|-----|
 | G7 | resilience_curves_comparison.png | 6 |
-| G11 | community_map_geographic.png | 8 |
+| G11 | community_map_louvain.png | 8 |
 | G13 | tsne_by_critical.png | 9 |
 | G16 | resilience_before_after_links.png | 10 |
 
