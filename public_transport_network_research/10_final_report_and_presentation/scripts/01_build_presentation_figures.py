@@ -1,14 +1,16 @@
 """
-Build a curated folder of Hebrew presentation-ready figures.
+Build a curated folder of presentation-ready figures.
 
 Matplotlib does not handle Hebrew bidirectional text reliably in this project
-environment, so all Hebrew strings sent to figures are reversed before plotting.
+environment, so Hebrew characters are reversed before plotting. English terms,
+numbers, and acronyms are protected so technical labels stay readable.
 The README remains normal Hebrew because Markdown renders RTL text correctly.
 """
 from __future__ import annotations
 
 import json
 import pickle
+import re
 import textwrap
 from pathlib import Path
 
@@ -67,17 +69,40 @@ REGION_HE = {
 }
 
 CENTRALITY_HE = {
-    "degree": "דרגה",
-    "degree_centrality": "מרכזיות דרגה",
-    "pagerank": "דירוג דף",
-    "betweenness": "תווכיות",
-    "harmonic": "הרמונית",
+    "degree": "Degree",
+    "degree_centrality": "Degree Centrality",
+    "pagerank": "PageRank",
+    "betweenness": "Betweenness",
+    "harmonic": "Harmonic",
 }
+
+HEBREW_RE = re.compile(r"[\u0590-\u05FF]")
+LTR_TOKEN_RE = re.compile(
+    r"[A-Za-z0-9][A-Za-z0-9+/#_.:%-]*(?:\s+[A-Za-z0-9][A-Za-z0-9+/#_.:%-]*)*"
+)
 
 
 def rtl(text: object) -> str:
-    """Reverse text line-by-line for Hebrew display in Matplotlib."""
-    return "\n".join(str(text).split("\n")[i][::-1] for i in range(len(str(text).split("\n"))))
+    """Reverse Hebrew line-by-line for Matplotlib while preserving English tokens."""
+    lines = []
+    for line in str(text).split("\n"):
+        if not HEBREW_RE.search(line):
+            lines.append(line)
+            continue
+
+        protected: dict[str, str] = {}
+
+        def protect(match: re.Match[str]) -> str:
+            placeholder = chr(0xE000 + len(protected))
+            protected[placeholder] = match.group(0)
+            return placeholder
+
+        prepared = LTR_TOKEN_RE.sub(protect, line)
+        visual = prepared[::-1]
+        for placeholder, original in protected.items():
+            visual = visual.replace(placeholder, original)
+        lines.append(visual)
+    return "\n".join(lines)
 
 
 def set_title(ax: plt.Axes, text: str, **kwargs) -> None:
@@ -154,15 +179,15 @@ def graph_nodes_df(graph: nx.Graph, lcc: set | None = None) -> pd.DataFrame:
 def strategy_key(value: str) -> str:
     text = str(value).lower()
     if "betweenness" in text:
-        return "תווכיות"
+        return "Betweenness"
     if "pagerank" in text:
-        return "דירוג דף"
+        return "PageRank"
     if "degree" in text:
-        return "דרגה"
+        return "Degree"
     if "ap" in text or "articulation" in text:
-        return "נקודות חיתוך"
+        return "Articulation Points"
     if "random" in text:
-        return "אקראי"
+        return "Random"
     return str(value)
 
 
@@ -227,7 +252,7 @@ def plot_graph_model_comparison() -> None:
         value_name="count",
     )
     long["metric"] = long["metric"].map(
-        {"articulation_points": rtl("נקודות חיתוך"), "bridges": rtl("גשרים")}
+        {"articulation_points": "Articulation Points", "bridges": "Bridges"}
     )
     sns.barplot(data=long, x="metric", y="count", hue="model", ax=axes[2],
                 palette=[PALETTE["green"], PALETTE["orange"]])
@@ -260,8 +285,8 @@ def plot_connectivity_overview() -> None:
         ("תחנות", summary["num_nodes"]),
         ("קשתות", summary["num_edges_undirected"]),
         ("רכיבים", summary["num_connected_components"]),
-        ("נקודות\nחיתוך", summary["num_articulation_points"]),
-        ("גשרים", summary["num_bridges"]),
+        ("Articulation\nPoints", summary["num_articulation_points"]),
+        ("Bridges", summary["num_bridges"]),
     ]
     axes[1].axis("off")
     for idx, (label, value) in enumerate(metrics):
@@ -272,7 +297,7 @@ def plot_connectivity_overview() -> None:
         axes[1].text(x, y, f"{value:,}", fontsize=21, weight="bold", color=PALETTE["dark"],
                      transform=axes[1].transAxes)
     metric_parts = [
-        (0.05, rtl("דרגה ממוצעת"), PALETTE["gray"]),
+        (0.05, "Avg Degree", PALETTE["gray"]),
         (0.25, f"{summary['avg_degree']:.2f}", PALETTE["blue"]),
         (0.40, rtl("צפיפות"), PALETTE["gray"]),
         (0.55, f"{summary['density']:.5f}", PALETTE["blue"]),
@@ -335,7 +360,7 @@ def plot_degree_distribution(metrics: pd.DataFrame) -> None:
     fig, axes = plt.subplots(1, 2, figsize=(14, 5))
     axes[0].hist(degree, bins=50, color=PALETTE["blue"], alpha=0.9)
     set_title(axes[0], "התפלגות דרגות")
-    set_xlabel(axes[0], "דרגה")
+    axes[0].set_xlabel("Degree")
     set_ylabel(axes[0], "תחנות")
     axes[0].yaxis.set_major_formatter(FuncFormatter(fmt_int))
 
@@ -343,7 +368,7 @@ def plot_degree_distribution(metrics: pd.DataFrame) -> None:
     axes[1].scatter(counts.index, counts.values, s=18, color=PALETTE["purple"], alpha=0.75)
     axes[1].set_yscale("log")
     set_title(axes[1], "זנב ההתפלגות בסולם לוגריתמי")
-    set_xlabel(axes[1], "דרגה")
+    axes[1].set_xlabel("Degree")
     set_ylabel(axes[1], "תחנות, לוג")
     axes[1].yaxis.set_major_formatter(FuncFormatter(fmt_int))
     fig.suptitle(rtl("מעט תחנות מקבלות הרבה מאוד קשרי קרבה"), fontsize=16, weight="bold", y=1.02)
@@ -370,9 +395,9 @@ def stop_bar(metrics: pd.DataFrame, column: str, filename: str, title: str, colo
 
 
 def plot_centrality_figures(metrics: pd.DataFrame) -> None:
-    stop_bar(metrics, "degree", "06_top_degree_stops.png", "תחנות מובילות לפי דרגה", PALETTE["blue"])
-    stop_bar(metrics, "betweenness", "07_top_betweenness_stops.png", "תחנות מובילות לפי תווכיות", PALETTE["red"])
-    stop_bar(metrics, "pagerank", "08_top_pagerank_stops.png", "תחנות מובילות לפי דירוג דף", PALETTE["green"])
+    stop_bar(metrics, "degree", "06_top_degree_stops.png", "תחנות מובילות לפי Degree", PALETTE["blue"])
+    stop_bar(metrics, "betweenness", "07_top_betweenness_stops.png", "תחנות מובילות לפי Betweenness", PALETTE["red"])
+    stop_bar(metrics, "pagerank", "08_top_pagerank_stops.png", "תחנות מובילות לפי PageRank", PALETTE["green"])
 
     corr = pd.read_csv(CENTRALITY_CORR_CSV, encoding="utf-8-sig", index_col=0)
     labels = [rtl(CENTRALITY_HE.get(col, col)) for col in corr.columns]
@@ -380,14 +405,14 @@ def plot_centrality_figures(metrics: pd.DataFrame) -> None:
     sns.heatmap(corr, annot=True, fmt=".2f", cmap="vlag", center=0, square=True, ax=ax, cbar_kws={"shrink": 0.8})
     ax.set_xticklabels(labels, rotation=30, ha="right")
     ax.set_yticklabels(labels, rotation=0)
-    set_title(ax, "מתאם בין מדדי מרכזיות")
+    set_title(ax, "מתאם בין מדדי Centrality")
     save(fig, "09_centrality_correlation.png")
 
 
 def plot_robustness() -> None:
     df = pd.read_csv(DISRUPTION_CSV, encoding="utf-8-sig")
     df["strategy_key"] = df["strategy"].map(strategy_key)
-    order = ["דרגה", "תווכיות", "דירוג דף", "נקודות חיתוך", "אקראי"]
+    order = ["Degree", "Betweenness", "PageRank", "Articulation Points", "Random"]
     order = [item for item in order if item in set(df["strategy_key"])]
 
     fig, ax = plt.subplots(figsize=(11, 6))
@@ -433,9 +458,9 @@ def plot_regional() -> None:
     set_ylabel(axes[1], "אחוז קריטיות")
 
     sns.barplot(data=regional, x="region_he", y="avg_degree", hue="region_he", legend=False, palette=colors, ax=axes[2])
-    set_title(axes[2], "דרגת קרבה ממוצעת")
+    set_title(axes[2], "Proximity Degree ממוצע")
     axes[2].set_xlabel("")
-    set_ylabel(axes[2], "דרגה ממוצעת")
+    axes[2].set_ylabel("Avg Degree")
 
     fig.suptitle(rtl("השוואה אזורית: חשיפה ופגיעות"), fontsize=16, weight="bold", y=1.02)
     save(fig, "12_regional_comparison.png")
@@ -447,7 +472,7 @@ def plot_communities() -> None:
 
     fig, ax = plt.subplots(figsize=(9.5, 7))
     ax.barh(top["community_id"].astype(str), top["size"], color=PALETTE["purple"])
-    set_title(ax, "הקהילות המבניות הגדולות ביותר")
+    set_title(ax, "קהילות Louvain הגדולות ביותר")
     set_xlabel(ax, "תחנות")
     set_ylabel(ax, "מספר קהילה")
     ax.xaxis.set_major_formatter(FuncFormatter(fmt_int))
@@ -466,10 +491,10 @@ def plot_communities() -> None:
         size = 2.0 if group == "אחר" else 6
         alpha = 0.18 if group == "אחר" else 0.75
         ax.scatter(part["lon"], part["lat"], s=size, alpha=alpha, color=color_map[group], label=rtl(group))
-    set_title(ax, "קהילות מבניות מרכזיות על המפה")
+    set_title(ax, "קהילות Louvain מרכזיות על המפה")
     set_xlabel(ax, "קו אורך")
     set_ylabel(ax, "קו רוחב")
-    ax.legend(title=rtl("קהילה"), markerscale=3, fontsize=8, ncol=2, frameon=True)
+    ax.legend(title="Louvain", markerscale=3, fontsize=8, ncol=2, frameon=True)
     save(fig, "14_community_map_top12.png")
 
 
@@ -501,7 +526,7 @@ def plot_socioeconomic() -> None:
         "stops_per_1000_residents": "תחנות לאלף תושבים",
         "stop_use_count_per_1000_residents": "שירות לאלף תושבים",
         "stop_use_count_per_stop": "שירות לתחנה",
-        "avg_proximity_degree": "דרגת קרבה",
+        "avg_proximity_degree": "Proximity Degree",
         "critical_stop_share": "חלק תחנות קריטיות",
     }
     corr["label"] = corr["metric"].map(label_map).fillna(corr["metric"]).map(rtl)
@@ -519,12 +544,12 @@ def plot_socioeconomic() -> None:
 def plot_link_prediction() -> None:
     results = pd.read_csv(LINK_RESULTS_CSV, encoding="utf-8-sig")
     method_map = {
-        "Common Neighbors": "שכנים משותפים",
-        "Jaccard": "מדד זאקרד",
-        "Adamic-Adar": "אדמיק אדר",
-        "Resource Allocation": "הקצאת משאבים",
-        "Preferential Attachment": "העדפת קישוריות",
-        "Node2Vec + LR": "הטמעה ורגרסיה",
+        "Common Neighbors": "Common Neighbors",
+        "Jaccard": "Jaccard",
+        "Adamic-Adar": "Adamic-Adar",
+        "Resource Allocation": "Resource Allocation",
+        "Preferential Attachment": "Preferential Attachment",
+        "Node2Vec + LR": "Node2Vec + LR",
     }
     results["method_he"] = results["method"].map(method_map).fillna(results["method"]).map(rtl)
     results = results.sort_values("auc", ascending=True)
@@ -532,8 +557,8 @@ def plot_link_prediction() -> None:
     fig, ax = plt.subplots(figsize=(10, 5.8))
     ax.barh(results["method_he"], results["auc"], color=PALETTE["teal"])
     ax.set_xlim(0.5, 1.01)
-    set_title(ax, "ביצועי חיזוי קישורים")
-    set_xlabel(ax, "איכות חיזוי")
+    set_title(ax, "ביצועי Link Prediction")
+    ax.set_xlabel("AUC")
     for y, value in enumerate(results["auc"]):
         ax.text(value + 0.005, y, f"{value:.3f}", va="center", fontsize=9)
     save(fig, "17_link_prediction_auc.png")
@@ -561,9 +586,9 @@ def plot_embeddings(metrics: pd.DataFrame) -> None:
     critical = emb[emb["is_critical"]]
     ax.scatter(normal["pc1"], normal["pc2"], s=4, alpha=0.18, color=PALETTE["gray"], label=rtl("לא קריטי"))
     ax.scatter(critical["pc1"], critical["pc2"], s=10, alpha=0.7, color=PALETTE["red"], label=rtl("קריטי"))
-    set_title(ax, "הטמעות גרף לפי קריטיות")
-    set_xlabel(ax, "ציר הטמעה ראשון")
-    set_ylabel(ax, "ציר הטמעה שני")
+    set_title(ax, "Node2Vec Embeddings לפי קריטיות")
+    ax.set_xlabel("PCA 1")
+    ax.set_ylabel("PCA 2")
     ax.legend(frameon=True)
     save(fig, "18_embedding_pca_by_critical.png")
 
@@ -577,9 +602,9 @@ def plot_embeddings(metrics: pd.DataFrame) -> None:
     for region, group in emb.groupby("region"):
         ax.scatter(group["pc1"], group["pc2"], s=5, alpha=0.35, color=colors.get(region, PALETTE["gray"]),
                    label=rtl(he_region(region)))
-    set_title(ax, "הטמעות גרף לפי אזור")
-    set_xlabel(ax, "ציר הטמעה ראשון")
-    set_ylabel(ax, "ציר הטמעה שני")
+    set_title(ax, "Node2Vec Embeddings לפי אזור")
+    ax.set_xlabel("PCA 1")
+    ax.set_ylabel("PCA 2")
     ax.legend(frameon=True, markerscale=3)
     save(fig, "19_embedding_pca_by_region.png")
 
@@ -616,7 +641,7 @@ def plot_suggested_links_map(graph: nx.Graph) -> None:
     if not line_df.empty:
         ax.scatter(line_df[["lon_a", "lon_b"]].to_numpy().ravel(), line_df[["lat_a", "lat_b"]].to_numpy().ravel(),
                    s=18, color=PALETTE["red"], alpha=0.9, label=rtl("הצעות קישור"))
-    set_title(ax, "הצעות קישור חדשות לפי הטמעת גרף")
+    set_title(ax, "הצעות קישור חדשות לפי Node2Vec")
     set_xlabel(ax, "קו אורך")
     set_ylabel(ax, "קו רוחב")
     ax.legend(frameon=True, markerscale=3)
@@ -650,9 +675,9 @@ def plot_zoom_top_degree(graph: nx.Graph, metrics: pd.DataFrame) -> None:
     fig, ax = plt.subplots(figsize=(8, 8))
     ax.scatter(zoom["lon"], zoom["lat"], s=8, alpha=0.22, color=PALETTE["gray"], label=rtl("תחנות באזור"))
     ax.scatter(top["lon"], top["lat"], s=60, color=PALETTE["blue"], edgecolor="white", linewidth=0.7,
-               label=rtl("תחנות דרגה גבוהה"))
+               label=rtl("תחנות High Degree"))
     annotate_stop_ids(ax, top, color=PALETTE["dark"])
-    set_title(ax, "זום: ריכוז דרגה גבוהה סביב התחנה המרכזית תל אביב")
+    set_title(ax, "זום: ריכוז High Degree סביב התחנה המרכזית תל אביב")
     set_xlabel(ax, "קו אורך")
     set_ylabel(ax, "קו רוחב")
     ax.legend(frameon=True)
@@ -669,9 +694,9 @@ def plot_zoom_betweenness_corridor(graph: nx.Graph, metrics: pd.DataFrame) -> No
     fig, ax = plt.subplots(figsize=(8, 8))
     ax.scatter(zoom["lon"], zoom["lat"], s=7, alpha=0.20, color=PALETTE["gray"], label=rtl("תחנות באזור"))
     ax.scatter(top["lon"], top["lat"], s=58, color=PALETTE["red"], edgecolor="white", linewidth=0.7,
-               label=rtl("תחנות תווכיות גבוהה"))
+               label=rtl("תחנות High Betweenness"))
     annotate_stop_ids(ax, top, color=PALETTE["dark"])
-    set_title(ax, "זום: מסדרון תווכיות גבוה בדרום גוש דן")
+    set_title(ax, "זום: מסדרון High Betweenness בדרום גוש דן")
     set_xlabel(ax, "קו אורך")
     set_ylabel(ax, "קו רוחב")
     ax.legend(frameon=True)
@@ -694,10 +719,10 @@ def plot_zoom_communities() -> None:
         alpha = 0.16 if group == "אחר" else 0.75
         size = 4 if group == "אחר" else 14
         ax.scatter(part["lon"], part["lat"], s=size, alpha=alpha, color=color_map[group], label=rtl(group))
-    set_title(ax, "זום: קהילות מבניות בגוש דן")
+    set_title(ax, "זום: קהילות Louvain בגוש דן")
     set_xlabel(ax, "קו אורך")
     set_ylabel(ax, "קו רוחב")
-    ax.legend(title=rtl("קהילה"), frameon=True, fontsize=8, markerscale=2, ncol=2)
+    ax.legend(title="Louvain", frameon=True, fontsize=8, markerscale=2, ncol=2)
     save(fig, "24_zoom_communities_gush_dan.png")
 
 
@@ -753,17 +778,17 @@ def plot_zoom_link_suggestions(graph: nx.Graph) -> None:
 def write_readme() -> None:
     text = """# גרפים מרכזיים למצגת
 
-התיקייה הזו מכילה סט גרפים מסודר לשימוש במצגת. הגרפים עצמם בעברית, ובסקריפט הטקסט מוזן הפוך ל-Matplotlib כדי לעקוף את בעיית ה-RTL. בקובץ הזה העברית כתובה רגיל.
+התיקייה הזו מכילה סט גרפים מסודר לשימוש במצגת. בגרפים עצמם הטקסט העברי מוזן הפוך ל-Matplotlib כדי לעקוף את בעיית ה-RTL, אבל מושגים מקצועיים באנגלית כמו Degree, Betweenness, PageRank, Louvain, Node2Vec ו-AUC נשארים באנגלית רגילה. בקובץ הזה העברית כתובה רגיל.
 
 ## סדר מומלץ במצגת
 
 1. להתחיל בהבדל בין שני מודלי הרשת: גרף נסיעות מול גרף קרבה.
 2. להראות שרשת הקרבה מפוצלת מאוד מבחינת רכיבי קשירות.
-3. להראות מי התחנות המרכזיות לפי מדדי centrality שונים.
+3. להראות מי התחנות המרכזיות לפי מדדי Centrality שונים.
 4. להראות מה קורה בסימולציית שיבושים.
 5. לעבור להשוואה אזורית ולקהילות Louvain.
 6. להוסיף את שכבת ה-equity: מדד חברתי-כלכלי מול זמינות תחבורה.
-7. לסיים בהצעות שיפור דרך link prediction.
+7. לסיים בהצעות שיפור דרך Link Prediction.
 
 ## הסבר לפי גרף
 
@@ -771,7 +796,7 @@ def write_readme() -> None:
 משווה בין גרף הנסיעות הראשי לבין גרף הקרבה של 500 מטר. זה גרף פתיחה חשוב כי הוא מונע בלבול: גרף הנסיעות כמעט מחובר כולו, בעוד גרף הקרבה מפוצל מאוד. במצגת כדאי לומר שהמשך הניתוח ב-public_transport_network_research מתאר בעיקר קרבה מרחבית, לא בהכרח רצף נסיעה אמיתי.
 
 ### 02_connectivity_overview.png
-מסכם את מספר התחנות, הקשתות, הרכיבים, נקודות החיתוך והגשרים. הממצא הקריטי: רק חלק קטן מהתחנות נמצא ברכיב הקשיר הגדול של גרף הקרבה. זה הבסיס לכל טענת הפגיעות המבנית.
+מסכם את מספר התחנות, הקשתות, הרכיבים, Articulation Points ו-Bridges. הממצא הקריטי: רק חלק קטן מהתחנות נמצא ברכיב הקשיר הגדול של גרף הקרבה. זה הבסיס לכל טענת הפגיעות המבנית.
 
 ### 03_component_size_distribution.png
 מראה את גודל הרכיבים לפי דירוג ואת 20 הרכיבים הגדולים. מתאים להסביר שהרשת אינה מתפרקת לשני חלקים גדולים, אלא להרבה רכיבים קטנים ועוד רכיב מרכזי אחד.
@@ -783,31 +808,31 @@ def write_readme() -> None:
 התפלגות הדרגות בגרף הקרבה. מתאים להסביר שיש זנב ארוך: רוב התחנות מחוברות למספר סביר של שכנות קרובות, אבל מעט תחנות מקבלות הרבה מאוד קשרים ולכן הן בולטות כמרכזים מקומיים.
 
 ### 06_top_degree_stops.png
-תחנות מובילות לפי degree. זה מדגיש צפיפות מקומית: תחנות סביב התחנה המרכזית תל אביב ולוינסקי מקבלות דרגות גבוהות מאוד בגלל ריכוז תחנות סמוכות.
+תחנות מובילות לפי Degree. זה מדגיש צפיפות מקומית: תחנות סביב התחנה המרכזית תל אביב ולוינסקי מקבלות Degree גבוה מאוד בגלל ריכוז תחנות סמוכות.
 
 ### 07_top_betweenness_stops.png
-תחנות מובילות לפי betweenness. זה מדגיש תחנות שנמצאות על מסלולים קצרים רבים בתוך הרכיב הגדול. כדאי להדגיש שזה מדד של "גשר פנימי" ולא רק של צפיפות.
+תחנות מובילות לפי Betweenness. זה מדגיש תחנות שנמצאות על מסלולים קצרים רבים בתוך הרכיב הגדול. כדאי להדגיש שזה מדד של "גשר פנימי" ולא רק של צפיפות.
 
 ### 08_top_pagerank_stops.png
 תחנות מובילות לפי PageRank. מתאים להראות שמרכזיות יכולה להימדד גם דרך איכות השכנים ולא רק כמותם.
 
 ### 09_centrality_correlation.png
-מפת חום של מתאם בין מדדי מרכזיות. המטרה היא להסביר למה לא מספיק לבחור מדד אחד: Degree, PageRank, Betweenness ו-Harmonic לא מודדים בדיוק אותו תפקיד ברשת.
+מפת חום של מתאם בין מדדי Centrality. המטרה היא להסביר למה לא מספיק לבחור מדד אחד: Degree, PageRank, Betweenness ו-Harmonic לא מודדים בדיוק אותו תפקיד ברשת.
 
 ### 10_resilience_curves.png
-עקומות עמידות תחת הסרת תחנות לפי אסטרטגיות שונות. זה הגרף המרכזי של robustness. אם העקומה יורדת מהר יותר, האסטרטגיה פוגעת יותר ברכיב הגדול.
+עקומות עמידות תחת הסרת תחנות לפי אסטרטגיות שונות. זה הגרף המרכזי של Robustness. אם העקומה יורדת מהר יותר, האסטרטגיה פוגעת יותר ברכיב הגדול.
 
 ### 11_resilience_final_damage.png
 סיכום הנזק בסוף סימולציית ההסרה. מתאים לשקף קצר שמראה מי אסטרטגיית ההסרה הכי מזיקה.
 
 ### 12_regional_comparison.png
-השוואה אזורית: מספר תחנות, אחוז קריטיות ודרגה ממוצעת. הממצא החשוב הוא שהמרכז דומיננטי גם בכמות התחנות וגם בשיעור התחנות הקריטיות בגרף הקרבה.
+השוואה אזורית: מספר תחנות, אחוז קריטיות ו-Avg Degree. הממצא החשוב הוא שהמרכז דומיננטי גם בכמות התחנות וגם בשיעור התחנות הקריטיות בגרף הקרבה.
 
 ### 13_community_sizes.png
 גודל קהילות Louvain הגדולות. מתאים להציג את העובדה שהרשת מתארגנת לאשכולות מבניים מקומיים.
 
 ### 14_community_map_top12.png
-מפת הקהילות המרכזיות. זה טוב לשקף שמראה ש-community detection יוצר אזורי תחבורה טבעיים ולא רק חלוקה מנהלית.
+מפת הקהילות המרכזיות. זה טוב לשקף ש-Community Detection יוצר אזורי תחבורה טבעיים ולא רק חלוקה מנהלית.
 
 ### 15_socioeconomic_access.png
 מדדי זמינות תחבורה לפי אשכול חברתי-כלכלי. השתמשתי בחציון ברמת אזור סטטיסטי כדי לא לתת לאשכול קטן מדי להכתיב את המסקנה. הגרף מבחין בין כיסוי תחנות לבין עוצמת שירות.
@@ -816,10 +841,10 @@ def write_readme() -> None:
 מתאמי Spearman בין אשכול חברתי-כלכלי לבין מדדי זמינות. מתאים לשקף מסקנה: הקשרים קיימים אבל חלשים, ולכן צריך להציג את זה כניתוח equity זהיר ולא כסיבתיות.
 
 ### 17_link_prediction_auc.png
-השוואת שיטות link prediction לפי AUC. מתאים להראות ששיטות מבניות כמו Jaccard ו-Resource Allocation מצליחות מאוד, בעוד preferential attachment חלשה יותר.
+השוואת שיטות Link Prediction לפי AUC. מתאים להראות ששיטות מבניות כמו Jaccard ו-Resource Allocation מצליחות מאוד, בעוד Preferential Attachment חלשה יותר.
 
 ### 18_embedding_pca_by_critical.png
-הטמעות Node2Vec אחרי PCA, בצביעה לפי תחנות קריטיות. מתאים להראות האם תחנות קריטיות נבדלות במרחב embedding.
+הטמעות Node2Vec אחרי PCA, בצביעה לפי תחנות קריטיות. מתאים להראות האם תחנות קריטיות נבדלות במרחב Embedding.
 
 ### 19_embedding_pca_by_region.png
 הטמעות Node2Vec אחרי PCA, בצביעה לפי אזור. מתאים להראות האם המבנה הנלמד משמר הפרדה גיאוגרפית/אזורית.
@@ -833,10 +858,10 @@ def write_readme() -> None:
 זום על גוש דן והרכיב הקשיר הגדול. זה הגרף שהייתי שם מיד אחרי המפה הארצית, כדי להראות שהרכיב הגדול לא "כל הארץ" אלא אזור מרכזי וצפוף.
 
 ### 22_zoom_tel_aviv_top_degree.png
-זום סביב התחנה המרכזית תל אביב ולוינסקי. מדגיש למה תחנות degree גבוהות הן בעיקר תוצר של צפיפות תחנות באותו אזור קטן.
+זום סביב התחנה המרכזית תל אביב ולוינסקי. מדגיש למה תחנות High Degree הן בעיקר תוצר של צפיפות תחנות באותו אזור קטן.
 
 ### 23_zoom_betweenness_corridor.png
-זום על מסדרון דרום גוש דן שבו נמצאות תחנות betweenness גבוהות. זה חשוב כי הוא מספר סיפור שונה מ-degree: לא רק צפיפות, אלא תפקיד של מעבר בין חלקים ברכיב.
+זום על מסדרון דרום גוש דן שבו נמצאות תחנות High Betweenness. זה חשוב כי הוא מספר סיפור שונה מ-Degree: לא רק צפיפות, אלא תפקיד של מעבר בין חלקים ברכיב.
 
 ### 24_zoom_communities_gush_dan.png
 זום על קהילות Louvain בגוש דן. מתאים להסביר שהקהילות אינן בהכרח ערים רשמיות אלא אזורים מבניים שנוצרו מהקישוריות.
