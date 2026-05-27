@@ -113,3 +113,28 @@ figures/06_regional_comparison/
 ├── regional_vulnerability_comparison.png
 └── stations_map_by_region.png
 ```
+
+## תוספת 06B — ניתוח סוציו-אקונומי וזמינות תחבורה
+
+נוסף סקריפט משלים:
+
+- `scripts/02_socioeconomic_equity.py`
+
+המטרה היא לבדוק האם יש קשר בין אשכול חברתי-כלכלי של הלמ"ס לבין זמינות תחבורה ציבורית, גם לפי אזורים סטטיסטיים וגם לפי קהילות Louvain. ההסבר המלא, כולל מקור הנתונים, שיטת השיוך, המדדים, הפלטים והמגבלות נמצא כאן:
+
+- `socioeconomic_equity_analysis.md`
+
+פלטים עיקריים:
+
+- `outputs/stops_with_socioeconomic.csv`
+- `outputs/socioeconomic_area_access.csv`
+- `outputs/socioeconomic_cluster_summary.csv`
+- `outputs/community_socioeconomic_summary.csv`
+- `outputs/socioeconomic_correlation_summary.csv`
+- `outputs/socioeconomic_join_quality.json`
+
+ויזואליזציות:
+
+- `figures/06_regional_comparison/socioeconomic_access_by_cluster.png`
+- `figures/06_regional_comparison/socioeconomic_stop_use_boxplot.png`
+- `figures/06_regional_comparison/community_socioeconomic_access.png`
