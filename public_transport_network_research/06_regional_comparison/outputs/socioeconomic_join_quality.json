@@ -1,0 +1,11 @@
+{
+  "total_stops": 34932,
+  "matched_within_polygon": 26739,
+  "matched_by_nearest_polygon": 7702,
+  "unmatched": 491,
+  "match_rate_pct": 98.59,
+  "nearest_join_max_distance_m": 3000,
+  "nearest_join_median_distance_m": 550.3,
+  "nearest_join_max_observed_distance_m": 2999.7,
+  "cbs_layer": "https://services2.arcgis.com/xMRYm7cNgdR5RN6F/arcgis/rest/services/SOEC_Stat11_2021/FeatureServer/27"
+}
