@@ -20,6 +20,11 @@ import numpy as np
 import pandas as pd
 
 matplotlib.use("Agg")
+import sys as _sys
+from pathlib import Path as _Path
+_sys.path.insert(0, str(_Path(__file__).resolve().parents[2]))
+from _hebrew_bidi import install_hebrew
+install_hebrew()
 import matplotlib.pyplot as plt
 import seaborn as sns
 from matplotlib.ticker import FuncFormatter
@@ -83,26 +88,12 @@ LTR_TOKEN_RE = re.compile(
 
 
 def rtl(text: object) -> str:
-    """Reverse Hebrew line-by-line for Matplotlib while preserving English tokens."""
-    lines = []
-    for line in str(text).split("\n"):
-        if not HEBREW_RE.search(line):
-            lines.append(line)
-            continue
+    """Pass text through unchanged.
 
-        protected: dict[str, str] = {}
-
-        def protect(match: re.Match[str]) -> str:
-            placeholder = chr(0xE000 + len(protected))
-            protected[placeholder] = match.group(0)
-            return placeholder
-
-        prepared = LTR_TOKEN_RE.sub(protect, line)
-        visual = prepared[::-1]
-        for placeholder, original in protected.items():
-            visual = visual.replace(placeholder, original)
-        lines.append(visual)
-    return "\n".join(lines)
+    Hebrew is now reordered globally by ``install_hebrew()`` via the Unicode
+    bidi algorithm at draw time, so labels are kept in logical order here.
+    """
+    return str(text)
 
 
 def set_title(ax: plt.Axes, text: str, **kwargs) -> None:
