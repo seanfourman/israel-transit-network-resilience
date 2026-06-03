@@ -1,133 +1,183 @@
 """
 שלב 02 — בניית גרף רשת התחבורה
-הגישה: גרף קרבה מרחבית (Proximity Graph)
-  - צומת = תחנה פעילה
-  - קשת  = שתי תחנות במרחק ≤ RADIUS_M מטרים
-  - משקל = 1 / מרחק (מטר), כך שקרובות יותר = קשה יותר
-קלט:  01_data_preparation/outputs/stops_clean.csv
+הגישה: גרף נסיעות (Trip-Adjacency Graph) — המודל הראשי של הפרויקט
+  - צומת = תחנה פעילה (תחנה שמופיעה בלפחות נסיעה אחת)
+  - קשת מכוונת (u → v) = קיים קו (trip) שבו v היא התחנה הבאה מיד אחרי u
+  - משקל = מספר הנסיעות שמשתמשות במקטע u→v (תדירות)
+
+קלט:  01_data_preparation/outputs/stops_clean.csv  (תכונות תחנה: שם, קואורדינטות, אזור, מטרופולין)
+       israel-public-transportation/stop_times.txt  (רצף תחנות בכל נסיעה, ממוין לפי trip_id, stop_sequence)
 פלט:  02_graph_construction/outputs/
+
+הערה: הגרסה הקודמת (גרף קרבה מרחבית 500m) נשמרה ב-01_build_graph_proximity.py.
 """
-import sys, math, json, pickle
+import sys, csv, json, pickle
 from pathlib import Path
+from collections import defaultdict
 
 ROOT = Path(__file__).resolve().parents[3]
-IN_DIR  = ROOT / "public_transport_network_research/01_data_preparation/outputs"
-OUT_DIR = Path(__file__).resolve().parents[1] / "outputs"
+STOPS_CLEAN = ROOT / "public_transport_network_research/01_data_preparation/outputs/stops_clean.csv"
+STOP_TIMES  = ROOT / "israel-public-transportation/stop_times.txt"
+OUT_DIR     = Path(__file__).resolve().parents[1] / "outputs"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 import pandas as pd
-import numpy as np
 import networkx as nx
 
-RADIUS_M = 500   # מטרים — מרחק מקסימלי לקשת
+# מאפשר שורות ארוכות מאוד ב-stop_times
+csv.field_size_limit(10_000_000)
 
-def haversine_m(lat1, lon1, lat2, lon2):
-    R = 6_371_000
-    phi1, phi2 = math.radians(lat1), math.radians(lat2)
-    dphi = math.radians(lat2 - lat1)
-    dlam = math.radians(lon2 - lon1)
-    a = math.sin(dphi/2)**2 + math.cos(phi1)*math.cos(phi2)*math.sin(dlam/2)**2
-    return 2 * R * math.asin(math.sqrt(max(0, a)))
 
-def build_graphs(stops: pd.DataFrame, radius_m: float):
-    stops_arr = stops[["stop_id","stop_lat","stop_lon"]].to_numpy()
-    n = len(stops_arr)
+def load_stop_attributes():
+    """טוען תכונות לכל תחנה מקובץ ה-stops הנקי."""
+    stops = pd.read_csv(STOPS_CLEAN, dtype=str, encoding="utf-8-sig")
+    attr = {}
+    for _, r in stops.iterrows():
+        sid = r["stop_id"]
+        try:
+            lat = float(r["stop_lat"]) if r.get("stop_lat") not in (None, "", "nan") else None
+            lon = float(r["stop_lon"]) if r.get("stop_lon") not in (None, "", "nan") else None
+        except (TypeError, ValueError):
+            lat = lon = None
+        attr[sid] = {
+            "stop_name": r.get("stop_name", "") or "",
+            "lat": lat,
+            "lon": lon,
+            "region": r.get("region", "") or "",
+            "metro": r.get("metro", "") or "",
+        }
+    return attr
 
-    G_und = nx.Graph()
-    for _, row in stops.iterrows():
-        G_und.add_node(
-            row["stop_id"],
-            stop_name=row.get("stop_name", ""),
-            lat=float(row["stop_lat"]),
-            lon=float(row["stop_lon"]),
-            region=row.get("region", ""),
-            metro=row.get("metro", ""),
-        )
 
-    print(f"  מחשב קשתות בין {n:,} תחנות (radius={radius_m}m) ...")
+def stream_trip_edges(stop_times_path):
+    """
+    סורק את stop_times.txt שורה-שורה ובונה ספירת מקטעי נסיעה.
+    מניח שהקובץ ממוין לפי trip_id ואז stop_sequence (תקן GTFS),
+    כך ששתי שורות עוקבות מאותה נסיעה מגדירות קשת u→v.
+    """
+    edge_count = defaultdict(int)
+    active_stops = set()
+    trips_seen = set()
+    rows_read = 0
+    stops_per_trip = defaultdict(int)
 
-    # בניית bucket לפי lat לחיסכון בזמן חישוב
-    lat_step = radius_m / 111_000  # גרדות קירוב
-    from collections import defaultdict
-    buckets = defaultdict(list)
-    for idx, row in stops.iterrows():
-        bucket_key = int(float(row["stop_lat"]) / lat_step)
-        buckets[bucket_key].append(row)
+    with open(stop_times_path, encoding="utf-8-sig") as f:
+        reader = csv.reader(f)
+        header = next(reader)
+        ti = header.index("trip_id")
+        si = header.index("stop_id")
 
-    edges_added = 0
-    edge_rows = []
+        prev_trip = None
+        prev_stop = None
+        for row in reader:
+            rows_read += 1
+            trip = row[ti]
+            stop = row[si]
+            active_stops.add(stop)
+            trips_seen.add(trip)
+            stops_per_trip[trip] += 1
 
-    for idx, row in stops.iterrows():
-        sid = row["stop_id"]
-        la1, lo1 = float(row["stop_lat"]), float(row["stop_lon"])
-        bk = int(la1 / lat_step)
+            if trip == prev_trip and prev_stop is not None and prev_stop != stop:
+                edge_count[(prev_stop, stop)] += 1
 
-        for neighbor_row in buckets[bk-1] + buckets[bk] + buckets[bk+1]:
-            sid2 = neighbor_row["stop_id"]
-            if sid2 <= sid:   # מונע כפילויות
-                continue
-            la2, lo2 = float(neighbor_row["stop_lat"]), float(neighbor_row["stop_lon"])
-            dist = haversine_m(la1, lo1, la2, lo2)
-            if dist <= radius_m and dist > 0:
-                w = 1.0 / dist
-                G_und.add_edge(sid, sid2, weight=w, distance_m=round(dist, 1))
-                edges_added += 1
-                edge_rows.append({
-                    "from_stop": sid,
-                    "to_stop": sid2,
-                    "distance_m": round(dist, 1),
-                    "weight": round(w, 6),
-                })
+            prev_trip = trip
+            prev_stop = stop
 
-        if idx % 5000 == 0:
-            print(f"    עיבד {idx:,}/{n:,} תחנות, {edges_added:,} קשתות עד כה ...")
+            if rows_read % 2_000_000 == 0:
+                print(f"    עיבד {rows_read:,} שורות, {len(edge_count):,} מקטעים ייחודיים ...")
 
-    G_dir = G_und.to_directed()
-    return G_und, G_dir, pd.DataFrame(edge_rows)
+    n_trips = len(trips_seen)
+    spt = list(stops_per_trip.values())
+    build_stats = {
+        "stop_times_rows": rows_read,
+        "active_stops": len(active_stops),
+        "active_trips": n_trips,
+        "directed_edges": len(edge_count),
+        "min_stops_per_trip": int(min(spt)) if spt else 0,
+        "mean_stops_per_trip": round(sum(spt) / len(spt), 2) if spt else 0,
+        "max_stops_per_trip": int(max(spt)) if spt else 0,
+    }
+    return edge_count, active_stops, build_stats
+
+
+def build_graphs(edge_count, attr):
+    """בונה גרף מכוון (תדירות) וגרף לא מכוון (סכום שני הכיוונים)."""
+    default_attr = {"stop_name": "", "lat": None, "lon": None, "region": "", "metro": ""}
+
+    D = nx.DiGraph()
+    for (u, v), c in edge_count.items():
+        D.add_edge(u, v, weight=c)
+    for n in D.nodes():
+        D.nodes[n].update(attr.get(n, default_attr))
+
+    G = nx.Graph()
+    for u, v, data in D.edges(data=True):
+        w = data["weight"]
+        if G.has_edge(u, v):
+            G[u][v]["weight"] += w
+        else:
+            G.add_edge(u, v, weight=w)
+    for n in G.nodes():
+        G.nodes[n].update(attr.get(n, default_attr))
+
+    return G, D
+
 
 def main():
-    print("=== שלב 02: בניית גרף ===")
-    stops = pd.read_csv(IN_DIR / "stops_clean.csv", dtype=str, encoding="utf-8-sig")
-    stops["stop_lat"] = pd.to_numeric(stops["stop_lat"])
-    stops["stop_lon"] = pd.to_numeric(stops["stop_lon"])
-    print(f"  {len(stops):,} תחנות נטענו")
+    print("=== שלב 02: בניית גרף נסיעות (Trip-Adjacency) ===")
+    print(f"  טוען תכונות תחנות מ-{STOPS_CLEAN.name} ...")
+    attr = load_stop_attributes()
+    print(f"  {len(attr):,} תחנות עם תכונות נטענו")
 
-    G_und, G_dir, edges_df = build_graphs(stops, RADIUS_M)
+    print(f"  סורק {STOP_TIMES.name} (קובץ גדול, נא להמתין) ...")
+    edge_count, active_stops, build_stats = stream_trip_edges(STOP_TIMES)
+    print("\n  סטטיסטיקת בנייה:")
+    for k, v in build_stats.items():
+        print(f"    {k}: {v}")
 
-    print(f"\n  גרף לא מכוון: {G_und.number_of_nodes():,} צמתים, {G_und.number_of_edges():,} קשתות")
-    print(f"  גרף מכוון:    {G_dir.number_of_nodes():,} צמתים, {G_dir.number_of_edges():,} קשתות")
+    print("\n  בונה גרפים ...")
+    G, D = build_graphs(edge_count, attr)
+    print(f"  גרף לא מכוון: {G.number_of_nodes():,} צמתים, {G.number_of_edges():,} קשתות")
+    print(f"  גרף מכוון:    {D.number_of_nodes():,} צמתים, {D.number_of_edges():,} קשתות")
 
     # שמירת גרפים
     with open(OUT_DIR / "graph_undirected.pkl", "wb") as f:
-        pickle.dump(G_und, f)
+        pickle.dump(G, f)
     with open(OUT_DIR / "graph_directed.pkl", "wb") as f:
-        pickle.dump(G_dir, f)
+        pickle.dump(D, f)
 
-    # שמירת nodes / edges כ-CSV
+    # nodes.csv
     node_rows = []
-    for nid, data in G_und.nodes(data=True):
+    for nid, data in G.nodes(data=True):
         row = {"stop_id": nid}
         row.update(data)
         node_rows.append(row)
-    nodes_df = pd.DataFrame(node_rows)
-    nodes_df.to_csv(OUT_DIR / "nodes.csv", index=False, encoding="utf-8-sig")
-    edges_df.to_csv(OUT_DIR / "edges.csv", index=False, encoding="utf-8-sig")
+    pd.DataFrame(node_rows).to_csv(OUT_DIR / "nodes.csv", index=False, encoding="utf-8-sig")
 
+    # edges.csv (מכוון, עם תדירות)
+    edge_rows = [{"from_stop": u, "to_stop": v, "trip_frequency": data["weight"]}
+                 for u, v, data in D.edges(data=True)]
+    pd.DataFrame(edge_rows).to_csv(OUT_DIR / "edges.csv", index=False, encoding="utf-8-sig")
+
+    avg_degree = round(sum(d for _, d in G.degree()) / G.number_of_nodes(), 2)
     summary = {
-        "num_nodes": G_und.number_of_nodes(),
-        "num_edges_undirected": G_und.number_of_edges(),
-        "num_edges_directed": G_dir.number_of_edges(),
-        "radius_m": RADIUS_M,
-        "avg_degree": round(sum(d for _, d in G_und.degree()) / G_und.number_of_nodes(), 2),
-        "density": round(nx.density(G_und), 6),
+        "graph_type": "trip_adjacency",
+        "num_nodes": G.number_of_nodes(),
+        "num_edges_undirected": G.number_of_edges(),
+        "num_edges_directed": D.number_of_edges(),
+        "avg_degree": avg_degree,
+        "density": round(nx.density(G), 6),
+        "build_stats": build_stats,
     }
     with open(OUT_DIR / "graph_build_summary.json", "w", encoding="utf-8") as f:
         json.dump(summary, f, ensure_ascii=False, indent=2)
 
-    print(f"\nסיכום:")
+    print("\nסיכום:")
     for k, v in summary.items():
-        print(f"  {k}: {v}")
+        if k != "build_stats":
+            print(f"  {k}: {v}")
     print(f"\nפלטים נשמרו ב: {OUT_DIR}")
+
 
 if __name__ == "__main__":
     main()

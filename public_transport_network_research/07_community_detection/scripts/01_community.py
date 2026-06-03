@@ -101,13 +101,15 @@ def plot_community_map(partition, G, fig_dir, title, fname):
     cmap = matplotlib.colormaps.get_cmap("tab20").resampled(len(comm_ids))
     color_map = {cid: cmap(i) for i, cid in enumerate(comm_ids)}
 
-    fig, ax = plt.subplots(figsize=(8, 11))
+    lons, lats, cols = [], [], []
     for node, cid in partition.items():
         lat = G.nodes[node].get("lat")
         lon = G.nodes[node].get("lon")
         if lat and lon:
-            ax.scatter(lon, lat, s=3, color=color_map[cid], alpha=0.5)
+            lons.append(lon); lats.append(lat); cols.append(color_map[cid])
 
+    fig, ax = plt.subplots(figsize=(8, 11))
+    ax.scatter(lons, lats, s=3, color=cols, alpha=0.5, linewidths=0)
     ax.set_title(title)
     ax.set_xlabel("קו אורך"); ax.set_ylabel("קו רוחב")
     plt.tight_layout()
@@ -129,10 +131,10 @@ def plot_community_sizes(summary, fig_dir):
 def plot_inter_community(inter_df, G, fig_dir):
     data = inter_df.dropna(subset=["lat","lon"]).head(100)
     fig, ax = plt.subplots(figsize=(8, 11))
-    # כל תחנות הרשת ברקע
-    for n, d in G.nodes(data=True):
-        if d.get("lat") and d.get("lon"):
-            ax.scatter(d["lon"], d["lat"], s=1, color="#e2e8f0", alpha=0.3)
+    # כל תחנות הרשת ברקע (scatter וקטורי אחד)
+    bg_lons = [d["lon"] for _, d in G.nodes(data=True) if d.get("lat") and d.get("lon")]
+    bg_lats = [d["lat"] for _, d in G.nodes(data=True) if d.get("lat") and d.get("lon")]
+    ax.scatter(bg_lons, bg_lats, s=1, color="#e2e8f0", alpha=0.3, linewidths=0)
     sc = ax.scatter(data["lon"], data["lat"],
                     s=data["connected_communities"]*20,
                     c=data["connected_communities"], cmap="Reds",

@@ -25,8 +25,8 @@ import seaborn as sns
 
 sns.set_theme(style="whitegrid", font_scale=1.1)
 
-MAX_REMOVALS = 300
-STEPS = 30
+MAX_REMOVALS = 3000   # ~10% מהרשת — מספיק כדי שעקומת העמידות תתעקם ויראו הבדל בין אסטרטגיות
+STEPS = 40
 RANDOM_TRIALS = 5
 SEED = 42
 
@@ -117,8 +117,9 @@ def plot_resilience_curves(df):
     ax.set_xlabel("מספר תחנות שהוסרו")
     ax.set_ylabel("Largest Component Share")
     ax.set_title("עקומות עמידות הרשת לפי אסטרטגיית הסרה")
-    ax.set_ylim(0, 1.05)
-    ax.legend(loc="upper right", fontsize=9)
+    y_min = max(0.0, df["lcc_share"].min() - 0.03)
+    ax.set_ylim(y_min, 1.01)
+    ax.legend(loc="lower left", fontsize=9)
     plt.tight_layout()
     plt.savefig(FIG_DIR / "resilience_curves_comparison.png", dpi=150)
     plt.close()

@@ -275,7 +275,7 @@ def plot_connectivity_overview() -> None:
     fig, axes = plt.subplots(1, 2, figsize=(13.5, 5))
     axes[0].bar([rtl("הרכיב הגדול"), rtl("שאר הרכיבים")], [lcc, other],
                 color=[PALETTE["blue"], PALETTE["gray"]])
-    set_title(axes[0], "פירוק גרף הקרבה לרכיבים")
+    set_title(axes[0], "פירוק רשת הנסיעות לרכיבים")
     set_ylabel(axes[0], "תחנות")
     axes[0].yaxis.set_major_formatter(FuncFormatter(fmt_int))
     for i, value in enumerate([lcc, other]):
@@ -312,7 +312,7 @@ def plot_connectivity_overview() -> None:
             transform=axes[1].transAxes,
         )
 
-    fig.suptitle(rtl("ממצא בסיסי: גרף הקרבה מפוצל מאוד"), fontsize=16, weight="bold", y=1.02)
+    fig.suptitle(rtl("ממצא בסיסי: רשת הנסיעות מחוברת מאוד"), fontsize=16, weight="bold", y=1.02)
     save(fig, "02_connectivity_overview.png")
 
 
@@ -371,7 +371,7 @@ def plot_degree_distribution(metrics: pd.DataFrame) -> None:
     axes[1].set_xlabel("Degree")
     set_ylabel(axes[1], "תחנות, לוג")
     axes[1].yaxis.set_major_formatter(FuncFormatter(fmt_int))
-    fig.suptitle(rtl("מעט תחנות מקבלות הרבה מאוד קשרי קרבה"), fontsize=16, weight="bold", y=1.02)
+    fig.suptitle(rtl("מעט תחנות מרכזות הרבה מאוד קשרי נסיעה"), fontsize=16, weight="bold", y=1.02)
     save(fig, "05_degree_distribution.png")
 
 
@@ -889,7 +889,7 @@ def main() -> None:
     metrics["lat"] = pd.to_numeric(metrics["lat"], errors="coerce")
     metrics["lon"] = pd.to_numeric(metrics["lon"], errors="coerce")
 
-    plot_graph_model_comparison()
+    # plot_graph_model_comparison()  # מבוטל: השווה גרף נסיעות מול גרף קרבה; כעת עובדים רק על גרף הנסיעות
     plot_connectivity_overview()
     plot_component_rank_size(graph)
     plot_lcc_map(graph)
@@ -898,7 +898,7 @@ def main() -> None:
     plot_robustness()
     plot_regional()
     plot_communities()
-    plot_socioeconomic()
+    # plot_socioeconomic()  # מבוטל: דורש הרצת תת-שלב 06/02 (הורדת נתוני למ"ס) על גרף הנסיעות
     plot_link_prediction()
     plot_embeddings(metrics)
     plot_suggested_links_map(graph)
@@ -906,7 +906,7 @@ def main() -> None:
     plot_zoom_top_degree(graph, metrics)
     plot_zoom_betweenness_corridor(graph, metrics)
     plot_zoom_communities()
-    plot_zoom_socioeconomic()
+    # plot_zoom_socioeconomic()  # מבוטל: תלוי בנתוני הסוציו-אקונומי הישנים
     plot_zoom_link_suggestions(graph)
     write_readme()
 
