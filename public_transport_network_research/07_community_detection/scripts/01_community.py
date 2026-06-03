@@ -20,6 +20,11 @@ import networkx as nx
 import community as community_louvain
 import matplotlib
 matplotlib.use("Agg")
+import sys as _sys
+from pathlib import Path as _Path
+_sys.path.insert(0, str(_Path(__file__).resolve().parents[2]))
+from _hebrew_bidi import install_hebrew
+install_hebrew()
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 import seaborn as sns
