@@ -153,7 +153,7 @@ def save_ap_bridges(ap, br, G, out_dir):
         br_rows.append({
             "from_stop": u,
             "to_stop": v,
-            "distance_m": round(1 / G[u][v].get("weight", 1), 1),
+            "trip_frequency": int(G[u][v].get("weight", 1)),
         })
     pd.DataFrame(br_rows).to_csv(out_dir / "bridges.csv", index=False, encoding="utf-8-sig")
     print(f"  ✓ articulation_points.csv ({len(ap_df)} AP)")

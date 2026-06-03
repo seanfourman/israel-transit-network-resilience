@@ -1,8 +1,17 @@
 {
-  "num_nodes": 34932,
-  "num_edges_undirected": 286741,
-  "num_edges_directed": 573482,
-  "radius_m": 500,
-  "avg_degree": 16.42,
-  "density": 0.00047
+  "graph_type": "trip_adjacency",
+  "num_nodes": 30463,
+  "num_edges_undirected": 51772,
+  "num_edges_directed": 51999,
+  "avg_degree": 3.4,
+  "density": 0.000112,
+  "build_stats": {
+    "stop_times_rows": 15711624,
+    "active_stops": 30466,
+    "active_trips": 420133,
+    "directed_edges": 51999,
+    "min_stops_per_trip": 2,
+    "mean_stops_per_trip": 37.4,
+    "max_stops_per_trip": 115
+  }
 }

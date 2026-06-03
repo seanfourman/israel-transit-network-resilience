@@ -65,9 +65,24 @@ def prepare_dataset(G, rng):
     G_train = G.copy()
     G_train.remove_edges_from(test_pos)
 
-    all_non_edges = [(u, v) for u, v in nx.non_edges(G) if u < v]
-    rng.shuffle(all_non_edges)
-    test_neg = all_non_edges[:n_test]
+    # דגימת זוגות שליליים (לא-קשתות) באקראי במקום למנות O(n^2) זוגות.
+    # הגרף דליל מאוד (density ~0.0001), כך ששני צמתים אקראיים כמעט תמיד אינם קשת.
+    existing = {frozenset((u, v)) for u, v in G.edges()}
+    nodes = list(G.nodes())
+    test_neg = []
+    seen = set()
+    max_attempts = n_test * 50
+    attempts = 0
+    while len(test_neg) < n_test and attempts < max_attempts:
+        attempts += 1
+        u, v = rng.choice(nodes), rng.choice(nodes)
+        if u == v:
+            continue
+        key = frozenset((u, v))
+        if key in existing or key in seen:
+            continue
+        seen.add(key)
+        test_neg.append((u, v))
 
     return G_train, test_pos, test_neg
 
