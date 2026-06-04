@@ -66,19 +66,19 @@ def compute_summary(G, D):
 
 def plot_degree_distribution(G, fig_dir):
     degrees = [d for _, d in G.degree()]
-    fig, axes = plt.subplots(1, 2, figsize=(13, 5))
+    fig, axes = plt.subplots(2, 1, figsize=(8, 10))
 
     axes[0].hist(degrees, bins=60, color="#2563eb", edgecolor="white", linewidth=0.3)
     axes[0].set_xlabel("Degree (מספר שכנים)")
     axes[0].set_ylabel("מספר תחנות")
-    axes[0].set_title("התפלגות דרגות — רשת תחבורה ישראל")
+    axes[0].set_title("התפלגות דרגות - רשת תחבורה ישראל")
 
     deg_counts = pd.Series(degrees).value_counts().sort_index()
     deg_counts = deg_counts[deg_counts.index > 0]
     axes[1].scatter(np.log10(deg_counts.index), np.log10(deg_counts.values), s=8, color="#dc2626", alpha=0.6)
     axes[1].set_xlabel("log₁₀(Degree)")
     axes[1].set_ylabel("log₁₀(Count)")
-    axes[1].set_title("Log-Log Degree Distribution (בדיקת Power Law)")
+    axes[1].set_title("Log-Log Degree Distribution (Power Law בדיקת)")
 
     plt.tight_layout()
     plt.savefig(fig_dir / "degree_distribution.png", dpi=150)
