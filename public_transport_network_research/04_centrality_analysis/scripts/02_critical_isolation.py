@@ -57,7 +57,7 @@ def main():
 
     # גרף: תחנות קריטיות לפי המרחק לחלופה הקרובה
     bins   = [0, 100, 300, 500, 1000, 1e9]
-    labels = ["< 100 מ׳", "100-300 מ׳", "300-500 מ׳", "500-1000 מ׳", "> 1 ק״מ"]
+    labels = ["עד 100 מ׳", "100-300 מ׳", "300-500 מ׳", "500-1000 מ׳", "מעל 1 ק״מ"]
     counts = pd.cut(crit["nearest_alt_m"], bins=bins, labels=labels, right=False).value_counts().reindex(labels)
     colors = ["#16a34a", "#16a34a", "#dc2626", "#dc2626", "#dc2626"]
 
