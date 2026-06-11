@@ -397,8 +397,7 @@ def plot_simpson_explainer(nb: pd.DataFrame) -> Path:
     ax.set_xlabel("מעמד סוציו-אקונומי של השכונה  (1 = חלש, 10 = חזק)", fontsize=14)
     ax.set_ylabel("שירות לנפש (מופעי עצירה / 1,000)", fontsize=14)
     ax.set_title(
-        "אותה מדינה, מסקנה הפוכה בכל עיר\n"
-        "בנתניה: חזק = פחות שירות. בבית שאן: חזק = יותר. ארצית הן מתבטלות",
+        "אותה מדינה, מסקנה הפוכה בכל עיר",
         fontsize=15, fontweight="bold", pad=12,
     )
     ax.legend(loc="upper right", fontsize=13, frameon=True, title="קו מגמה בתוך:")
