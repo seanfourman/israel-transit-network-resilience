@@ -186,6 +186,17 @@ def load_stops() -> pd.DataFrame:
             on="stop_id",
             how="left",
         )
+        # Guard against a stale/partial stage-07 file. A previous run produced a
+        # community summary from a community assignment that covered only ~13% of
+        # stops (all Tel-Aviv area), which made the per-community table useless.
+        coverage = stops["community_louvain"].notna().mean()
+        n_comm = stops["community_louvain"].dropna().nunique()
+        print(f"  Louvain community coverage: {coverage:.1%} of stops, {n_comm} communities")
+        if coverage < 0.5:
+            print(
+                "  WARNING: low community coverage. The per-community summary will be "
+                "unreliable. Re-run stage 07 (07_community_detection) before this stage."
+            )
     else:
         stops["community_louvain"] = pd.NA
         stops["community_lp"] = pd.NA
