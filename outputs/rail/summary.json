@@ -1,0 +1,30 @@
+{
+  "build": {
+    "source_stop_time_rows": 15711624,
+    "rail_stop_time_rows": 14601,
+    "rail_route_records": 962,
+    "unique_route_descriptions": 82,
+    "scheduled_rail_trips": 1188,
+    "active_rail_stations": 67,
+    "directed_service_edges": 197,
+    "undirected_service_edges": 99,
+    "service_start_date": "2026-04-19",
+    "service_end_date": "2026-05-19"
+  },
+  "network": {
+    "active_stations": 67,
+    "directed_service_edges": 197,
+    "undirected_service_edges": 99,
+    "connected_components": 1,
+    "largest_component_stations": 67,
+    "largest_component_share": 1.0,
+    "average_degree": 2.955223880597015,
+    "density": 0.04477611940298507,
+    "average_clustering": 0.36528073916133613,
+    "average_shortest_path_hops_lcc": 5.625961103573044,
+    "diameter_hops_lcc": 13,
+    "articulation_points": 14,
+    "bridges": 11,
+    "louvain_communities": 8
+  }
+}

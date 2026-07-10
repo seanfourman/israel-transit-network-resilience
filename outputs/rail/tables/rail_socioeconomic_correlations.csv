@@ -1,0 +1,25 @@
+﻿sample,socioeconomic_variable,network_metric,spearman_rho,p_value_two_sided,n_stations
+all assignments,socio_cluster,degree,-0.12655406397541444,0.3074887640070414,67
+all assignments,socio_cluster,weighted_degree,0.07520413726967881,0.5452816918905888,67
+all assignments,socio_cluster,pagerank,-0.05442389706355592,0.6618069389025142,67
+all assignments,socio_cluster,betweenness,-0.023737291031343175,0.848785368944857,67
+all assignments,socio_cluster,harmonic,-0.08942522009537159,0.47174322189456075,67
+all assignments,socio_cluster,stations_outside_largest_component,-0.17852521166800653,0.14833653970542227,67
+all assignments,socio_index_value,degree,-0.10024219176945702,0.4196018048794219,67
+all assignments,socio_index_value,weighted_degree,0.0965455521012729,0.4370374624047433,67
+all assignments,socio_index_value,pagerank,-0.030050283342645066,0.8092468814315137,67
+all assignments,socio_index_value,betweenness,-0.0035753057482075926,0.9770923076697595,67
+all assignments,socio_index_value,harmonic,-0.041785147766682774,0.7370697438071807,67
+all assignments,socio_index_value,stations_outside_largest_component,-0.16335508343708596,0.18655205220753035,67
+within-polygon only,socio_cluster,degree,-0.2187469274710709,0.15370265186797993,44
+within-polygon only,socio_cluster,weighted_degree,0.048322569455636386,0.7554281455599912,44
+within-polygon only,socio_cluster,pagerank,-0.07905003792458729,0.6100075966120432,44
+within-polygon only,socio_cluster,betweenness,-0.0005174699262054227,0.9973401067690523,44
+within-polygon only,socio_cluster,harmonic,-0.13659924556212874,0.37660634372059476,44
+within-polygon only,socio_cluster,stations_outside_largest_component,-0.26735742846100263,0.07934675953898845,44
+within-polygon only,socio_index_value,degree,-0.18790721457846452,0.22190859400277133,44
+within-polygon only,socio_index_value,weighted_degree,0.08340678423708042,0.5903906270260761,44
+within-polygon only,socio_index_value,pagerank,-0.03805496828752642,0.8062629528430437,44
+within-polygon only,socio_index_value,betweenness,0.030595417243192403,0.8437097024051627,44
+within-polygon only,socio_index_value,harmonic,-0.07097047025871432,0.6471030933209727,44
+within-polygon only,socio_index_value,stations_outside_largest_component,-0.2393801999256671,0.11758122328494339,44

@@ -14,10 +14,10 @@ The primary final-project analysis is the GTFS trip-adjacency graph:
 The goal is to identify critical stations using centrality metrics and test network resilience under targeted stop removals.
 
 The repository also contains a staged exploratory pipeline under
-`public_transport_network_research/`. Its `02_graph_construction` stage builds a
-500-meter stop proximity graph from coordinates. That proximity graph is useful
-for spatial experiments, Node2Vec, and link-prediction extensions, but it is not
-the primary graph used for the final report results in `outputs/`.
+`public_transport_network_research/`. Its current `02_graph_construction` stage
+also builds the GTFS trip-adjacency graph. The older 500-meter stop-proximity
+implementation is retained as `01_build_graph_proximity.py` for spatial
+experiments, but it is not the primary graph used for the final report.
 
 ## Repository Structure
 
@@ -68,6 +68,29 @@ python src\transit_network_analysis.py `
 
 For a faster smoke run, lower `--betweenness-samples`, `--harmonic-samples`,
 `--path-source-samples`, `--accessibility-pairs`, and `--random-trials`.
+
+## Run The Rail-Only Analysis
+
+The Ministry of Transport feed also contains Israel Railways records. To build a
+separate heavy-rail graph (`route_type=2`) and run exact centrality, single-station
+damage, and random-versus-targeted resilience analysis:
+
+```powershell
+python src\rail_network_analysis.py `
+  --data-dir israel-public-transportation `
+  --output-dir outputs\rail
+```
+
+Rail tables and figures are written under `outputs/rail/`. The interpreted
+results, limitations, and official data-source links are documented in
+`reports/rail_network_resilience_report.md`.
+
+To add the existing CBS 2021 socioeconomic assignments, compare all centrality
+families, classify station archetypes, and generate regional/equity figures:
+
+```powershell
+python src\rail_socioeconomic_analysis.py
+```
 
 ## Checked-In Outputs
 
