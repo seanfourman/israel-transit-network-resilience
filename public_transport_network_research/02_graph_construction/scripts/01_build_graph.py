@@ -9,7 +9,8 @@
        israel-public-transportation/stop_times.txt  (רצף תחנות בכל נסיעה, ממוין לפי trip_id, stop_sequence)
 פלט:  02_graph_construction/outputs/
 
-הערה: הגרסה הקודמת (גרף קרבה מרחבית 500m) נשמרה ב-01_build_graph_proximity.py.
+הערה: גרסת גרף הקרבה המרחבית (500m) הוסרה מהפרויקט — היא חיברה תחנות לפי מרחק
+גאוגרפי בלבד, ללא קשר לקיום שירות ביניהן, ואינה מקור לאף תוצאה בפרויקט.
 """
 import sys, csv, json, pickle
 from pathlib import Path

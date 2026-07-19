@@ -1,10 +1,16 @@
 # הגדרה פורמלית של הגרף
 
-> Scope note: this document describes the primary final-project graph definition:
-> a GTFS trip-adjacency graph where edges connect consecutive stops in scheduled
-> trips. The staged script in this directory, `scripts/01_build_graph.py`, is a
-> separate spatial extension that builds a 500-meter proximity graph. Do not mix
-> the two graph definitions in the final report or presentation.
+> Scope note: this document defines the project's graph model — a GTFS
+> trip-adjacency graph where directed edges connect consecutive stops within a
+> scheduled trip. Both implementations build this same model:
+> `scripts/01_build_graph.py` (staged pipeline) and
+> `src/transit_network_analysis.py` (canonical pipeline).
+>
+> Implementation note: the weighting section below lists average travel time as
+> the recommended option, but the checked-in code implements **segment frequency
+> only**. The undirected graph **sums** the two directions' frequencies rather
+> than taking `min` of travel times, and betweenness/harmonic centrality are
+> computed **unweighted** (hop count, not travel time).
 
 ## הגרף המכוון — G_directed
 

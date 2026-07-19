@@ -1,11 +1,15 @@
 # שלב 02 — בניית הגרף
 
-> Current implementation note: the executable staged script
-> `scripts/01_build_graph.py` builds a 500-meter spatial proximity graph from
-> cleaned stop coordinates. The primary final-project graph is built in
-> `src/transit_network_analysis.py` from consecutive GTFS stops within each
-> scheduled trip. Use the staged proximity graph as an exploratory/spatial
-> extension, not as the source of the main final-report numbers.
+> Current implementation note: `scripts/01_build_graph.py` builds the GTFS
+> trip-adjacency graph — directed edges connect consecutive stops within each
+> scheduled trip. This is the same model used by the canonical
+> `src/transit_network_analysis.py`, which is why both pipelines report the same
+> structure (900 articulation points, 971 bridges).
+>
+> An earlier 500-meter spatial proximity graph once lived in this directory. It
+> was retired and removed: it connected stops by geographic distance alone,
+> regardless of whether any service links them, and it is not the source of any
+> checked-in result.
 
 ## מה המטרה של החלק הזה?
 
@@ -24,7 +28,8 @@ centrality, community detection, robustness, ועוד.
 - `01_data_preparation/outputs/routes_clean.csv`
 - `01_data_preparation/outputs/trips_clean.csv`
 
-The current staged script uses `stops_clean.csv` only for graph construction.
+The staged script streams `stop_times.txt` to derive trip segments, and uses
+`stops_clean.csv` for node attributes (name, coordinates, region).
 
 ## פלט
 
@@ -43,8 +48,8 @@ centrality, נריץ סימולציות שיבוש, ונזהה קהילות.
 
 ## קבצים/סקריפטים בחלק הזה
 
-- `scripts/01_build_graph.py` — builds the staged 500-meter proximity graph
-  and exports directed/undirected NetworkX graphs, nodes, edges, and summary.
+- `scripts/01_build_graph.py` — builds the trip-adjacency graph and exports
+  directed/undirected NetworkX graphs, nodes, edges, and summary.
 
 ## מה צריך להופיע בדוח הסופי?
 
@@ -56,12 +61,12 @@ centrality, נריץ סימולציות שיבוש, ונזהה קהילות.
 
 ## TODO / Historical Plan
 
-- [x] Build the final-project trip-adjacency graph in `src/transit_network_analysis.py`.
-- [x] Build the staged proximity graph in `scripts/01_build_graph.py`.
+- [x] Build the trip-adjacency graph in `src/transit_network_analysis.py`.
+- [x] Build the trip-adjacency graph in `scripts/01_build_graph.py`.
 - [x] Add node attributes: stop name, latitude, longitude, region, metro.
 - [x] Save `graph_build_summary.json`.
-- [ ] If the staged pipeline is used in the final presentation, explicitly label it
-  as a spatial proximity extension.
+- [x] Retire the 500-meter proximity graph (removed — superseded by the
+  trip-adjacency model in both pipelines).
 
 ## פלטים צפויים
 
@@ -69,7 +74,7 @@ centrality, נריץ סימולציות שיבוש, ונזהה קהילות.
 outputs/
 ├── graph_directed.pkl      (NetworkX DiGraph)
 ├── graph_undirected.pkl    (NetworkX Graph)
-├── nodes.csv               (stop_id, stop_name, lat, lon, region, ...)
-├── edges.csv               (from_stop, to_stop, distance_m, weight)
+├── nodes.csv               (stop_id, stop_name, lat, lon, region, metro)
+├── edges.csv               (from_stop, to_stop, trip_frequency)
 └── graph_build_summary.json
 ```

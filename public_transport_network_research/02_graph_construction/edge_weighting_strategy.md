@@ -1,10 +1,13 @@
 # אסטרטגיית משקול קשתות
 
-> Scope note: this file documents weighting options for the primary GTFS
-> trip-adjacency graph. In the current checked-in main results, the edge weight
-> used by `src/transit_network_analysis.py` is scheduled segment frequency. The
-> staged proximity graph in `scripts/01_build_graph.py` instead uses
-> `weight = 1 / distance_m` for nearby stops within 500 meters.
+> Scope note: this file documents the weighting options that were considered for
+> the GTFS trip-adjacency graph. What is actually implemented in both
+> `scripts/01_build_graph.py` and `src/transit_network_analysis.py` is
+> **scheduled segment frequency only**.
+>
+> The `weight_time` and `weight_binary` fields described in the Decision section
+> below were planned but are **not** produced by the current code, and
+> shortest-path / betweenness computations run unweighted (hop count).
 
 ## למה חשוב לבחור משקל נכון?
 

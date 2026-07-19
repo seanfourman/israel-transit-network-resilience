@@ -13,22 +13,33 @@ The primary final-project analysis is the GTFS trip-adjacency graph:
 
 The goal is to identify critical stations using centrality metrics and test network resilience under targeted stop removals.
 
-The repository also contains a staged exploratory pipeline under
-`public_transport_network_research/`. Its current `02_graph_construction` stage
-also builds the GTFS trip-adjacency graph. The older 500-meter stop-proximity
-implementation is retained as `01_build_graph_proximity.py` for spatial
-experiments, but it is not the primary graph used for the final report.
+The repository also contains a staged research pipeline under
+`public_transport_network_research/`. Its `02_graph_construction` stage builds
+the same GTFS trip-adjacency graph, which is why both pipelines agree on the
+network structure (900 articulation points, 971 bridges). This staged pipeline
+is the source of the June final-presentation figures — specifically the
+critical-station isolation test (`04_centrality_analysis`) and the
+socioeconomic-equity analysis (`06_regional_comparison`).
+
+An earlier 500-meter stop-proximity graph was retired and removed: it connected
+stops by geographic distance alone, regardless of whether any service linked
+them, and it is not the source of any checked-in result.
 
 ## Repository Structure
 
 ```text
-israel-public-transportation/     GTFS data files
-src/transit_network_analysis.py   Reusable analysis pipeline and CLI
-public_transport_network_research/ Staged exploratory research pipeline
+israel-public-transportation/      GTFS data files
+src/transit_network_analysis.py    Canonical analysis pipeline and CLI (final report)
+src/rail_network_analysis.py       Rail-only (route_type=2) resilience analysis
+src/rail_socioeconomic_analysis.py Rail centrality vs CBS socioeconomic clusters
+public_transport_network_research/ Staged research pipeline (presentation figures)
+public_transport_network_notebooks/ Narrated notebook walkthrough (stages 01-10)
 notebooks/critical_stations_analysis.ipynb
-outputs/                          Generated tables and figures
-docs/                             Course instructions and reference material
-reports/                          Final report and guideline compliance notes
+outputs/                           Generated tables and figures
+outputs/rail/                      Rail-only tables and figures
+docs/Presentation/                 Final presentation deck and slide figures
+docs/Graph_Algo_project_guidelines_2026.pdf   Course project brief
+reports/                           Final report and guideline compliance notes
 ```
 
 ## Setup
