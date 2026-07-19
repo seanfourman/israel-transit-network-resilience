@@ -3,3 +3,6 @@ __pycache__/
 .ipynb_checkpoints/
 .venv/
 venv/
+
+# Large GTFS table (816MB) - fetched at runtime, see README
+israel-public-transportation/stop_times.txt

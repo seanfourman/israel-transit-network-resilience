@@ -44,11 +44,21 @@ reports/                           Final report and guideline compliance notes
 
 ## Setup
 
-Install Git LFS first if needed, then hydrate the large GTFS files:
+All GTFS files needed by the analysis ship with this repository **except**
+`stop_times.txt` (816 MB), which is hosted separately and fetched on demand:
 
 ```powershell
-git lfs pull
+pip install gdown
+gdown <GOOGLE_DRIVE_FILE_ID> -O israel-public-transportation/stop_times.txt
 ```
+
+> TODO: upload `stop_times.txt` to Google Drive with "anyone with the link"
+> sharing and replace `<GOOGLE_DRIVE_FILE_ID>` above with the real file id.
+
+Most analyses do **not** need this file. The graph is already built and checked
+in — `public_transport_network_research/02_graph_construction/outputs/edges.csv`
+(762 KB) and `nodes.csv` (2.4 MB) are the graph. Only rebuilding the graph from
+the raw feed requires `stop_times.txt`.
 
 Create an environment and install dependencies:
 
