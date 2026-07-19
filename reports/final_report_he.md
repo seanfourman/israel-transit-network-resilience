@@ -293,10 +293,11 @@ Betweenness שונה מאוד ממדדי תדירות. תחנות כמו ת.הת
 pip install -r requirements.txt
 ```
 
-משיכת קובצי Git LFS גדולים:
+הורדת קובץ ה-GTFS הגדול (`stop_times.txt`), נדרשת רק לבנייה מחדש של הגרף מהנתונים הגולמיים:
 
 ```powershell
-git lfs pull
+pip install gdown
+gdown <GOOGLE_DRIVE_FILE_ID> -O israel-public-transportation/stop_times.txt
 ```
 
 הרצת הניתוח:

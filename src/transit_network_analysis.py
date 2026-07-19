@@ -185,13 +185,18 @@ def read_csv_frame(path: Path) -> pd.DataFrame:
 
 def require_real_file(path: Path) -> None:
     if not path.exists():
-        raise FileNotFoundError(f"Missing required file: {path}")
+        raise FileNotFoundError(
+            f"Missing required file: {path}\n"
+            f"If this is stop_times.txt, download it first (see README):\n"
+            f'  gdown <GOOGLE_DRIVE_FILE_ID> -O "{path.as_posix()}"'
+        )
     with path.open("rb") as handle:
         prefix = handle.read(80)
     if prefix.startswith(b"version https://git-lfs.github.com/spec/v1"):
         raise RuntimeError(
-            f"{path} is still a Git LFS pointer. Run: "
-            f'git lfs pull --include="{path.as_posix()}"'
+            f"{path} is a leftover Git LFS pointer from an older clone. "
+            f"This repository no longer uses Git LFS - delete the file and "
+            f"download the real one (see README)."
         )
 
 
