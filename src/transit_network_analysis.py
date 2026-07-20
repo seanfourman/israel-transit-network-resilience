@@ -188,7 +188,7 @@ def require_real_file(path: Path) -> None:
         raise FileNotFoundError(
             f"Missing required file: {path}\n"
             f"If this is stop_times.txt, download it first (see README):\n"
-            f'  gdown <GOOGLE_DRIVE_FILE_ID> -O "{path.as_posix()}"'
+            f'  gdown 1V_yPAWXV6mGTFGrfiosah5LngcLZnviW -O "{path.as_posix()}"'
         )
     with path.open("rb") as handle:
         prefix = handle.read(80)

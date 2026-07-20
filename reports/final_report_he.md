@@ -297,7 +297,7 @@ pip install -r requirements.txt
 
 ```powershell
 pip install gdown
-gdown <GOOGLE_DRIVE_FILE_ID> -O israel-public-transportation/stop_times.txt
+gdown 1V_yPAWXV6mGTFGrfiosah5LngcLZnviW -O israel-public-transportation/stop_times.txt
 ```
 
 הרצת הניתוח:

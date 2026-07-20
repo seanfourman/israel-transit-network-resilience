@@ -49,11 +49,8 @@ All GTFS files needed by the analysis ship with this repository **except**
 
 ```powershell
 pip install gdown
-gdown <GOOGLE_DRIVE_FILE_ID> -O israel-public-transportation/stop_times.txt
+gdown 1V_yPAWXV6mGTFGrfiosah5LngcLZnviW -O israel-public-transportation/stop_times.txt
 ```
-
-> TODO: upload `stop_times.txt` to Google Drive with "anyone with the link"
-> sharing and replace `<GOOGLE_DRIVE_FILE_ID>` above with the real file id.
 
 Most analyses do **not** need this file. The graph is already built and checked
 in — `public_transport_network_research/02_graph_construction/outputs/edges.csv`
@@ -144,7 +141,7 @@ Main figures:
 
 The current `src/transit_network_analysis.py` code can also produce these
 additional outputs after rerunning with the large GTFS `stop_times.txt` file
-available through Git LFS:
+downloaded via the Setup step above:
 
 - `outputs/tables/top_approx_harmonic_stops.csv`
 - `outputs/tables/degree_distribution.csv`
