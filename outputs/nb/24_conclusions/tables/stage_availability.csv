@@ -2,7 +2,7 @@
 00,00_setup_and_data,00_setup_and_data,True,5,3,2026-07-21 08:35
 01,01_data_preparation,01_data_preparation,True,7,4,2026-07-21 08:36
 02,02_graph_construction,02_graph_construction,True,4,2,2026-07-21 09:03
-03,03_descriptive_analysis,03_descriptive_analysis,True,7,5,2026-07-21 08:37
+03,03_descriptive_analysis,03_descriptive_analysis,True,7,5,2026-07-21 18:20
 04,04_centrality_analysis,04_centrality_analysis,True,8,9,2026-07-21 09:04
 05,05_critical_station_isolation,05_critical_station_isolation,True,2,2,2026-07-21 08:39
 06,06_robustness_analysis,06_robustness_analysis,True,4,3,2026-07-21 08:41
@@ -16,7 +16,7 @@
 14,14_multimodal_inventory,14_multimodal_inventory,True,8,3,2026-07-21 13:34
 15,15_bus_network,15_bus_network,True,10,3,2026-07-21 13:35
 16,16_lightrail_and_minor_modes,16_lightrail_and_minor_modes,True,10,7,2026-07-21 13:35
-17,17_multimodal_transfer_hubs,17_multimodal_transfer_hubs,True,8,4,2026-07-21 18:07
+17,17_multimodal_transfer_hubs,17_multimodal_transfer_hubs,True,8,4,2026-07-21 18:20
 18,18_travel_time_network,18_travel_time_network,True,7,6,2026-07-21 13:37
 19,19_time_of_day_graphs,19_time_of_day_graphs,True,11,5,2026-07-21 13:38
 20,20_dynamic_resilience,20_dynamic_resilience,True,11,5,2026-07-21 13:43
