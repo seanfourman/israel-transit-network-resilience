@@ -137,7 +137,7 @@
       "150m": 866,
       "250m": 1364
     },
-    "mode_pairs_within_radius": 7,
+    "mode_pairs_within_radius": 9,
     "interdependence": [
       {
         "mode_a": "bus",
@@ -165,6 +165,16 @@
         "interchange_stops": 43
       },
       {
+        "mode_a": "rail",
+        "mode_b": "cable tram",
+        "interchange_stops": 16
+      },
+      {
+        "mode_a": "tram/light rail",
+        "mode_b": "rail",
+        "interchange_stops": 15
+      },
+      {
         "mode_a": "demand/other bus",
         "mode_b": "rail",
         "interchange_stops": 6
@@ -191,21 +201,11 @@
       },
       {
         "mode_a": "tram/light rail",
-        "mode_b": "rail",
-        "interchange_stops": 0
-      },
-      {
-        "mode_a": "tram/light rail",
         "mode_b": "trolleybus/taxi-coded",
         "interchange_stops": 0
       },
       {
         "mode_a": "tram/light rail",
-        "mode_b": "cable tram",
-        "interchange_stops": 0
-      },
-      {
-        "mode_a": "rail",
         "mode_b": "cable tram",
         "interchange_stops": 0
       },
