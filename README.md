@@ -13,13 +13,14 @@ The primary final-project analysis is the GTFS trip-adjacency graph:
 
 The goal is to identify critical stations using centrality metrics and test network resilience under targeted stop removals.
 
-The repository also contains a staged research pipeline under
-`public_transport_network_research/`. Its `02_graph_construction` stage builds
-the same GTFS trip-adjacency graph, which is why both pipelines agree on the
-network structure (900 articulation points, 971 bridges). This staged pipeline
-is the source of the June final-presentation figures — specifically the
-critical-station isolation test (`04_centrality_analysis`) and the
-socioeconomic-equity analysis (`06_regional_comparison`).
+The analysis lives entirely in the numbered notebooks under `notebooks/`.
+
+`public_transport_network_research/` holds the earlier staged pipeline that this
+series replaced. Its scripts have been removed; its stage documentation, figures
+and generated tables are kept because the written report and the June
+presentation cite them. Its work has been ported into the notebooks — the
+critical-station isolation test into notebook 05, and the socioeconomic-equity
+analysis into notebook 08.
 
 An earlier 500-meter stop-proximity graph was retired and removed: it connected
 stops by geographic distance alone, regardless of whether any service linked
@@ -28,19 +29,34 @@ them, and it is not the source of any checked-in result.
 ## Repository Structure
 
 ```text
+notebooks/00_setup_and_data.ipynb            Environment check, GTFS download and inventory
+notebooks/01_data_preparation.ipynb          Loading, cleaning, region and metro assignment
+notebooks/02_graph_construction.ipynb        The trip-adjacency graph G = (V, E, W)
+notebooks/03_descriptive_analysis.ipynb      Components, degree distribution, cut vertices
+notebooks/04_centrality_analysis.ipynb       Degree, PageRank, betweenness, harmonic
+notebooks/05_critical_station_isolation.ipynb  Do critical stations have alternatives?
+notebooks/06_robustness_analysis.ipynb       Targeted vs random attack
+notebooks/07_regional_comparison.ipynb       Regional and metropolitan differences
+notebooks/08_socioeconomic_equity.ipynb      Service vs CBS socioeconomic cluster
+notebooks/09_community_detection.ipynb       Louvain communities and inter-community links
+notebooks/10_network_model_comparison.ipynb  ER / configuration / BA / Watts-Strogatz
+notebooks/11_rail_network_analysis.ipynb     Heavy rail (route_type=2) only
+notebooks/12_rail_socioeconomic.ipynb        Rail centrality vs socioeconomic profile
+notebooks/13_embeddings_link_prediction.ipynb  Node2Vec and link prediction
+notebooks/14_conclusions.ipynb               Synthesis, limitations, future work
+
 israel-public-transportation/      GTFS data files
-src/transit_network_analysis.py    Canonical analysis pipeline and CLI (final report)
-src/rail_network_analysis.py       Rail-only (route_type=2) resilience analysis
-src/rail_socioeconomic_analysis.py Rail centrality vs CBS socioeconomic clusters
-public_transport_network_research/ Staged research pipeline (presentation figures)
-public_transport_network_notebooks/ Narrated notebook walkthrough (stages 01-10)
-notebooks/critical_stations_analysis.ipynb
-outputs/                           Generated tables and figures
-outputs/rail/                      Rail-only tables and figures
+outputs/nb/<stage>/                Tables and figures written by the notebooks
+outputs/, outputs/rail/            Earlier results cited by the written report
+public_transport_network_research/ Earlier staged pipeline: docs, figures and outputs
 docs/Presentation/                 Final presentation deck and slide figures
 docs/Graph_Algo_project_guidelines_2026.pdf   Course project brief
 reports/                           Final report and guideline compliance notes
 ```
+
+The notebooks are the project. Each one is self-contained: it installs what it
+needs, locates the repository (or clones it on Colab), fetches the GTFS feed on
+demand, and carries its own analysis code inline. Run them in numeric order.
 
 ## Setup
 
@@ -52,10 +68,13 @@ pip install gdown
 gdown 1V_yPAWXV6mGTFGrfiosah5LngcLZnviW -O israel-public-transportation/stop_times.txt
 ```
 
-Most analyses do **not** need this file. The graph is already built and checked
-in — `public_transport_network_research/02_graph_construction/outputs/edges.csv`
-(762 KB) and `nodes.csv` (2.4 MB) are the graph. Only rebuilding the graph from
-the raw feed requires `stop_times.txt`.
+You usually do not need to do this by hand: notebook `00_setup_and_data` and
+notebook `02_graph_construction` download the file themselves if it is missing.
+
+Only notebooks 00, 02 and 11 read the raw feed. Everything downstream works from
+the built graph, which is checked in at
+`outputs/nb/02_graph_construction/tables/` (`edges.csv` 762 KB, `nodes.csv`
+2.4 MB) — so a reviewer can run notebooks 03 onwards with no download at all.
 
 Create an environment and install dependencies:
 
@@ -67,48 +86,44 @@ pip install -r requirements.txt
 
 The pipeline uses only the standard GTFS text files in `israel-public-transportation/`.
 
-## Run The Full Analysis
+## Run The Analysis
+
+Open the notebooks in `notebooks/` and run them in numeric order, or execute the
+whole series from the command line:
 
 ```powershell
-python src\transit_network_analysis.py `
-  --data-dir israel-public-transportation `
-  --output-dir outputs `
-  --betweenness-samples 128 `
-  --harmonic-samples 512 `
-  --path-source-samples 128 `
-  --resilience-removals 500 `
-  --resilience-steps 25 `
-  --accessibility-pairs 300 `
-  --accessibility-removals 500 `
-  --accessibility-steps 10 `
-  --random-trials 5
+foreach ($nb in Get-ChildItem notebooks\[0-9][0-9]_*.ipynb | Sort-Object Name) {
+  python -m nbconvert --to notebook --execute --inplace `
+    --ExecutePreprocessor.timeout=7200 $nb.FullName
+}
 ```
 
-For a faster smoke run, lower `--betweenness-samples`, `--harmonic-samples`,
-`--path-source-samples`, `--accessibility-pairs`, and `--random-trials`.
+Measured runtimes on a laptop (full series, about 10 minutes):
 
-## Run The Rail-Only Analysis
+| Notebook | Time | Notes |
+|---|---|---|
+| 00 setup_and_data | 10 s | downloads the feed on first run |
+| 01 data_preparation | 7 s | |
+| 02 graph_construction | 24 s | streams all 15.7M rows |
+| 03 descriptive_analysis | 13 s | |
+| 04 centrality_analysis | 92 s | sampled betweenness |
+| 05 critical_station_isolation | 8 s | |
+| 06 robustness_analysis | 86 s | attack simulations |
+| 07 regional_comparison | 7 s | |
+| 08 socioeconomic_equity | 9 s | downloads the CBS layer, then caches it |
+| 09 community_detection | 43 s | Louvain plus a seed sweep |
+| 10 network_model_comparison | 132 s | four null models |
+| 11 rail_network_analysis | 15 s | reads the raw feed |
+| 12 rail_socioeconomic | 5 s | needs 08 and 11 |
+| 13 embeddings_link_prediction | 132 s | Node2Vec |
+| 14 conclusions | 6 s | reads every earlier stage |
 
-The Ministry of Transport feed also contains Israel Railways records. To build a
-separate heavy-rail graph (`route_type=2`) and run exact centrality, single-station
-damage, and random-versus-targeted resilience analysis:
+Dependencies between stages: 02 needs 01; 03-10 and 13 need 02; 08 also needs 09;
+12 needs 08 and 11; 14 reads all of them and skips any stage that has not run.
+Each notebook fails with an explicit message naming the notebook to run first.
 
-```powershell
-python src\rail_network_analysis.py `
-  --data-dir israel-public-transportation `
-  --output-dir outputs\rail
-```
-
-Rail tables and figures are written under `outputs/rail/`. The interpreted
-results, limitations, and official data-source links are documented in
-`reports/rail_network_resilience_report.md`.
-
-To add the existing CBS 2021 socioeconomic assignments, compare all centrality
-families, classify station archetypes, and generate regional/equity figures:
-
-```powershell
-python src\rail_socioeconomic_analysis.py
-```
+Expensive steps are exposed as constants near the top of each notebook (for
+example `K_BETWEENNESS`), so a faster smoke run only means lowering those.
 
 ## Checked-In Outputs
 
@@ -139,18 +154,13 @@ Main figures:
 - `outputs/figures/resilience_curve.png`
 - `outputs/figures/active_stops_map.png`
 
-The current `src/transit_network_analysis.py` code can also produce these
-additional outputs after rerunning with the large GTFS `stop_times.txt` file
-downloaded via the Setup step above:
+These `outputs/` and `outputs/rail/` tables come from the earlier script-based
+pipeline and are kept because the written report cites them. They are **not**
+regenerated by the notebooks.
 
-- `outputs/tables/top_approx_harmonic_stops.csv`
-- `outputs/tables/degree_distribution.csv`
-- `outputs/tables/network_model_comparison.csv`
-- `outputs/tables/accessibility_damage_by_removal.csv`
-- `outputs/figures/top_approx_harmonic_stops.png`
-- `outputs/figures/accessibility_damage_curve.png`
-- `outputs/figures/degree_distribution_loglog.png`
-- `outputs/figures/network_model_comparison.png`
+The notebooks write to `outputs/nb/<stage>/tables/` and
+`outputs/nb/<stage>/figures/` instead, and those results are also checked in, so
+every figure and table in the series can be inspected without running anything.
 
 ## Final Report
 
@@ -175,13 +185,29 @@ python reports\build_report_docx.py
 
 ## Analysis Notes
 
-`stop_times.txt` is streamed row by row because it is large. The GTFS feed is assumed to be ordered by `trip_id` and `stop_sequence`, which allows consecutive rows from the same trip to define graph edges without loading the full table into memory.
+`stop_times.txt` is streamed row by row because it is large. The feed is assumed
+to be ordered by `trip_id` and `stop_sequence`, so consecutive rows of the same
+trip define a segment without loading the table into memory. Notebook 02 now
+verifies that assumption instead of trusting it, and reports 562 `stop_sequence`
+regressions across the 15.7M rows (0.004%, with no interleaved trip blocks).
 
-Exact betweenness centrality is expensive on a national network, so the pipeline computes approximate betweenness on the largest connected component using sampled source nodes. Increase `--betweenness-samples` for a more stable estimate.
+Exact betweenness is expensive on a national network, so betweenness is estimated
+from sampled source nodes on the largest connected component. Raise
+`K_BETWEENNESS` in notebook 04 for a more stable estimate. The estimate is noisy,
+so any percentile threshold built on it inherits that noise — notebook 04 reports
+a stability check.
 
-Harmonic centrality and global shortest-path statistics are also sampled. This keeps the run practical while still supporting the course themes of shortest paths, accessibility, and disconnected graphs.
+Resilience is measured by removing stops in centrality order and tracking the
+largest connected component, against a random-removal baseline. Notebook 06
+reports the surviving component normalized **both** by the original node count
+and by the number of surviving nodes: dividing by the original count conflates
+"nodes deleted" with "network fragmented", and the earlier report quoted the raw
+version.
 
-Resilience is measured by removing stops according to centrality rankings and tracking the size of the largest connected component. A random-removal mean is included as a baseline.
+Link prediction is evaluated with the edge split performed **before** the
+embeddings are trained. Training Node2Vec on the full graph and then testing on
+held-out edges leaks, and inflates AUC from 0.83 to 0.99; notebook 13 reports
+both, plus a hard-negative evaluation that is considerably less flattering.
 
 Accessibility damage is measured on sampled origin-destination stop pairs by tracking which pairs remain reachable and how much shortest paths stretch after targeted removals.
 
