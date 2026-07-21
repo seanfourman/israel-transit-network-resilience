@@ -1,0 +1,132 @@
+{
+  "stage": "19_time_of_day_graphs",
+  "source": "GTFS stop_times.txt + trips.txt + calendar.txt (SCHEDULED service, not ridership)",
+  "windows": [
+    {
+      "window": "morning_peak",
+      "start_hour": 6,
+      "end_hour": 9,
+      "hours": [
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "window": "midday",
+      "start_hour": 9,
+      "end_hour": 15,
+      "hours": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ]
+    },
+    {
+      "window": "afternoon_peak",
+      "start_hour": 15,
+      "end_hour": 19,
+      "hours": [
+        15,
+        16,
+        17,
+        18
+      ]
+    },
+    {
+      "window": "evening",
+      "start_hour": 19,
+      "end_hour": 23,
+      "hours": [
+        19,
+        20,
+        21,
+        22
+      ]
+    },
+    {
+      "window": "night",
+      "start_hour": 23,
+      "end_hour": 6,
+      "hours": [
+        23,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  ],
+  "segment_assignment_rule": "departure time at the ORIGIN stop of the segment, hour taken modulo 24",
+  "streaming_pass": {
+    "stop_times_rows": 15711624,
+    "trip_blocks": 420133,
+    "segments_assigned": 15290773,
+    "self_loops_skipped": 718,
+    "rows_with_unparseable_time": 0,
+    "rows_with_hour_ge_24": 152485,
+    "trips_absent_from_trips_txt_sample": [],
+    "elapsed_seconds": 27.0
+  },
+  "calendar": {
+    "services_total": 44770,
+    "services_with_no_day_flag": 232,
+    "trips_total": 420133,
+    "trips_by_day_type_overlapping": {
+      "weekday_sun_thu": 337073,
+      "friday": 113924,
+      "saturday": 33135,
+      "unknown": 0
+    },
+    "calendar_dates_txt_present": false
+  },
+  "per_window": {
+    "morning_peak": {
+      "trips": 83924,
+      "nodes": 30072,
+      "directed_edges": 46945,
+      "avg_degree": 3.11,
+      "largest_component_share": 0.9927
+    },
+    "midday": {
+      "trips": 168443,
+      "nodes": 30195,
+      "directed_edges": 48204,
+      "avg_degree": 3.18,
+      "largest_component_share": 0.9925
+    },
+    "afternoon_peak": {
+      "trips": 104733,
+      "nodes": 30057,
+      "directed_edges": 47172,
+      "avg_degree": 3.127,
+      "largest_component_share": 0.9925
+    },
+    "evening": {
+      "trips": 84471,
+      "nodes": 29359,
+      "directed_edges": 44936,
+      "avg_degree": 3.05,
+      "largest_component_share": 0.9927
+    },
+    "night": {
+      "trips": 41766,
+      "nodes": 25967,
+      "directed_edges": 38203,
+      "avg_degree": 2.932,
+      "largest_component_share": 0.9883
+    }
+  },
+  "caveats": [
+    "All counts are SCHEDULED trips from the GTFS timetable. They are not observed ridership, boardings, or vehicle occupancy; nothing in this feed measures demand.",
+    "A trip that crosses a window boundary is counted in every window it touches, so the trips column sums to more than the number of distinct trips.",
+    "Day types (weekday / friday / saturday) are not mutually exclusive: a service running Sunday-Friday is counted under both weekday and friday.",
+    "Services with all seven day flags set to 0 have an unknown day of week because this feed ships no calendar_dates.txt; they are excluded from the day-type tables but included in the all-service window graphs.",
+    "GTFS hours >= 24 are folded modulo 24, so a 25:30 departure is treated as 01:30 for the purpose of window assignment."
+  ]
+}

@@ -6,3 +6,24 @@ venv/
 
 # Large GTFS table (816MB) - fetched at runtime, see README
 israel-public-transportation/stop_times.txt
+
+# Regenerable heavy artifacts from the notebook pipeline.
+# Every one of these is rebuilt by re-running its notebook; the figures and
+# summary tables that a reader actually needs are committed.
+outputs/nb/**/*.pkl
+outputs/nb/**/*.npz
+outputs/nb/**/data/*.geojson
+outputs/nb/01_data_preparation/tables/stops_clean.csv
+outputs/nb/01_data_preparation/tables/trips_clean.csv
+outputs/nb/04_centrality_analysis/tables/stop_metrics.csv
+outputs/nb/07_regional_comparison/tables/stops_with_region.csv
+outputs/nb/08_socioeconomic_equity/tables/stops_with_socioeconomic.csv
+outputs/nb/15_bus_network/tables/bus_station_metrics.csv
+outputs/nb/18_travel_time_network/tables/betweenness_traveltime.csv
+outputs/nb/20_dynamic_resilience/tables/peak_vs_offpeak_centrality.csv
+outputs/nb/20_dynamic_resilience/tables/rank_movers.csv
+outputs/nb/20_dynamic_resilience/tables/window_centrality_detail.csv
+outputs/nb/21_demand_weighted_criticality/tables/criticality_lens_detail.csv
+outputs/nb/21_demand_weighted_criticality/tables/demand_proxy_detail.csv
+outputs/nb/23_critical_station_lenses/tables/critical_station_lenses.csv
+outputs/nb/23_critical_station_lenses/tables/station_lens_profile.csv

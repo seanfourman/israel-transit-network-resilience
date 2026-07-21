@@ -1,0 +1,6 @@
+﻿window,start_hour,end_hour,trips_reported_by_nb19,nodes,undirected_edges,avg_degree,components,largest_component,largest_component_share,total_edge_weight
+morning_peak,6,9,83924,30072,46766,3.11,10,29852,0.9927,2622779.0
+midday,9,15,168443,30195,48015,3.18,13,29968,0.9925,5533609.0
+afternoon_peak,15,19,104733,30057,46995,3.127,12,29833,0.9925,3264471.0
+evening,19,23,84471,29359,44774,3.05,8,29145,0.9927,2656064.0
+night,23,6,41766,25967,38069,2.932,23,25664,0.9883,1213850.0

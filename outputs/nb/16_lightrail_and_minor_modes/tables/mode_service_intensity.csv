@@ -1,0 +1,7 @@
+﻿route_type,mode_label,routes,trips,stops,stop_calls,trips_per_route,calls_per_stop,stops_per_route,is_minor_mode
+5,cable tram,4,3006,9,10830,751.5,1203.3,2.2,True
+0,tram/light rail,8,2890,138,70333,361.2,509.7,17.2,True
+3,bus,6796,412544,30170,15608376,60.7,517.3,4.4,False
+715,demand/other bus,14,458,153,7390,32.7,48.3,10.9,True
+8,trolleybus,8,47,10,94,5.9,9.4,1.2,True
+2,rail,962,1188,67,14601,1.2,217.9,0.1,False

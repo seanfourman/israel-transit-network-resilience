@@ -1,0 +1,2 @@
+﻿window,seed_a,seed_b,k_pivots,n_stations,spearman_rho_same_window,top50_overlap_same_window,nonzero_share_seed_a
+morning_peak,42,7,250,30072,0.9597,0.86,0.9077

@@ -1,0 +1,907 @@
+﻿stop_id,stop_name,region,status,degree_bus,degree_all_modes,is_articulation_point_bus,is_articulation_point_all_modes
+37292,תל אביב ההגנה,Center,absent_from_bus_network,0,8,False,True
+37338,לוד,Center,absent_from_bus_network,0,8,False,True
+37380,חיפה מרכז,North,absent_from_bus_network,0,7,False,True
+37376,חוף הכרמל,North,absent_from_bus_network,0,6,False,True
+41293,קרית מוצקין,North,absent_from_bus_network,0,6,False,True
+37314,באר שבע צפון,South,absent_from_bus_network,0,5,False,True
+37306,נתב''ג,Center,absent_from_bus_network,0,4,False,True
+37358,תל אביב מרכז,Center,absent_from_bus_network,0,4,False,True
+40581,כפר ברוך,North,absent_from_bus_network,0,4,False,True
+37336,רמלה,Center,absent_from_bus_network,0,3,False,True
+37396,פאתי מודיעין,Jerusalem,absent_from_bus_network,0,3,False,True
+37897,תחנת מוניות תל אביב תחנה מרכזית,Center,absent_from_bus_network,0,3,False,True
+49095,אהרונוביץ',Center,absent_from_bus_network,0,3,False,True
+49117,אהרונוביץ',Center,absent_from_bus_network,0,3,False,True
+10793,מסעף נחושה,Center,absent_from_bus_network,0,2,False,True
+35119,חיל האוויר,Jerusalem,absent_from_bus_network,0,2,False,True
+35120,חיל האוויר,Jerusalem,absent_from_bus_network,0,2,False,True
+35121,סיירת דוכיפת,Jerusalem,absent_from_bus_network,0,2,False,True
+35122,סיירת דוכיפת,Jerusalem,absent_from_bus_network,0,2,False,True
+35123,פסגת זאב - מרכז,Jerusalem,absent_from_bus_network,0,2,False,True
+35124,פסגת זאב - מרכז,Jerusalem,absent_from_bus_network,0,2,False,True
+35125,יקותיאל אדם,Jerusalem,absent_from_bus_network,0,2,False,True
+35126,יקותיאל אדם,Jerusalem,absent_from_bus_network,0,2,False,True
+35127,בית חנינא,Jerusalem,absent_from_bus_network,0,2,False,True
+35128,בית חנינא,Jerusalem,absent_from_bus_network,0,2,False,True
+35129,שועפאט,Jerusalem,absent_from_bus_network,0,2,False,True
+35130,שועפאט,Jerusalem,absent_from_bus_network,0,2,False,True
+35131,א-סהל,Jerusalem,absent_from_bus_network,0,2,False,True
+35132,א-סהל,Jerusalem,absent_from_bus_network,0,2,False,True
+35133,גבעת המבתר,Jerusalem,absent_from_bus_network,0,2,False,True
+35134,גבעת המבתר,Jerusalem,absent_from_bus_network,0,2,False,True
+35135,גבעת התחמושת,Jerusalem,absent_from_bus_network,0,2,False,True
+35136,גבעת התחמושת,Jerusalem,absent_from_bus_network,0,2,False,True
+35137,שמעון הצדיק,Jerusalem,absent_from_bus_network,0,2,False,True
+35138,שמעון הצדיק,Jerusalem,absent_from_bus_network,0,2,False,True
+35139,שבטי ישראל,Jerusalem,absent_from_bus_network,0,2,False,True
+35140,שבטי ישראל,Jerusalem,absent_from_bus_network,0,2,False,True
+35141,שער שכם,Jerusalem,absent_from_bus_network,0,2,False,True
+35142,שער שכם,Jerusalem,absent_from_bus_network,0,2,False,True
+35143,העירייה,Jerusalem,absent_from_bus_network,0,2,False,True
+35144,העירייה,Jerusalem,absent_from_bus_network,0,2,False,True
+35145,יפו - מרכז,Jerusalem,absent_from_bus_network,0,2,False,True
+35146,יפו - מרכז,Jerusalem,absent_from_bus_network,0,2,False,True
+35147,הדווידקה,Jerusalem,absent_from_bus_network,0,2,False,True
+35148,הדווידקה,Jerusalem,absent_from_bus_network,0,2,False,True
+35149,מחנה יהודה,Jerusalem,absent_from_bus_network,0,2,False,True
+35150,מחנה יהודה,Jerusalem,absent_from_bus_network,0,2,False,True
+35151,הטורים,Jerusalem,absent_from_bus_network,0,2,False,True
+35152,הטורים,Jerusalem,absent_from_bus_network,0,2,False,True
+35153,התחנה המרכזית,Jerusalem,absent_from_bus_network,0,2,False,True
+35154,התחנה המרכזית,Jerusalem,absent_from_bus_network,0,2,False,True
+35155,קריית משה,Jerusalem,absent_from_bus_network,0,2,False,True
+35156,קריית משה,Jerusalem,absent_from_bus_network,0,2,False,True
+35157,כיכר דניה,Jerusalem,absent_from_bus_network,0,2,False,True
+35158,כיכר דניה,Jerusalem,absent_from_bus_network,0,2,False,True
+35159,יפה נוף,Jerusalem,absent_from_bus_network,0,2,False,True
+35160,יפה נוף,Jerusalem,absent_from_bus_network,0,2,False,True
+35161,הר הרצל,Jerusalem,absent_from_bus_network,0,2,False,True
+35162,הר הרצל,Jerusalem,absent_from_bus_network,0,2,False,True
+35163,החלוץ,Jerusalem,absent_from_bus_network,0,2,False,True
+35164,החלוץ,Jerusalem,absent_from_bus_network,0,2,False,True
+37384,עכו,North,absent_from_bus_network,0,2,False,True
+40582,עפולה,North,absent_from_bus_network,0,2,False,True
+41078,ביה''ח בני ציון,North,absent_from_bus_network,0,2,False,True
+41079,מסדה,North,absent_from_bus_network,0,2,False,True
+41080,הנביאים,North,absent_from_bus_network,0,2,False,True
+41081,הדר העירייה,North,absent_from_bus_network,0,2,False,True
+41291,אחיהוד,North,absent_from_bus_network,0,2,False,True
+44795,טכניון מרכז,North,absent_from_bus_network,0,2,False,True
+49090,איסקוב,Center,absent_from_bus_network,0,2,False,True
+49091,אצטדיון בלומפילד,Center,absent_from_bus_network,0,2,False,True
+49092,אליפלט,Center,absent_from_bus_network,0,2,False,True
+49093,ארלוזורוב,Center,absent_from_bus_network,0,2,False,True
+49094,ביאליק,Center,absent_from_bus_network,0,2,False,True
+49097,שנקר,Center,absent_from_bus_network,0,2,False,True
+49098,קרול,Center,absent_from_bus_network,0,2,False,True
+49099,שלמה,Center,absent_from_bus_network,0,2,False,True
+49100,קרליבך,Center,absent_from_bus_network,0,2,False,True
+49101,אבא הלל,Center,absent_from_bus_network,0,2,False,True
+49102,גשר אם המושבות,Center,absent_from_bus_network,0,2,False,True
+49103,ז'בוטינסקי,Center,absent_from_bus_network,0,2,False,True
+49104,רוטשילד,Center,absent_from_bus_network,0,2,False,True
+49105,העצמאות,Center,absent_from_bus_network,0,2,False,True
+49107,בלינסון,Center,absent_from_bus_network,0,2,False,True
+49108,מחרוזת,Center,absent_from_bus_network,0,2,False,True
+49109,יהודית,Center,absent_from_bus_network,0,2,False,True
+49110,ארלוזורוב,Center,absent_from_bus_network,0,2,False,True
+49111,כ''ט בנובמבר,Center,absent_from_bus_network,0,2,False,True
+49112,יוספטל,Center,absent_from_bus_network,0,2,False,True
+49113,בלפור,Center,absent_from_bus_network,0,2,False,True
+49114,מחרוזת,Center,absent_from_bus_network,0,2,False,True
+49115,הבעש''ט,Center,absent_from_bus_network,0,2,False,True
+49116,אצטדיון בלומפילד,Center,absent_from_bus_network,0,2,False,True
+49118,בלפור,Center,absent_from_bus_network,0,2,False,True
+49119,העצמאות,Center,absent_from_bus_network,0,2,False,True
+49120,קרול,Center,absent_from_bus_network,0,2,False,True
+49121,ארליך,Center,absent_from_bus_network,0,2,False,True
+49122,שלמה,Center,absent_from_bus_network,0,2,False,True
+49123,אלנבי,Center,absent_from_bus_network,0,2,False,True
+49124,קרליבך,Center,absent_from_bus_network,0,2,False,True
+49126,העמל,Center,absent_from_bus_network,0,2,False,True
+49128,שנקר,Center,absent_from_bus_network,0,2,False,True
+49129,שחם,Center,absent_from_bus_network,0,2,False,True
+49130,דנקנר,Center,absent_from_bus_network,0,2,False,True
+49131,פינסקר,Center,absent_from_bus_network,0,2,False,True
+49133,איסקוב,Center,absent_from_bus_network,0,2,False,True
+49134,אליפלט,Center,absent_from_bus_network,0,2,False,True
+49135,אלנבי,Center,absent_from_bus_network,0,2,False,True
+49136,יהודית,Center,absent_from_bus_network,0,2,False,True
+49137,שאול המלך,Center,absent_from_bus_network,0,2,False,True
+49138,כ''ט בנובמבר,Center,absent_from_bus_network,0,2,False,True
+49139,בנימין,Center,absent_from_bus_network,0,2,False,True
+49140,שחם,Center,absent_from_bus_network,0,2,False,True
+49141,בלינסון,Center,absent_from_bus_network,0,2,False,True
+49142,דנקנר,Center,absent_from_bus_network,0,2,False,True
+49143,פינסקר,Center,absent_from_bus_network,0,2,False,True
+49144,הבעש''ט,Center,absent_from_bus_network,0,2,False,True
+49145,ביאליק,Center,absent_from_bus_network,0,2,False,True
+49146,בן גוריון,Center,absent_from_bus_network,0,2,False,True
+49147,יוספטל,Center,absent_from_bus_network,0,2,False,True
+49148,ארליך,Center,absent_from_bus_network,0,2,False,True
+49149,שאול המלך,Center,absent_from_bus_network,0,2,False,True
+49150,אבא הלל,Center,absent_from_bus_network,0,2,False,True
+49151,בן גוריון,Center,absent_from_bus_network,0,2,False,True
+49152,גשר אם המושבות,Center,absent_from_bus_network,0,2,False,True
+49153,העמל,Center,absent_from_bus_network,0,2,False,True
+49154,בנימין,Center,absent_from_bus_network,0,2,False,True
+49155,ז'בוטינסקי,Center,absent_from_bus_network,0,2,False,True
+49156,רוטשילד,Center,absent_from_bus_network,0,2,False,True
+49424,הנרייטה סאלד - מזרח,Jerusalem,absent_from_bus_network,0,2,False,True
+49428,יצחק טבנקין,Jerusalem,absent_from_bus_network,0,2,False,True
+49429,גן המפלצת,Jerusalem,absent_from_bus_network,0,2,False,True
+49430,מזל קשת,Jerusalem,absent_from_bus_network,0,2,False,True
+49432,משה דיין - צפון,Jerusalem,absent_from_bus_network,0,2,False,True
+49434,צומת אורה,Jerusalem,absent_from_bus_network,0,2,False,True
+49435,שמריהו לוין,Jerusalem,absent_from_bus_network,0,2,False,True
+49442,קריית היובל - מערב,Jerusalem,absent_from_bus_network,0,2,False,True
+49444,מזל קשת,Jerusalem,absent_from_bus_network,0,2,False,True
+49447,בית הספר לרפואה,Jerusalem,absent_from_bus_network,0,2,False,True
+49448,הנרייטה סאלד - מזרח,Jerusalem,absent_from_bus_network,0,2,False,True
+49449,גן המפלצת,Jerusalem,absent_from_bus_network,0,2,False,True
+49450,משה דיין - צפון,Jerusalem,absent_from_bus_network,0,2,False,True
+49453,יצחק טבנקין,Jerusalem,absent_from_bus_network,0,2,False,True
+49459,שמריהו לוין,Jerusalem,absent_from_bus_network,0,2,False,True
+49461,צומת אורה,Jerusalem,absent_from_bus_network,0,2,False,True
+49463,קריית מנחם,Jerusalem,absent_from_bus_network,0,2,False,True
+49467,בית הספר לרפואה,Jerusalem,absent_from_bus_network,0,2,False,True
+49468,קריית מנחם,Jerusalem,absent_from_bus_network,0,2,False,True
+49472,קריית היובל - מערב,Jerusalem,absent_from_bus_network,0,2,False,True
+34172,בסיס עובדה/ש''ג,South,all_modes_only,4,6,False,True
+10794,מסעף נחושה,Center,all_modes_only,3,5,False,True
+10811,צומת ליאון שריגים,Center,all_modes_only,2,4,False,True
+41133,מחלף חמד,Jerusalem,both,62,62,True,True
+9048,בן גוריון/שערי ירושלים,Jerusalem,both,41,41,True,True
+10775,גשר המיתרים/שד' הרצל,Jerusalem,both,37,37,True,True
+12975,מחלף לה גווארדייה,Center,both,34,34,True,True
+13246,בית ספר הולץ/חיל השריון,Center,both,31,31,True,True
+13322,המסגר/הרכב,Center,both,27,27,True,True
+9553,גשר המיתרים/שד' הרצל,Jerusalem,both,22,22,True,True
+13356,דרך קיבוץ גלויות/כביש 1,Center,both,20,20,True,True
+14355,מחלף מורשה,Center,both,20,20,True,True
+27623,מרכז רפואי סורוקה/אוניברסיטת בן גוריון,South,both,20,20,True,True
+23543,יסודות/מזכירות,Center,both,19,19,True,True
+28638,משה סנה,Center,both,19,19,True,True
+16205,בי''ח בלינסון/גשר מבצע ארנון,Center,both,17,17,True,True
+24787,צומת צריפין לצפון,Center,both,17,17,True,True
+359,הרצל/בנימין מינץ,Center,both,17,17,True,True
+25709,שוק עירוני/בית אשל,South,both,16,16,True,True
+3368,סחרוב,North,both,16,16,True,True
+48481,שדרות שז''ר/בנייני האומה,Jerusalem,both,16,16,True,True
+5048,קהילת ציון/שפרינצק,North,both,16,16,True,True
+5266,גן העיר/הגליל,North,both,16,16,True,True
+750,צומת רכבת ראש העין צפון,Center,both,16,16,True,True
+13946,ת. רכבת האוניברסיטה/שד' רוקח,Center,both,15,15,True,True
+2356,קניון לב המפרץ/ההסתדרות,North,both,15,15,True,True
+24713,ת. רכבת מודיעין מרכז,Center,both,15,15,True,True
+3437,גרנד קניון/שמחה גולן,North,both,15,15,True,True
+43374,המשנה,Center,both,15,15,True,True
+44001,קניון הנגב/יצחק בן צבי,South,both,15,15,True,True
+7561,צומת חשמונאים דרום,Center,both,15,15,True,True
+13214,מתחם מידטאון/דרך מנחם בגין,Center,both,14,14,True,True
+16061,השוק העירוני/לבקוביץ',Center,both,14,14,True,True
+25938,בן גוריון/נאות אשקלון,Center,both,14,14,True,True
+26659,השוק העירוני/שדרות דוד חכם,South,both,14,14,True,True
+11070,שד. לוי אשכול/הגלעד,Jerusalem,both,13,13,True,True
+13268,מחלף לה גווארדייה,Center,both,13,13,True,True
+22182,עירייה,Center,both,13,13,True,True
+22633,שדה תעופה בן גוריון/טרמינל 1,Center,both,13,13,True,True
+26122,בית רסקו/יצחק רגר,South,both,13,13,True,True
+50332,ת.רק''ל אבא הלל/דרך ז'בוטינסקי,Center,both,13,13,True,True
+8399,תחנת דלק/כוכב יעקב,Jerusalem,both,13,13,True,True
+8871,יצחק הנדיב/ואדי ג'וז,Jerusalem,both,13,13,True,True
+11292,שפע חיים/דורש טוב,Jerusalem,both,12,12,True,True
+12226,צומת אילות,South,both,12,12,True,True
+14339,ת. רכבת תל אביב - סבידור/על פרשת דרכים,Center,both,12,12,True,True
+17623,צומת נהריה,North,both,12,12,True,True
+19581,צומת אחיהוד,North,both,12,12,True,True
+21786,צומת כפר סבא רעננה צפון,Center,both,12,12,True,True
+22804,ישראל גלילי/הסחלב,Center,both,12,12,True,True
+24390,אחוזה/הרב יצחק נסים,Center,both,12,12,True,True
+25712,שוק עירוני/בית אשל,South,both,12,12,True,True
+25968,אלי כהן/יצחק בן צבי,Center,both,12,12,True,True
+25975,שדרות הפלמח/חטיבת כרמלי,Center,both,12,12,True,True
+47975,ת. מרכזית חדרה/רציפים,Center,both,12,12,True,True
+48462,הרטום/גולדה מאיר,Jerusalem,both,12,12,True,True
+8881,בי''ס ראשידה/סולטאן סולימאן,Jerusalem,both,12,12,True,True
+12990,בית הדר דפנה/שד' שאול המלך,Center,both,11,11,True,True
+13339,עזרא/דמשק אליעזר,Center,both,11,11,True,True
+17505,שדרות ההסתדרות/צומת הקריות,North,both,11,11,True,True
+20739,מסוף בית שאן/שדרות מנחם בגין,Center,both,11,11,True,True
+22099,ת. רק''ל בלינסון/קניון אבנת,Center,both,11,11,True,True
+22252,קניון עזריאלי,Jerusalem,both,11,11,True,True
+24404,וייצמן/רוטשילד,Center,both,11,11,True,True
+39779,אלי סיני/קטיף,South,both,11,11,True,True
+43422,שדרות מנחם בגין/שדרות הרצל,Center,both,11,11,True,True
+4634,שדרות הבנים/שד' שאול עמור,North,both,11,11,True,True
+8614,שדרות גולדה מאיר/המשורר אצ''ג,Jerusalem,both,11,11,True,True
+9056,שדרות דוד טוביהו/סוקולוב,South,both,11,11,True,True
+12495,בית חולים יוספטל/יותם,South,both,10,10,True,True
+13206,קריית הממשלה/דרך מנחם בגין,Center,both,10,10,True,True
+14057,אהרונוביץ/ קניון בני ברק,Center,both,10,10,True,True
+14356,חזון אי''ש/נחמיה,Center,both,10,10,True,True
+16237,מד''א/המכבים,Center,both,10,10,True,True
+18421,הפלמ''ח,North,both,10,10,True,True
+23671,פקריס/פלאוט,Center,both,10,10,True,True
+27529,שדרות מלכי ישראל/נתן אלבז,Center,both,10,10,True,True
+27530,שד. מלכי ישראל/רחבת גדעון בן יואש,Center,both,10,10,True,True
+27674,צומת מעון,South,both,10,10,True,True
+29310,המסגר/יד חרוצים,Center,both,10,10,True,True
+39830,דרך ארץ/אשל,Center,both,10,10,True,True
+43905,מצודת אדומים,Jerusalem,both,10,10,True,True
+49466,מסוף הר נוף/כנפי נשרים,Jerusalem,both,10,10,True,True
+5373,יהודה הלוי/דנילוף סנטר,North,both,10,10,True,True
+8439,צומת חטיבה שבע/לטרון,Jerusalem,both,10,10,True,True
+11227,צומת אורה,Jerusalem,both,9,9,True,True
+13239,ביה''ח איכילוב/ויצמן,Center,both,9,9,True,True
+1340,ספרייה/הדגן,North,both,9,9,True,True
+1359,דרך אהרון/דרך שרה,North,both,9,9,True,True
+16940,צומת זכרון יעקב/כביש 4,North,both,9,9,True,True
+21321,כביש 44/דרך חיים הרצוג,Center,both,9,9,True,True
+23193,הפקולטה לחקלאות,Center,both,9,9,True,True
+23259,בר כוכבא/ליברכט,Center,both,9,9,True,True
+24763,צומת חולון,Center,both,9,9,True,True
+43772,שדרות יחד שבטי ישראל/שבט שמעון,Center,both,9,9,True,True
+7604,צומת חטיבה שבע,Jerusalem,both,9,9,True,True
+11302,מעלה הזיתים,Jerusalem,both,8,8,True,True
+13219,שד' רוקח/בכור שטרית,Center,both,8,8,True,True
+13632,המסגר/ריב''ל,Center,both,8,8,True,True
+15255,תחנת רכבת לוד/יוספטל,Center,both,8,8,True,True
+19486,תל חי/סיני,North,both,8,8,True,True
+21507,הרצל/סוקולוב,Center,both,8,8,True,True
+22261,ת. רכבת רחובות,Center,both,8,8,True,True
+23491,רבי יהודה הנשיא/רבי שמעון בן שטח,Center,both,8,8,True,True
+24239,בית לוינשטיין/אחוזה,Center,both,8,8,True,True
+24243,מוסד חינוכי כפר בתיה/דרך ירושלים,Center,both,8,8,True,True
+24722,אנה פרנק/הקוממיות,Center,both,8,8,True,True
+24765,הרצל/שדרות תש''ח,Center,both,8,8,True,True
+34492,רמת הגולן/אדום,Center,both,8,8,True,True
+39563,בגין/הרצל,South,both,8,8,True,True
+4530,קאנטרי קלאב/שדרות יצחק רבין,North,both,8,8,True,True
+4671,אורט יגאל אלון/מעלה יצחק,North,both,8,8,True,True
+48898,ביג שער העיר,North,both,8,8,True,True
+48914,רכבת/מסוף ביג,Center,both,8,8,True,True
+50229,מבצע קדש/יהודה לייב פינסקר,Center,both,8,8,True,True
+51992,מסוף פדואל,Center,both,8,8,True,True
+8862,נהר הירקון/נהר הירדן,Jerusalem,both,8,8,True,True
+8947,חטיבת ירושלים/ יצחק קריב,Jerusalem,both,8,8,True,True
+10356,שדרות גולדה מאיר/בנימין מינץ,Jerusalem,both,7,7,True,True
+10591,שד. לוי אשכול/שד. יהודה בן זאב,Jerusalem,both,7,7,True,True
+12625,ת. מרכזית אילת/שדרות התמרים,South,both,7,7,True,True
+12838,אלוף שדה/הירדן,Center,both,7,7,True,True
+13187,דבורה הנביאה/ראול ולנברג,Center,both,7,7,True,True
+18177,מסעף נחף,North,both,7,7,True,True
+21354,הזית/קרן היסוד,Center,both,7,7,True,True
+22203,מבוא רעות/יפה נוף,Jerusalem,both,7,7,True,True
+24237,מרכז מסחרי מול הפארק/דרך ירושלים,Center,both,7,7,True,True
+3228,מת''מ/ההגנה,North,both,7,7,True,True
+324,שד. בנימין/שד. ירושלים,Center,both,7,7,True,True
+3431,נווה גנים,North,both,7,7,True,True
+34493,רמת הגולן/אדום,Center,both,7,7,True,True
+35837,נווה גנים,North,both,7,7,True,True
+37221,מחנה נבטים,South,both,7,7,True,True
+41045,קאנטרי קלאב/שדרות יואש דובנוב,North,both,7,7,True,True
+41675,ת. רכבת כרמיאל/רציפים,North,both,7,7,True,True
+44260,זכריה הנביא/אליהו הנביא,Jerusalem,both,7,7,True,True
+44501,שדרות נעמי שמר/אליהו,Center,both,7,7,True,True
+44669,הטוחן/גרניט,Center,both,7,7,True,True
+47432,הרכבת/המסגר,Center,both,7,7,True,True
+4761,צומת מחנה גדעון,North,both,7,7,True,True
+49329,הרכבת/ראש פינה,Center,both,7,7,True,True
+8781,משרד המשפטים/צלאח א דין,Jerusalem,both,7,7,True,True
+10238,שדרות משה דיין/שדרות נווה יעקב,Jerusalem,both,6,6,True,True
+11865,ירמיהו/הצבי,Jerusalem,both,6,6,True,True
+11962,גילת/בטחה,South,both,6,6,True,True
+12164,דרך הערבה/יותם,South,both,6,6,True,True
+13321,המסגר/לה גווארדייה,Center,both,6,6,True,True
+153,יהודה שטיין/קרן היסוד,Center,both,6,6,True,True
+15604,החרושת/מעלה המגדל,Center,both,6,6,True,True
+15826,צומת חמד,Center,both,6,6,True,True
+15860,רוז'נסקי/משה לוי,Center,both,6,6,True,True
+18429,מרכז מסחרי/שדרות מעלה יצחק,North,both,6,6,True,True
+20997,אל-עומאל אל-ערב/אום קוביי,North,both,6,6,True,True
+21186,מרכז מסחרי/שדרות מעלה יצחק,North,both,6,6,True,True
+23299,ת. רכבת קרית אריה,Center,both,6,6,True,True
+2394,מחלף העמקים/ג'למה,North,both,6,6,True,True
+262,התרופה/אריה רגב,Center,both,6,6,True,True
+28710,בית ספר אבו באכר,South,both,6,6,True,True
+3367,סחרוב,North,both,6,6,True,True
+34581,'איתמר א,Center,both,6,6,True,True
+35,רשות שדות התעופה/העליה,Center,both,6,6,True,True
+35356,שער הגלבוע/אתר הסקי,North,both,6,6,True,True
+3549,מחלף עתלית,North,both,6,6,True,True
+35529,כפר הנשיא,North,both,6,6,True,True
+35772,רפא''ל,North,both,6,6,True,True
+37804,קניון אושילנד/עתיר ידע,Center,both,6,6,True,True
+39097,ביה''ס ראשונים,Center,both,6,6,True,True
+41810,חיים הרצוג/נתן אלתרמן,Center,both,6,6,True,True
+42785,הרצל/משה הס,Center,both,6,6,True,True
+42807,מחלף העמקים/אלרואי,North,both,6,6,True,True
+43699,אליהו הנביא/שדרות נהר הירקון,Jerusalem,both,6,6,True,True
+46704,דרך מנחם בגין/דרך הרב שלום איפרגן,South,both,6,6,True,True
+49772,מנחם בגין/דרך ארץ,Center,both,6,6,True,True
+50065,תרמ''ג/דרך יצחק רבין,Center,both,6,6,True,True
+5017,קניון/שאול עמור,North,both,6,6,True,True
+5238,דוד אלעזר/לח''י,North,both,6,6,True,True
+5623,צומת צפת דרום/אזור התעשיה,North,both,6,6,True,True
+7360,מתנ''ס עירוני/רבי נחמן מברסלב,Center,both,6,6,True,True
+7935,טורקיז/ענבר,Center,both,6,6,True,True
+8070,פני קדם,Center,both,6,6,True,True
+10079,המפלצת/טהון,Jerusalem,both,5,5,True,True
+12274,צומת באר אורה/נמל תעופה רמון,South,both,5,5,True,True
+12289,מסעף קבוץ עין גדי,South,both,5,5,True,True
+12757,מסוף אגד/קניון פרץ סנטר,South,both,5,5,True,True
+13733,יהודה המכבי/דרך נמיר,Center,both,5,5,True,True
+1542,הרימון/רויטל,North,both,5,5,True,True
+15836,מסעף צפריה,Center,both,5,5,True,True
+15949,מחמוד דרוויש/אלבוחארי,Center,both,5,5,True,True
+16867,מחנה תל נוף,Center,both,5,5,True,True
+17046,גן ציבורי/הגפן,North,both,5,5,True,True
+17054,מסעף עוקף דליה,North,both,5,5,True,True
+17225,מרכז רפואי שהם/דרך הנדיב,Center,both,5,5,True,True
+18210,חיילים משוחררים ג,North,both,5,5,True,True
+18409,אצ''ל/דרך הרב חיים חורי,North,both,5,5,True,True
+18578,הנחלים/הר וגיא,North,both,5,5,True,True
+19277,שעב/כביש ראשי,North,both,5,5,True,True
+19446,ישיבת הסדר,North,both,5,5,True,True
+19458,הגיבורים/השיטה,North,both,5,5,True,True
+20680,צומת כפר יהושע,North,both,5,5,True,True
+21512,בן גוריון/כצנלסון,Center,both,5,5,True,True
+24706,מכבים/בזלת,Center,both,5,5,True,True
+25059,איקאה/היוזמה,Center,both,5,5,True,True
+25353,תחנת רכבת קוממיות,Center,both,5,5,True,True
+26841,מואב/לשם,South,both,5,5,True,True
+26842,מואב/לשם,South,both,5,5,True,True
+2753,מרכז דאליית אל כרמל,North,both,5,5,True,True
+28153,בי''ס משען/גיבורי תשכ''ז,South,both,5,5,True,True
+28450,אזור תעשיה רהט,South,both,5,5,True,True
+28451,אזור תעשיה רהט,South,both,5,5,True,True
+28734,מועצה מקומית,South,both,5,5,True,True
+28799,משה סנה/מנחם בגין,Center,both,5,5,True,True
+34238,מוזיאון המדע/שד' המוזיאונים,Jerusalem,both,5,5,True,True
+35195,מסגד אל רחמה,South,both,5,5,True,True
+38161,מחנה ענתות,Jerusalem,both,5,5,True,True
+39156,ש.ג בסיס פלמחים,Center,both,5,5,True,True
+39624,שדרות מנחם בגין/הגדוד העיברי,Center,both,5,5,True,True
+39784,גני טל/כיכר,South,both,5,5,True,True
+39840,טבעת דרומית,Center,both,5,5,True,True
+41913,עמק חפר/עין שוקק,Center,both,5,5,True,True
+42472,קדר,Center,both,5,5,True,True
+42908,דרך ארץ/אשל,Center,both,5,5,True,True
+43324,בר כוכבא/ת.מרכזית פתח תקווה,Center,both,5,5,True,True
+4339,תל חי/הירדן,North,both,5,5,True,True
+44055,שדרות דרך ארץ/שדרות ההגשמה,Center,both,5,5,True,True
+48974,דרך ארץ/מנחם בגין,Center,both,5,5,True,True
+49372,דבורה הנביאה/ראול ולנברג,Center,both,5,5,True,True
+50250,אברהם בר/דוד סחרוב,Center,both,5,5,True,True
+7221,בריכה,North,both,5,5,True,True
+7344,קדושת לוי/הר''ן,Jerusalem,both,5,5,True,True
+7392,קדושת לוי/שלום רב,Jerusalem,both,5,5,True,True
+10169,גן החיות התנ''כי,Jerusalem,both,4,4,True,True
+10532,רב החובל/אדם,Jerusalem,both,4,4,True,True
+11079,מחלף הרטוב,Jerusalem,both,4,4,True,True
+11147,בית חולים,Jerusalem,both,4,4,True,True
+11156,קיבוץ צובה,Jerusalem,both,4,4,True,True
+11204,הדקלים/הרימון,Jerusalem,both,4,4,True,True
+11205,הדקלים/המעיין,Jerusalem,both,4,4,True,True
+11221,קיבוץ מעלה החמישה,Jerusalem,both,4,4,True,True
+11441,אשר וינר/דרך חברון,Jerusalem,both,4,4,True,True
+11448,מסוף חומת שמואל/אליהו קורן,Jerusalem,both,4,4,True,True
+11556,כביש 395/כביש 386,Jerusalem,both,4,4,True,True
+11623,שער יפו/יפו,Jerusalem,both,4,4,True,True
+1248,דרך העצמאות/הנביאים,North,both,4,4,True,True
+12936,קמפוס ברושים/שלום רוזנפלד,Center,both,4,4,True,True
+13328,לה גווארדייה/המעפילים,Center,both,4,4,True,True
+13734,יהודה המכבי/דרך נמיר,Center,both,4,4,True,True
+17047,הרב שמעונוביץ/הרב קוק,North,both,4,4,True,True
+17097,כיכר מזרחית,North,both,4,4,True,True
+17861,אדמית מרכז,North,both,4,4,True,True
+18225,מסעף נבי סבלאן,North,both,4,4,True,True
+18580,המעוף/הר וגיא,North,both,4,4,True,True
+18970,כפר גלעדי,North,both,4,4,True,True
+19202,כנסייה קתולית ב,North,both,4,4,True,True
+19221,העיר הוותיקה ג,North,both,4,4,True,True
+19573,גני ילדים מרכז,North,both,4,4,True,True
+20128,איבטין טחנת קמח,North,both,4,4,True,True
+20556,מועצה מקומית,North,both,4,4,True,True
+20848,חיים משה שפירא/דוכיפת,North,both,4,4,True,True
+20963,כיכר אל-משארף/ספוריה,North,both,4,4,True,True
+21343,הבנים/נצר סירני,Center,both,4,4,True,True
+23143,ד''ר משה סנה/ברקן,Center,both,4,4,True,True
+23676,אופנהיימר/ברגמן,Center,both,4,4,True,True
+2412,הגפן/האלונים,North,both,4,4,True,True
+2471,איינשטיין/אסף שמחוני,North,both,4,4,True,True
+25398,אזור/מר. שפינוזה,Center,both,4,4,True,True
+27621,שדה ניצן מרכז,South,both,4,4,True,True
+28215,בית ספר חאמד,South,both,4,4,True,True
+28237,בית ספר חאמד,South,both,4,4,True,True
+28324,ניצנה/כפר נוער,South,both,4,4,True,True
+28441,התחנה לבריאות המשפחה,South,both,4,4,True,True
+28442,התחנה לבריאות המשפחה,South,both,4,4,True,True
+28685,בית ספר חופים,Center,both,4,4,True,True
+28840,אחת עשרה הנקודות/שדרות וייצמן,South,both,4,4,True,True
+28991,כפר מימון,South,both,4,4,True,True
+2968,מרכז העיר 1,North,both,4,4,True,True
+34298,לשם/הברקת,North,both,4,4,True,True
+34304,לשם/הברקת,North,both,4,4,True,True
+34763,ארץ חמדה/יהודה המכבי,Center,both,4,4,True,True
+34829,טל מנשה/מרכז,Center,both,4,4,True,True
+35333,אום אל גנם,North,both,4,4,True,True
+35386,עין הנציב,Center,both,4,4,True,True
+35771,רפא''ל,North,both,4,4,True,True
+35917,עין איברהים/כניסה,North,both,4,4,True,True
+35918,עין איברהים/יציאה,North,both,4,4,True,True
+37733,לוחמי הגטאות/בר כוכבא,Jerusalem,both,4,4,True,True
+37734,לוחמי הגטאות/בר כוכבא,Jerusalem,both,4,4,True,True
+37834,גן החיות התנ''כי,Jerusalem,both,4,4,True,True
+38356,שלום הגליל/טניס,North,both,4,4,True,True
+39642,קיבוץ גלויות/הרצל,South,both,4,4,True,True
+39829,גפן/אשל,Center,both,4,4,True,True
+40345,אזור תעשייה שחורת/כביש 90,South,both,4,4,True,True
+40443,ת''ת עצמונה/שומריה,South,both,4,4,True,True
+40476,מתחם 4 מזרח,South,both,4,4,True,True
+40551,ביר באקה/אלמליאת,Center,both,4,4,True,True
+41102,הזית/הורד,South,both,4,4,True,True
+41222,שגיא 2000/כביש 7255,North,both,4,4,True,True
+41340,האופה/שדרות המלאכות,Jerusalem,both,4,4,True,True
+41341,האופה/שדרות המקצועות,Jerusalem,both,4,4,True,True
+41786,ת. רכבת אחיהוד/רציפים,North,both,4,4,True,True
+41796,ת. רכבת אחיהוד/רציפים,North,both,4,4,True,True
+42452,הרבי מלובאוויטש/הרב עובדיה יוסף,South,both,4,4,True,True
+43131,קיבוץ נווה איתן,Center,both,4,4,True,True
+43826,הגליל/הירדן,Center,both,4,4,True,True
+43962,עין ח'אלד/עין אל מג'ארה,North,both,4,4,True,True
+44061,קידמה/החלומות,Center,both,4,4,True,True
+44390,נמל תעופה רמון/יציאה,South,both,4,4,True,True
+44681,חונים נוסעים ראשון לציון/דרך ההצלחה,Center,both,4,4,True,True
+4698,רמת צבי,North,both,4,4,True,True
+47884,בית העלמין החדש,South,both,4,4,True,True
+4816,בית ספר,North,both,4,4,True,True
+48439,צומת כפר הרי''ף,Center,both,4,4,True,True
+49050,הרבי מלובאוויטש/דניאל כהנמן,South,both,4,4,True,True
+49750,הרדוף/יציאה,North,both,4,4,True,True
+49757,פרנק,Jerusalem,both,4,4,True,True
+50374,חניון שפירים מערבי א/הורדה,Center,both,4,4,True,True
+5042,מגן שאול,North,both,4,4,True,True
+5054,קיבוץ מעוז חיים,Center,both,4,4,True,True
+50627,אזור תעשייה/לח''י,Center,both,4,4,True,True
+50631,אזור תעשייה/לח''י,Center,both,4,4,True,True
+50832,האלון/הרימון,North,both,4,4,True,True
+51868,הרב ניסים טולדנו/דגן,Center,both,4,4,True,True
+5745,כפר חיטים,North,both,4,4,True,True
+6080,שלום הגליל/קניון עכו,North,both,4,4,True,True
+7676,מערת המכפלה,South,both,4,4,True,True
+8302,שדרות אדם/437,Jerusalem,both,4,4,True,True
+8907,מחסום ענאתא/דרך ענתות,Jerusalem,both,4,4,True,True
+8926,אל תווחיד/אל בטמה,Jerusalem,both,4,4,True,True
+10628,ככר השבת/שטראוס,Jerusalem,both,3,3,True,True
+12404,ספריה עירונית/חטיבת הנגב,South,both,3,3,True,True
+13752,שד' רוקח/דרך נמיר,Center,both,3,3,True,True
+15294,נירים/צמרות,Center,both,3,3,True,True
+15782,בית עלמין,Center,both,3,3,True,True
+17040,דרך קרית עמל/אליהו התשבי,North,both,3,3,True,True
+17241,הארזים/האורנים,North,both,3,3,True,True
+1810,השקדים/ציפורנים,North,both,3,3,True,True
+190,חוף פולג/רמת פולג,Center,both,3,3,True,True
+19281,מזרקה,North,both,3,3,True,True
+19697,כיכר מרכז האזרחי,North,both,3,3,True,True
+20210,קורנית,North,both,3,3,True,True
+20437,מרכז מסחרי/שפירא,North,both,3,3,True,True
+20874,הושעיה/ש.ג.מ. ציפורית,North,both,3,3,True,True
+2201,בית אלפא/דגניה,North,both,3,3,True,True
+2294,קופת חולים/ויצמן,North,both,3,3,True,True
+23694,אזור תעשיה סנטרל פארק 2000/עתיר ידע,Center,both,3,3,True,True
+23695,אזור תעשיה סנטרל פארק 2000/עתיר ידע,Center,both,3,3,True,True
+24653,הדס/הכלנית,Center,both,3,3,True,True
+25467,כיכר הטפטפת/דרך ג'ו יוסף אלון,South,both,3,3,True,True
+25826,שוק עירוני/דרך חברון,South,both,3,3,True,True
+26431,הכשרת היישוב/הזורע,South,both,3,3,True,True
+26668,הספרייה,South,both,3,3,True,True
+26757,שד. חברון/פרג,South,both,3,3,True,True
+26792,התעשייה/פלדה,South,both,3,3,True,True
+26875,דרך הראל/בארי,South,both,3,3,True,True
+26985,אוהד מרכז,South,both,3,3,True,True
+27023,בסיס בינוי מרחב,South,both,3,3,True,True
+27316,כרמיה,Center,both,3,3,True,True
+27486,צבר/שדרות אבץ,Center,both,3,3,True,True
+27493,שד. ישראל פולק/כסלו,Center,both,3,3,True,True
+27709,גילת/כניסה ראשית,South,both,3,3,True,True
+27926,עין השלושה מרכז,South,both,3,3,True,True
+27927,מחנה אמיתי,South,both,3,3,True,True
+27928,מחנה צאלים,South,both,3,3,True,True
+28723,בית ספר אבו באכר,South,both,3,3,True,True
+28740,מרכז מסחרי,South,both,3,3,True,True
+29325,זיסמן/דרך בגין,Center,both,3,3,True,True
+3149,השיטה/מגרשי טניס,North,both,3,3,True,True
+3159,מנחם בגין/שניאורסון,North,both,3,3,True,True
+3302,הרר/האורן,North,both,3,3,True,True
+34796,חרמש/מרכז,Center,both,3,3,True,True
+3500,שאגאל/הנרי מטיס,North,both,3,3,True,True
+3516,שאגאל/סזאן,North,both,3,3,True,True
+35194,בית ספר א זהרא,South,both,3,3,True,True
+35353,שדה אליהו,Center,both,3,3,True,True
+35361,קיבוץ מעלה גלבוע,Center,both,3,3,True,True
+35564,בית ספר כפאר עקב,Jerusalem,both,3,3,True,True
+35879,מרפאה/מחג'נה,North,both,3,3,True,True
+3703,צומת אלמחרקה,North,both,3,3,True,True
+37061,צים סנטר/התעשייה,South,both,3,3,True,True
+3709,שאגאל/סרה,North,both,3,3,True,True
+37607,הנפח/מעלה כמון,North,both,3,3,True,True
+37624,הנפח/מעלה כמון,North,both,3,3,True,True
+37803,קניון אושילנד/עתיר ידע,Center,both,3,3,True,True
+38114,עין קיניא/כניסה צפונית,North,both,3,3,True,True
+38168,מקלט ציבורי אלעריד,North,both,3,3,True,True
+38215,עין קיניא/יציאה צפונית,North,both,3,3,True,True
+38772,דוכיפת,North,both,3,3,True,True
+38918,שכונת הרחבה חדשה,North,both,3,3,True,True
+38919,שכונת הרחבה חדשה בית 189,North,both,3,3,True,True
+395,הגפן/השקד,Center,both,3,3,True,True
+396,הגפן/השקד,Center,both,3,3,True,True
+39652,אל עזי א,Center,both,3,3,True,True
+4032,האילן/ההדס,North,both,3,3,True,True
+4047,האילן/ההדס,North,both,3,3,True,True
+40666,משה שרת/משאבים,Center,both,3,3,True,True
+40976,ב''ס אל אמל,North,both,3,3,True,True
+41107,ניר עוז מרכז,South,both,3,3,True,True
+41122,עלי בן אבי טאלב,North,both,3,3,True,True
+41123,עלי בן אבי טאלב/כניסה מערבית,North,both,3,3,True,True
+41141,עוזייר שכונה דרומית 3,North,both,3,3,True,True
+41142,עוזייר שכונה דרומית 1,North,both,3,3,True,True
+41540,הכשרת הישוב/הבונים,South,both,3,3,True,True
+42497,שדרות אריק שרון/שדרות קרן הידידות,Center,both,3,3,True,True
+42498,שדרות אריק שרון/שדרות קרן הידידות,Center,both,3,3,True,True
+43317,אמרי סופר/הרב אלישיב,Jerusalem,both,3,3,True,True
+43628,התן/חי בר,Jerusalem,both,3,3,True,True
+43629,התן/הלביא,Jerusalem,both,3,3,True,True
+44006,אמרי סופר/שבט הלוי,Jerusalem,both,3,3,True,True
+47006,אשר וינר/לייב יפה,Jerusalem,both,3,3,True,True
+4839,נעורה כיכר,North,both,3,3,True,True
+48822,אל תווחיד/דב יוסף,Jerusalem,both,3,3,True,True
+49031,שדרות ששת הימים/שדרות הבאבא סאלי,North,both,3,3,True,True
+49786,אהרון שמי/אהרונסון,Center,both,3,3,True,True
+50037,בית עלמין בית שאן/כביש 90,North,both,3,3,True,True
+50069,חנה וסע מבואות אילת,South,both,3,3,True,True
+5106,קיבוץ שלוחות,Center,both,3,3,True,True
+51759,צומת איילת השחר,Center,both,3,3,True,True
+51802,קופות חולים/איילת השחר,Center,both,3,3,True,True
+5247,קיבוץ חוקוק,North,both,3,3,True,True
+5754,ראס אל חביה 2,North,both,3,3,True,True
+6554,מועצה מקומית,North,both,3,3,True,True
+6648,מגרש כדורגל,North,both,3,3,True,True
+6667,פקיעין חיילים משוחררים מגרש כדורגל,North,both,3,3,True,True
+7074,מכמנים מרכז,North,both,3,3,True,True
+7401,חזון איש/ חתם סופר,Center,both,3,3,True,True
+7413,חזו'א / חתם סופר,Center,both,3,3,True,True
+7873,מעלה מכמש,Center,both,3,3,True,True
+8588,אלמשאהד ג',Jerusalem,both,3,3,True,True
+8744,שמואל הנביא/יקים,Jerusalem,both,3,3,True,True
+8956,אל בוטמה,Jerusalem,both,3,3,True,True
+8978,קיבוץ נחשון,Jerusalem,both,3,3,True,True
+9340,עין כרם/שד' הרצל,Jerusalem,both,3,3,True,True
+9579,אורוגואי/מרקו ברוך,Jerusalem,both,3,3,True,True
+10697,עין כרם/ההדסים,Jerusalem,both,2,2,True,True
+10744,עיסאוויה כניסה מזרחית,Jerusalem,both,2,2,True,True
+11044,מאפיות אנגל,Jerusalem,both,2,2,True,True
+11089,חברת חשמל,Jerusalem,both,2,2,True,True
+11199,נבעה,Jerusalem,both,2,2,True,True
+11200,נבעה,Jerusalem,both,2,2,True,True
+11203,מרכז מסחרי,Jerusalem,both,2,2,True,True
+11314,2 אום טובא,Jerusalem,both,2,2,True,True
+11555,עין כרם/המעיין,Jerusalem,both,2,2,True,True
+11720,צ'ילה/קורצ'אק,Jerusalem,both,2,2,True,True
+11915,עין כרם/דרך כרמית,Jerusalem,both,2,2,True,True
+13735,הרב הרצוג/הזוהר,Center,both,2,2,True,True
+13736,הרב הרצוג/הזוהר,Center,both,2,2,True,True
+13737,הרב הרצוג/בבלי,Center,both,2,2,True,True
+13753,בבלי/הכנסת הגדולה,Center,both,2,2,True,True
+13754,הרב קוסובסקי/בבלי,Center,both,2,2,True,True
+13755,תוספתא/ירושלמי,Center,both,2,2,True,True
+13756,הכנסת הגדולה/תוספתא,Center,both,2,2,True,True
+13940,שטיינמן/הרב קוסובסקי,Center,both,2,2,True,True
+13941,הרב קוסובסקי/שטיינמן,Center,both,2,2,True,True
+15676,ישיבת מאור יצחק,Center,both,2,2,True,True
+17065,שכונת ח'אלת עלי 3,North,both,2,2,True,True
+17067,שכונת ח'אלת עלי 4,North,both,2,2,True,True
+17095,שכונת זוחלוק,North,both,2,2,True,True
+17124,קופת חולים מכבי,North,both,2,2,True,True
+17125,קופת חולים מכבי,North,both,2,2,True,True
+17127,שכונת ח'אלת עלי 2,North,both,2,2,True,True
+17128,שכונת ח'אלת עלי 2,North,both,2,2,True,True
+17184,אלרוגמה,North,both,2,2,True,True
+17185,אלרוגמה,North,both,2,2,True,True
+188,החוף הירוק,Center,both,2,2,True,True
+18827,בר לב/כניסה,North,both,2,2,True,True
+18864,מועצה מקומית,North,both,2,2,True,True
+19460,מעלה הרקפות/הציפורנים,North,both,2,2,True,True
+19462,דרך העמק/נחל קרת,North,both,2,2,True,True
+19465,דרך העמק/נתיב הנוטרים,North,both,2,2,True,True
+19466,הגורן/הגיא,North,both,2,2,True,True
+19590,מרכז,North,both,2,2,True,True
+19645,מרפאת שיניים,North,both,2,2,True,True
+19646,מרפאת שיניים,North,both,2,2,True,True
+19647,מפעל חומרי בנין,North,both,2,2,True,True
+19727,תיכון,North,both,2,2,True,True
+19730,בי''ס מקיף סעדיה,North,both,2,2,True,True
+19870,דרך העמק/מעלה הבנים,North,both,2,2,True,True
+19909,שכניה,North,both,2,2,True,True
+21706,סביון/שדרות נעמי שמר,Center,both,2,2,True,True
+21707,אליהו/סביון,Center,both,2,2,True,True
+21708,אליהו/הזית,Center,both,2,2,True,True
+22332,הרימון/מבוא הגפן,Center,both,2,2,True,True
+22827,בית ספר עמל,Center,both,2,2,True,True
+22873,באר,Center,both,2,2,True,True
+22961,בית ספר עמל,Center,both,2,2,True,True
+23248,התמר/מבוא התאנה,Center,both,2,2,True,True
+2405,הגפן/האלונים,North,both,2,2,True,True
+25139,הזית/הרימון,Center,both,2,2,True,True
+25142,הרימון/מבוא הגפן,Center,both,2,2,True,True
+25144,הרימון/כביש 412,Center,both,2,2,True,True
+25463,שכונה 27,South,both,2,2,True,True
+25466,שכונה 31,South,both,2,2,True,True
+25468,מרכז פיס,South,both,2,2,True,True
+25791,הברזל/הקוצר,South,both,2,2,True,True
+2614,גיבורי התהילה/עבודת ישראל,North,both,2,2,True,True
+26432,הקוצר/הכשרת היישוב,South,both,2,2,True,True
+27487,שד. אבץ/שד. הפלטינה,Center,both,2,2,True,True
+27489,שד. אבץ/שד. ישראל פולק,Center,both,2,2,True,True
+27492,אזור תעשיה/שדרות ישראל פולק,Center,both,2,2,True,True
+27495,שד. ישראל פולק/כסלו,Center,both,2,2,True,True
+28331,שכונה 31,South,both,2,2,True,True
+28334,בית ספר אל רחמה,South,both,2,2,True,True
+28597,מרכז פיס,South,both,2,2,True,True
+28687,זיקים,Center,both,2,2,True,True
+28706,מועצה מקומית,South,both,2,2,True,True
+28711,מרכז פיס קהילתי,South,both,2,2,True,True
+28712,בית ספר קהילתי חטיבת ביניים,South,both,2,2,True,True
+28713,תיכון מקיף עמל,South,both,2,2,True,True
+28715,בית ספר אלאנדלוס,South,both,2,2,True,True
+28716,שכונה 7,South,both,2,2,True,True
+28719,בית הספר אנדלוס,South,both,2,2,True,True
+28722,תיכון מקיף עמל,South,both,2,2,True,True
+28738,מרכז מסחרי,South,both,2,2,True,True
+28739,מועצה מקומית,South,both,2,2,True,True
+28835,בעלי המלאכה/טראסק,South,both,2,2,True,True
+28836,בעלי המלאכה/הצורף,South,both,2,2,True,True
+28837,בעלי המלאכה/החרש,South,both,2,2,True,True
+28980,שכונה 38,South,both,2,2,True,True
+28981,שכונה 38,South,both,2,2,True,True
+28982,רפח/אלרמלה,South,both,2,2,True,True
+28983,רפח/אלרמלה,South,both,2,2,True,True
+33948,הבנקים/אלבלדיה,Center,both,2,2,True,True
+34299,הצור/הברזל,North,both,2,2,True,True
+34313,הרב שלום שבזי/אזור תעשייה ערבה,Center,both,2,2,True,True
+34314,הרב שלום שבזי/אזור תעשייה ערבה,Center,both,2,2,True,True
+34498,רמת הגולן/הגלבוע,Center,both,2,2,True,True
+34499,מעונות סטודנטים/רמת הגולן,Center,both,2,2,True,True
+34500,מעונות סטודנטים/רמת הגולן,Center,both,2,2,True,True
+34501,אוניברסיטת אריאל/רמת הגולן,Center,both,2,2,True,True
+34659,אוניברסיטת אריאל/רמת הגולן,Center,both,2,2,True,True
+3499,שאגאל/פיקסו,North,both,2,2,True,True
+3513,שאגאל/ואן גוך,North,both,2,2,True,True
+3514,שאגאל/רנואר,North,both,2,2,True,True
+3515,שאגאל/קדנדינסקי,North,both,2,2,True,True
+3518,שאגאל/קנדינסקי,North,both,2,2,True,True
+35387,קיבוץ מירב,Center,both,2,2,True,True
+35611,בר לב יציאה,North,both,2,2,True,True
+35657,שאגאל/דה גויה,North,both,2,2,True,True
+35658,שאגאל/דגה,North,both,2,2,True,True
+35847,קורצ'אק/רינגלבלום,Jerusalem,both,2,2,True,True
+35957,ניסן/גרונולד,Jerusalem,both,2,2,True,True
+36072,חבצלת/הארז,North,both,2,2,True,True
+36073,דרך העצמאות/נורית,North,both,2,2,True,True
+36078,חרצית/האשל,North,both,2,2,True,True
+36119,דרך ניל''י/ההגנה,North,both,2,2,True,True
+37164,בר לב א,North,both,2,2,True,True
+37522,שגב שלום/מרכז מסחרי,South,both,2,2,True,True
+38170,חיילים משוחררים ד,North,both,2,2,True,True
+38171,חיילים משוחררים ג,North,both,2,2,True,True
+38173,כפר ילדים דרוזי,North,both,2,2,True,True
+38182,חיילים משוחררים ב,North,both,2,2,True,True
+38183,שכונת חיילים משוחררים א,North,both,2,2,True,True
+38206,שכונת שאלאקה/לדרום,North,both,2,2,True,True
+38208,עין קיניא/כיכר לצפון,North,both,2,2,True,True
+38210,עין קיניא/מרכז לדרום,North,both,2,2,True,True
+38211,שלאלי/כניסה,North,both,2,2,True,True
+38212,שלאלי/יציאה,North,both,2,2,True,True
+38213,דרך דהור/יציאה,North,both,2,2,True,True
+38214,דרך דהור/כניסה,North,both,2,2,True,True
+38554,אל-סנדיאן,North,both,2,2,True,True
+38555,בי''ס טכנולוגי,North,both,2,2,True,True
+38556,בי''ס טכנולוגי,North,both,2,2,True,True
+38557,צומת דאליה הצעירה,North,both,2,2,True,True
+38558,מצפה כרמל,North,both,2,2,True,True
+38559,מצפה כרמל,North,both,2,2,True,True
+38565,אל-סנדיאן,North,both,2,2,True,True
+38566,מוחרקה 1,North,both,2,2,True,True
+38771,דוכיפת/סנונית,North,both,2,2,True,True
+38773,דוכיפת,North,both,2,2,True,True
+38774,מחלף טל,North,both,2,2,True,True
+39290,רינגלבלום א,Jerusalem,both,2,2,True,True
+39291,רינגלבלום א,Jerusalem,both,2,2,True,True
+39373,דרור/אנפה,South,both,2,2,True,True
+39374,דרור/קנריות,South,both,2,2,True,True
+39703,המחצבה/תחילת המגרשים,North,both,2,2,True,True
+39704,מסגד אלרחמן 1,North,both,2,2,True,True
+39705,מסגד אלרחמן 2,North,both,2,2,True,True
+39706,גנים מזרח 1,North,both,2,2,True,True
+39882,חיילים משוחררים י,North,both,2,2,True,True
+39883,חיילים משוחררים יא,North,both,2,2,True,True
+39884,חיילים משוחררים יב,North,both,2,2,True,True
+39886,חיילים משוחררים טו,North,both,2,2,True,True
+40003,מרכז,North,both,2,2,True,True
+40004,טיפת חלב,North,both,2,2,True,True
+40005,טיפת חלב,North,both,2,2,True,True
+40006,מגרש משולב,North,both,2,2,True,True
+40007,מסגד בילאל,North,both,2,2,True,True
+40008,מסגד בילאל,North,both,2,2,True,True
+40010,שכונה בדווית,North,both,2,2,True,True
+40011,שכונה בדווית,North,both,2,2,True,True
+40012,שעב מרכז דרום,North,both,2,2,True,True
+40013,שעב מרכז דרום,North,both,2,2,True,True
+40014,תחנה לבריאות המשפחה,North,both,2,2,True,True
+40015,שכונה מזרחית,North,both,2,2,True,True
+40016,שכונה מזרחית,North,both,2,2,True,True
+40017,כנסייה היסטורית אורתודוכסית,North,both,2,2,True,True
+40018,כנסייה היסטורית אורתודוכסית,North,both,2,2,True,True
+40020,רינגלבלום ב',Jerusalem,both,2,2,True,True
+40074,הקוצר/הברזל,South,both,2,2,True,True
+40075,הכשרת הישוב/החורש,South,both,2,2,True,True
+40228,גני ילדים,North,both,2,2,True,True
+40229,נאעורה מערב,North,both,2,2,True,True
+40231,פיצריה,North,both,2,2,True,True
+40319,מועצה אזורית,North,both,2,2,True,True
+40481,שכ' 5 מערב,South,both,2,2,True,True
+40685,דרך יריחו/אל עזרייה,Jerusalem,both,2,2,True,True
+40936,מרכז פיס,North,both,2,2,True,True
+40957,צפון/מזרח,North,both,2,2,True,True
+40959,בי''ס חדשני ג',North,both,2,2,True,True
+40963,סנובר אלג'או/דרב סאפר,North,both,2,2,True,True
+41108,נירים,South,both,2,2,True,True
+41321,שדרות המלאכות/החרט,Jerusalem,both,2,2,True,True
+41537,האילן/החרוב,North,both,2,2,True,True
+41538,האילן/החרוב,North,both,2,2,True,True
+41682,בי''ס אל-קסטל,North,both,2,2,True,True
+41683,שכונת בלאל,North,both,2,2,True,True
+41769,שדרות המלאכות/האופה,Jerusalem,both,2,2,True,True
+42065,טיפת חלב כסיפה,South,both,2,2,True,True
+42066,מסגד אבו בכר 2,South,both,2,2,True,True
+42067,בית ספר אלירמוק,South,both,2,2,True,True
+42068,טיפת חלב כסיפה 2,South,both,2,2,True,True
+42069,בית ספר תיכון חמאד,South,both,2,2,True,True
+42071,אמטיראת,South,both,2,2,True,True
+42074,בית ספר אלירמוק,South,both,2,2,True,True
+42076,בית ספר תיכון חמאד,South,both,2,2,True,True
+42077,מסגד אבו בכר,South,both,2,2,True,True
+42244,הקוצר/הכשרת היישוב,South,both,2,2,True,True
+42563,בי''ס חדשני ג',North,both,2,2,True,True
+42618,התן/השופר,Jerusalem,both,2,2,True,True
+42809,מחלף העמקים/ג'למה,North,both,2,2,True,True
+42901,נמל תעופה רמון/צומת באר אורה,South,both,2,2,True,True
+43038,שדרות אבץ,Center,both,2,2,True,True
+43315,הרב אלישיב/באר יעקב,Jerusalem,both,2,2,True,True
+43316,הרב אלישיב/אמרי סופר,Jerusalem,both,2,2,True,True
+43630,התן/הלביא,Jerusalem,both,2,2,True,True
+44388,נמל תעופה רמון/כניסה,South,both,2,2,True,True
+4443,עין קיניא/כיכר לדרום,North,both,2,2,True,True
+44443,המחצבה,North,both,2,2,True,True
+44535,יביע אומר/האדמו''ר מלעלוב,Jerusalem,both,2,2,True,True
+44640,א-סהיל/עולש,North,both,2,2,True,True
+44641,א-סהיל,North,both,2,2,True,True
+44853,א סאפה/אל בוטמה,Jerusalem,both,2,2,True,True
+44854,א סאפא/אל ג'מעיה אל תחתא,Jerusalem,both,2,2,True,True
+44855,א סאפא/אל ג'מעיה אל תחתא,Jerusalem,both,2,2,True,True
+44856,א סאפא/אבו ח'שבה,Jerusalem,both,2,2,True,True
+44958,בי''ס עיסאוויה/סירת אל חג'ה,Jerusalem,both,2,2,True,True
+46204,אל נג'אח/מרכז אלטפל,Center,both,2,2,True,True
+46215,בלאל בן רבאח/מחמוד דרוויש,Center,both,2,2,True,True
+46344,אלבלדיה/סמיח אלקסם,Center,both,2,2,True,True
+46371,בי''ס אבן רושד,Center,both,2,2,True,True
+46427,ח'אלד אבן אלואליד/אלרוק,Center,both,2,2,True,True
+46528,הבנקים/מכללת עמל,Center,both,2,2,True,True
+46590,אל נג'אח/אל טבל,Center,both,2,2,True,True
+46600,ח'אלד אבן אלואליד/אלראזי,Center,both,2,2,True,True
+46701,דוכיפת/מעלה הכרמים,North,both,2,2,True,True
+46702,אלבלדיה/סמיח אלקסם,Center,both,2,2,True,True
+46710,עיריית טייבה/אלבלאדיה,Center,both,2,2,True,True
+46773,עיריית טייבה/אלבלאדיה,Center,both,2,2,True,True
+46782,ח'אלד אבן אלואליד/מוחמד דווריש,Center,both,2,2,True,True
+46824,בלאל בן רבאח/אלאח'ווה,Center,both,2,2,True,True
+46864,בלאל בן רבאח/מוסא חסן,Center,both,2,2,True,True
+46873,אלבלדיה/אלבריד,Center,both,2,2,True,True
+46917,פרדיסיה/ח'אלד אבן אלואליד,Center,both,2,2,True,True
+46932,דוכיפת/מעלה הכרמים,North,both,2,2,True,True
+46997,פרדיסיה/ח'אלד אבן אלואליד,Center,both,2,2,True,True
+47070,ח'אלד אבן אלואליד/עין גאלות,Center,both,2,2,True,True
+47117,תיכון עתיד טייבה,Center,both,2,2,True,True
+47120,ביטוח לאומי/ח'אלד אבן אלואליד,Center,both,2,2,True,True
+47148,בלאל בן רבאח/עין גאלות,Center,both,2,2,True,True
+47168,בית אבות/ח'אלד אבן אלואליד,Center,both,2,2,True,True
+47194,בית אבות/ח'אלד אבן אלואליד,Center,both,2,2,True,True
+47288,אלבלדיה/נדאא אלסלאם,Center,both,2,2,True,True
+48425,עין אבראהים א,North,both,2,2,True,True
+48426,עין אבראהים ב,North,both,2,2,True,True
+48429,עין אבראהים ה,North,both,2,2,True,True
+48430,עין אבראהים ו,North,both,2,2,True,True
+48975,א-שאע'ור,North,both,2,2,True,True
+48994,עין ח'אלד ,North,both,2,2,True,True
+49228,ת.רכבת מלאכי-יואב/כביש 3836,Center,both,2,2,True,True
+50377,חניון שפירים מערבי ב/הורדה,Center,both,2,2,True,True
+50742,אליהו/הזית,Center,both,2,2,True,True
+50863,השופר/התן,Jerusalem,both,2,2,True,True
+50877,נחל מירון/נחל השופט,North,both,2,2,True,True
+50880,נחל מירון/נחל משושים,North,both,2,2,True,True
+50881,נחל דישון,North,both,2,2,True,True
+50882,נחל מירון/נחל משושים,North,both,2,2,True,True
+50884,נחל מירון/נחל השופט,North,both,2,2,True,True
+50902,שלום הגליל/טניס,North,both,2,2,True,True
+51113,משה לוי/יעקב דורי,Center,both,2,2,True,True
+51760,קרית חינוך/איילת השחר,Center,both,2,2,True,True
+51803,קופות חולים/איילת השחר,Center,both,2,2,True,True
+52004,הרב אברהם זקן/יצחק ארנסט נבנצל,Jerusalem,both,2,2,True,True
+52005,שמעון מישורי,Jerusalem,both,2,2,True,True
+52006,יצחק ארנסט נבנצל/אשר וינר,Jerusalem,both,2,2,True,True
+52007,פרופ' יעקב נאמן/שמעון מישורי,Jerusalem,both,2,2,True,True
+52008,שמעון מישורי,Jerusalem,both,2,2,True,True
+52009,יצחק ארנסט נבנצל/הרב אברהם זקן,Jerusalem,both,2,2,True,True
+52010,פרופ' יעקב נאמן/הרב אברהם זקן,Jerusalem,both,2,2,True,True
+52012,פרופ' יעקב נאמן/הרב אברהם זקן,Jerusalem,both,2,2,True,True
+52013,שמעון מישורי/פרופ' יעקב נאמן,Jerusalem,both,2,2,True,True
+6513,בית ספר א,North,both,2,2,True,True
+6514,רחוב 6/רחוב 1,North,both,2,2,True,True
+6517,נחף מרכז,North,both,2,2,True,True
+6518,נחף מסגד,North,both,2,2,True,True
+6555,נחף דואר,North,both,2,2,True,True
+6556,קופת חולים כללית,North,both,2,2,True,True
+6557,בית ספר א,North,both,2,2,True,True
+6910,כיכר הגיבורים/הציפורנים,North,both,2,2,True,True
+6912,'דרך העמק א,North,both,2,2,True,True
+6943,גני ילדים מרכז,North,both,2,2,True,True
+6964,גנים ציבוריים,North,both,2,2,True,True
+6965,גנים ציבוריים,North,both,2,2,True,True
+6967,מכון המים,North,both,2,2,True,True
+6968,מכון המים,North,both,2,2,True,True
+6984,דליה הצעירה/כניסה,North,both,2,2,True,True
+7152,קרן היסוד/אצ''ל,North,both,2,2,True,True
+8594,אום טובא 3,Jerusalem,both,2,2,True,True
+8595,אום טובא 4,Jerusalem,both,2,2,True,True
+8596,אום טובא 6,Jerusalem,both,2,2,True,True
+8597,אום טובא 7,Jerusalem,both,2,2,True,True
+8598,אום טובא 9,Jerusalem,both,2,2,True,True
+8600,דרך סור באהר,Jerusalem,both,2,2,True,True
+8601,בית ספר אבו בקר צאדק/אלמדינה אלמונוורה,Jerusalem,both,2,2,True,True
+8610,בית ספר צור באהר בנות/אלמדינה אלמונוורה,Jerusalem,both,2,2,True,True
+8615,בית ספר צור באהר בנות/אלמדינה אלמונוורה,Jerusalem,both,2,2,True,True
+8616,בית ספר אבן רשד/אלמדינה אלמונוורה,Jerusalem,both,2,2,True,True
+8833,תחנת דלק/לוחמי הגטאות,Jerusalem,both,2,2,True,True
+8884,חטיבת ביניים/טריק אלמדארס,Jerusalem,both,2,2,True,True
+8885,חטיבת ביניים/טריק אלמדארס,Jerusalem,both,2,2,True,True
+8886,בית ספר יסודי/סיירת אלח'גה,Jerusalem,both,2,2,True,True
+8887,בית ספר יסודי/סיירת אלח'גה,Jerusalem,both,2,2,True,True
+8888,קסילה/מחגרת עתמה,Jerusalem,both,2,2,True,True
+8889,קסילה/מחגרת עתמה,Jerusalem,both,2,2,True,True
+8890,קסילה/אום אלעסאפיר,Jerusalem,both,2,2,True,True
+8891,קסילה/אום אלעסאפיר,Jerusalem,both,2,2,True,True
+8892,מסגד ארבעין/קסילה,Jerusalem,both,2,2,True,True
+8893,מסגד ארבעין/קסילה,Jerusalem,both,2,2,True,True
+8894,בית ספר אלאמל לחינוך מיוחד/ראס אל ג'אמע,Jerusalem,both,2,2,True,True
+8895,קופת חולים/ראס אל ג'אמע,Jerusalem,both,2,2,True,True
+8896,צומת זהרה א,Jerusalem,both,2,2,True,True
+8897,צומת זהרה ב,Jerusalem,both,2,2,True,True
+8898,עיסוויה כניסה מערבית,Jerusalem,both,2,2,True,True
+8906,עיסוויה כניסה מערבית,Jerusalem,both,2,2,True,True
+8924,אל בוטמה,Jerusalem,both,2,2,True,True
+8925,אל בטמה/רחוב שרפאת,Jerusalem,both,2,2,True,True
+8959,א סאפה/אל בוטמה,Jerusalem,both,2,2,True,True
+9304,צ'ילה/סירני,Jerusalem,both,2,2,True,True
+9341,עין כרם/ברקלי,Jerusalem,both,2,2,True,True
+9537,קורצ'אק/רינגלבלום,Jerusalem,both,2,2,True,True
+9570,רינגלבלום ב',Jerusalem,both,2,2,True,True
+9578,עין כרם/מדרגות הכפר,Jerusalem,both,2,2,True,True
+9870,צומת כרם,Jerusalem,both,2,2,True,True
+39804,בני ראם יציאה/כיכר,Center,bus_only,7,7,True,False
+24663,מסעף שער אברהם,Center,bus_only,6,6,True,False
+11082,מועצה אזורית,Jerusalem,bus_only,4,5,True,False
+25814,גלאון/מרכז,Center,bus_only,4,4,True,False
+28645,גת/מרכז,Center,bus_only,4,4,True,False
+28660,בית ניר,Center,bus_only,4,4,True,False

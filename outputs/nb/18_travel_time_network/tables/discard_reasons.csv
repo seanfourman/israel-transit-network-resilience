@@ -1,0 +1,6 @@
+﻿reason,observations,share_of_pairs
+kept (valid observation),15196995,0.99382
+self-loop (u == v),718,4.7e-05
+missing / malformed time,0,0.0
+non-positive (< 1s),93778,0.006133
+absurd (> 3h),0,0.0

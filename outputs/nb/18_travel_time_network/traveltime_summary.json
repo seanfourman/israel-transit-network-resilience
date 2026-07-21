@@ -1,0 +1,99 @@
+{
+  "stage": "18_travel_time_network",
+  "edge_weight": "median scheduled travel time in seconds (attribute 'travel_seconds', mirrored to 'weight')",
+  "thresholds": {
+    "min_travel_seconds": 1,
+    "max_travel_seconds": 10800,
+    "min_observations": 1
+  },
+  "streaming": {
+    "rows_read": 15711624,
+    "trips_seen": 420133,
+    "segments_seen": 15291491,
+    "kept": 15196995,
+    "drop_self_loop": 718,
+    "drop_missing_time": 0,
+    "drop_nonpositive": 93778,
+    "drop_too_long": 0,
+    "rows_missing_time": 0,
+    "rows_with_dwell": 0,
+    "rows_hour_ge_24": 152485,
+    "stop_sequence_regressions": 562,
+    "interleaved_trip_blocks": 0,
+    "distinct_segments": 51907,
+    "elapsed_seconds": 28.5
+  },
+  "discards": {
+    "kept (valid observation)": 15196995,
+    "self-loop (u == v)": 718,
+    "missing / malformed time": 0,
+    "non-positive (< 1s)": 93778,
+    "absurd (> 3h)": 0
+  },
+  "graph": {
+    "nodes": 30463,
+    "undirected_edges": 51680,
+    "directed_edges_with_traveltime": 51907,
+    "stage02_segments_without_traveltime": 92,
+    "connected_components": 14,
+    "largest_component_nodes": 30231,
+    "largest_component_share": 0.9924
+  },
+  "travel_time_seconds": {
+    "p1": 7.0,
+    "p25": 45.0,
+    "p50": 66.0,
+    "p75": 120.0,
+    "p90": 240.0,
+    "p99": 1366.9400000000023,
+    "median_relative_iqr": 0.0,
+    "spearman_frequency_vs_time": -0.3674
+  },
+  "path_comparison": {
+    "pairs": 300,
+    "identical_route_share": 0.0033,
+    "median_seconds_lost_by_hop_routing": 2443.5,
+    "mean_seconds_lost_by_hop_routing": 2904.0,
+    "p90_seconds_lost_by_hop_routing": 6592.100000000002,
+    "median_duration_ratio": 1.4513,
+    "median_extra_hops_on_time_route": 12.0
+  },
+  "betweenness": {
+    "k_samples": 200,
+    "seed": 42,
+    "agreement": [
+      {
+        "comparison": "travel-time vs hop control (same sample - clean)",
+        "n_stations": 30231,
+        "n_positive_either": 28533,
+        "spearman_all": 0.61,
+        "spearman_positive_either": 0.5506,
+        "top10_overlap": 0.2,
+        "top50_overlap": 0.24,
+        "top100_overlap": 0.26
+      },
+      {
+        "comparison": "travel-time vs notebook 04 (different sample - practical)",
+        "n_stations": 30231,
+        "n_positive_either": 28678,
+        "spearman_all": 0.5857,
+        "spearman_positive_either": 0.528,
+        "top10_overlap": 0.2,
+        "top50_overlap": 0.34,
+        "top100_overlap": 0.27
+      },
+      {
+        "comparison": "hop control vs notebook 04 (sampling noise floor)",
+        "n_stations": 30231,
+        "n_positive_either": 27833,
+        "spearman_all": 0.9558,
+        "spearman_positive_either": 0.9448,
+        "top10_overlap": 0.9,
+        "top50_overlap": 0.76,
+        "top100_overlap": 0.75
+      }
+    ],
+    "median_abs_rank_shift_in_pool": 1961.0,
+    "rank_pool": 500
+  }
+}

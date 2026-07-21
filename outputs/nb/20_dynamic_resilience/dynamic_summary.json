@@ -1,0 +1,315 @@
+{
+  "stage": "20_dynamic_resilience",
+  "source_stage": "19_time_of_day_graphs",
+  "windows": [
+    {
+      "window": "morning_peak",
+      "start_hour": 6,
+      "end_hour": 9,
+      "nodes": 30072,
+      "undirected_edges": 46766,
+      "avg_degree": 3.11,
+      "largest_component_share": 0.9927
+    },
+    {
+      "window": "midday",
+      "start_hour": 9,
+      "end_hour": 15,
+      "nodes": 30195,
+      "undirected_edges": 48015,
+      "avg_degree": 3.18,
+      "largest_component_share": 0.9925
+    },
+    {
+      "window": "afternoon_peak",
+      "start_hour": 15,
+      "end_hour": 19,
+      "nodes": 30057,
+      "undirected_edges": 46995,
+      "avg_degree": 3.127,
+      "largest_component_share": 0.9925
+    },
+    {
+      "window": "evening",
+      "start_hour": 19,
+      "end_hour": 23,
+      "nodes": 29359,
+      "undirected_edges": 44774,
+      "avg_degree": 3.05,
+      "largest_component_share": 0.9927
+    },
+    {
+      "window": "night",
+      "start_hour": 23,
+      "end_hour": 6,
+      "nodes": 25967,
+      "undirected_edges": 38069,
+      "avg_degree": 2.932,
+      "largest_component_share": 0.9883
+    }
+  ],
+  "peak_window": "morning_peak",
+  "peak_window_rule": "name keyword \"morning_peak\"",
+  "offpeak_window": "night",
+  "offpeak_window_rule": "name keyword \"night\"",
+  "rank_metric": "approx_betweenness",
+  "cross_window_agreement": {
+    "degree": {
+      "spearman_min": 0.8005,
+      "spearman_max": 0.95,
+      "top_overlap_min": 0.68,
+      "top_overlap_max": 0.84
+    },
+    "weighted_degree": {
+      "spearman_min": 0.8582,
+      "spearman_max": 0.9864,
+      "top_overlap_min": 0.38,
+      "top_overlap_max": 0.82
+    },
+    "approx_betweenness": {
+      "spearman_min": 0.6604,
+      "spearman_max": 0.8605,
+      "top_overlap_min": 0.34,
+      "top_overlap_max": 0.6
+    }
+  },
+  "betweenness_noise_floor": {
+    "window": "morning_peak",
+    "seed_a": 42.0,
+    "seed_b": 7.0,
+    "k_pivots": 250.0,
+    "n_stations": 30072.0,
+    "spearman_rho_same_window": 0.9597,
+    "top50_overlap_same_window": 0.86,
+    "nonzero_share_seed_a": 0.9077
+  },
+  "movers": {
+    "stations_in_both_windows": 25848,
+    "pool_size": 3159,
+    "max_abs_rank_shift_in_pool": 29162,
+    "median_abs_rank_shift_in_pool": 3409.0,
+    "vanished_at_offpeak": 4224
+  },
+  "fragility": [
+    {
+      "window": "afternoon_peak",
+      "strategy": "degree",
+      "auc": 0.7122,
+      "share_at_5pct": 0.8112,
+      "targeting_gain_vs_random": 0.2598
+    },
+    {
+      "window": "afternoon_peak",
+      "strategy": "betweenness",
+      "auc": 0.8094,
+      "share_at_5pct": 0.9178,
+      "targeting_gain_vs_random": 0.1625
+    },
+    {
+      "window": "afternoon_peak",
+      "strategy": "articulation points",
+      "auc": 0.8247,
+      "share_at_5pct": 0.9228,
+      "targeting_gain_vs_random": 0.1473
+    },
+    {
+      "window": "afternoon_peak",
+      "strategy": "weighted degree",
+      "auc": 0.9416,
+      "share_at_5pct": 0.9476,
+      "targeting_gain_vs_random": 0.0304
+    },
+    {
+      "window": "afternoon_peak",
+      "strategy": "random (baseline)",
+      "auc": 0.972,
+      "share_at_5pct": 0.9765,
+      "targeting_gain_vs_random": 0.0
+    },
+    {
+      "window": "evening",
+      "strategy": "degree",
+      "auc": 0.6931,
+      "share_at_5pct": 0.8186,
+      "targeting_gain_vs_random": 0.2719
+    },
+    {
+      "window": "evening",
+      "strategy": "betweenness",
+      "auc": 0.8231,
+      "share_at_5pct": 0.9434,
+      "targeting_gain_vs_random": 0.142
+    },
+    {
+      "window": "evening",
+      "strategy": "articulation points",
+      "auc": 0.8436,
+      "share_at_5pct": 0.924,
+      "targeting_gain_vs_random": 0.1214
+    },
+    {
+      "window": "evening",
+      "strategy": "weighted degree",
+      "auc": 0.9433,
+      "share_at_5pct": 0.9427,
+      "targeting_gain_vs_random": 0.0218
+    },
+    {
+      "window": "evening",
+      "strategy": "random (baseline)",
+      "auc": 0.9651,
+      "share_at_5pct": 0.9664,
+      "targeting_gain_vs_random": 0.0
+    },
+    {
+      "window": "midday",
+      "strategy": "degree",
+      "auc": 0.7175,
+      "share_at_5pct": 0.807,
+      "targeting_gain_vs_random": 0.2547
+    },
+    {
+      "window": "midday",
+      "strategy": "articulation points",
+      "auc": 0.8565,
+      "share_at_5pct": 0.9245,
+      "targeting_gain_vs_random": 0.1157
+    },
+    {
+      "window": "midday",
+      "strategy": "betweenness",
+      "auc": 0.8635,
+      "share_at_5pct": 0.9356,
+      "targeting_gain_vs_random": 0.1087
+    },
+    {
+      "window": "midday",
+      "strategy": "weighted degree",
+      "auc": 0.9508,
+      "share_at_5pct": 0.9568,
+      "targeting_gain_vs_random": 0.0214
+    },
+    {
+      "window": "midday",
+      "strategy": "random (baseline)",
+      "auc": 0.9722,
+      "share_at_5pct": 0.9744,
+      "targeting_gain_vs_random": 0.0
+    },
+    {
+      "window": "morning_peak",
+      "strategy": "degree",
+      "auc": 0.7296,
+      "share_at_5pct": 0.8525,
+      "targeting_gain_vs_random": 0.2428
+    },
+    {
+      "window": "morning_peak",
+      "strategy": "betweenness",
+      "auc": 0.8018,
+      "share_at_5pct": 0.9257,
+      "targeting_gain_vs_random": 0.1705
+    },
+    {
+      "window": "morning_peak",
+      "strategy": "articulation points",
+      "auc": 0.8449,
+      "share_at_5pct": 0.9316,
+      "targeting_gain_vs_random": 0.1275
+    },
+    {
+      "window": "morning_peak",
+      "strategy": "weighted degree",
+      "auc": 0.953,
+      "share_at_5pct": 0.9568,
+      "targeting_gain_vs_random": 0.0194
+    },
+    {
+      "window": "morning_peak",
+      "strategy": "random (baseline)",
+      "auc": 0.9724,
+      "share_at_5pct": 0.975,
+      "targeting_gain_vs_random": 0.0
+    },
+    {
+      "window": "night",
+      "strategy": "degree",
+      "auc": 0.6141,
+      "share_at_5pct": 0.7228,
+      "targeting_gain_vs_random": 0.3353
+    },
+    {
+      "window": "night",
+      "strategy": "betweenness",
+      "auc": 0.7043,
+      "share_at_5pct": 0.8848,
+      "targeting_gain_vs_random": 0.2451
+    },
+    {
+      "window": "night",
+      "strategy": "articulation points",
+      "auc": 0.9067,
+      "share_at_5pct": 0.9151,
+      "targeting_gain_vs_random": 0.0427
+    },
+    {
+      "window": "night",
+      "strategy": "weighted degree",
+      "auc": 0.9418,
+      "share_at_5pct": 0.9443,
+      "targeting_gain_vs_random": 0.0076
+    },
+    {
+      "window": "night",
+      "strategy": "random (baseline)",
+      "auc": 0.9494,
+      "share_at_5pct": 0.9519,
+      "targeting_gain_vs_random": 0.0
+    }
+  ],
+  "constants": {
+    "BETWEENNESS_SAMPLES": 250,
+    "BETWEENNESS_SEED": 42,
+    "BETWEENNESS_SEED_B": 7,
+    "RUN_NOISE_FLOOR": true,
+    "RANK_METRIC": "approx_betweenness",
+    "TOP_OVERLAP_N": 50,
+    "MOVER_POOL": 2000,
+    "RANDOM_TRIALS": 3,
+    "SEED": 42,
+    "ATTACK_STRATEGIES": [
+      "degree",
+      "weighted degree",
+      "betweenness",
+      "articulation points"
+    ],
+    "REMOVAL_FRACTIONS": [
+      0.0,
+      0.005,
+      0.01,
+      0.015,
+      0.02,
+      0.025,
+      0.03,
+      0.035,
+      0.04,
+      0.045,
+      0.05,
+      0.055,
+      0.06,
+      0.065,
+      0.07,
+      0.075,
+      0.08,
+      0.085,
+      0.09,
+      0.095,
+      0.1
+    ],
+    "EXTRA_FRACTIONS": [
+      0.0005,
+      0.001,
+      0.0025
+    ]
+  }
+}

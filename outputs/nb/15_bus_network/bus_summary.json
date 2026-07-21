@@ -1,0 +1,165 @@
+{
+  "constants": {
+    "BUS_ROUTE_TYPE": "3",
+    "DRT_ROUTE_TYPE": "715",
+    "K_BETWEENNESS": 300,
+    "COMPUTE_ALLMODE_BETWEENNESS": true,
+    "SEED": 42,
+    "RANDOM_TRIALS": 10,
+    "REMOVAL_COUNTS": [
+      0,
+      10,
+      25,
+      50,
+      100,
+      250,
+      500,
+      1000,
+      2000,
+      3000
+    ],
+    "TOP_N": 20
+  },
+  "mode_inventory": [
+    {
+      "route_type": "3",
+      "mode_label": "bus",
+      "routes": 6796,
+      "trips": 412544,
+      "trip_share": 0.9819
+    },
+    {
+      "route_type": "5",
+      "mode_label": "cable tram",
+      "routes": 4,
+      "trips": 3006,
+      "trip_share": 0.0072
+    },
+    {
+      "route_type": "0",
+      "mode_label": "tram / light rail",
+      "routes": 8,
+      "trips": 2890,
+      "trip_share": 0.0069
+    },
+    {
+      "route_type": "2",
+      "mode_label": "rail",
+      "routes": 962,
+      "trips": 1188,
+      "trip_share": 0.0028
+    },
+    {
+      "route_type": "715",
+      "mode_label": "demand-responsive bus",
+      "routes": 14,
+      "trips": 458,
+      "trip_share": 0.0011
+    },
+    {
+      "route_type": "8",
+      "mode_label": "trolleybus",
+      "routes": 8,
+      "trips": 47,
+      "trip_share": 0.0001
+    }
+  ],
+  "stream_stats": {
+    "rows_scanned": 15711624,
+    "rows_kept": 15615766,
+    "kept_share_of_feed": 0.9939,
+    "self_loops_skipped": 700,
+    "stop_sequence_regressions": 562,
+    "seconds": 16.1,
+    "bus_trips_streamed": 412544,
+    "bus_directed_segments": 51503,
+    "bus_stops_touched": 30170,
+    "drt_trips_streamed": 458,
+    "drt_directed_segments": 197,
+    "drt_stops_touched": 153
+  },
+  "bus_structure": {
+    "nodes": 30169,
+    "edges_undirected": 51387,
+    "edges_directed": 51503,
+    "density": 0.000113,
+    "avg_degree": 3.407,
+    "median_degree": 3.0,
+    "max_degree": 62,
+    "share_degree_le_2": 0.4441,
+    "connected_components": 2,
+    "largest_component_nodes": 30165,
+    "largest_component_share": 0.9999,
+    "articulation_points": 754,
+    "articulation_point_share": 0.025,
+    "bridges": 812,
+    "bridge_share": 0.0158
+  },
+  "all_mode_structure": {
+    "nodes": 30463,
+    "edges_undirected": 51772,
+    "edges_directed": 51999,
+    "density": 0.000112,
+    "avg_degree": 3.399,
+    "median_degree": 3.0,
+    "max_degree": 62,
+    "share_degree_le_2": 0.4467,
+    "connected_components": 12,
+    "largest_component_nodes": 30237,
+    "largest_component_share": 0.9926,
+    "articulation_points": 900,
+    "articulation_point_share": 0.0295,
+    "bridges": 971,
+    "bridge_share": 0.0188
+  },
+  "bus_vs_all_mode": {
+    "bus_nodes": 30169,
+    "all_mode_nodes": 30463,
+    "shared_nodes": 30169,
+    "nodes_in_bus_not_in_all_modes": 0,
+    "nodes_in_all_modes_not_in_bus": 294,
+    "node_coverage_of_all_modes": 0.9903,
+    "undirected_edge_coverage_of_all_modes": 0.9926,
+    "edges_in_bus_not_in_all_modes": 0,
+    "spearman_degree_bus_vs_all_modes": 0.9991,
+    "stops_with_identical_degree": 30103,
+    "share_with_identical_degree": 0.9978,
+    "articulation_points_bus": 754,
+    "articulation_points_all_modes": 900,
+    "articulation_points_both": 748,
+    "articulation_points_bus_only": 6,
+    "articulation_points_all_modes_only": 3,
+    "articulation_points_absent_from_bus": 149,
+    "articulation_point_jaccard": 0.8256,
+    "spearman_betweenness_bus_vs_all_modes": 0.9578,
+    "top50_betweenness_overlap": 44
+  },
+  "resilience_headline": {
+    "degree_share_at_100_removed": 0.99307,
+    "degree_share_at_1000_removed": 0.92433,
+    "degree_share_at_3000_removed": 0.34744,
+    "approx_betweenness_share_at_100_removed": 0.99523,
+    "approx_betweenness_share_at_1000_removed": 0.94697,
+    "approx_betweenness_share_at_3000_removed": 0.39667,
+    "articulation_first_share_at_100_removed": 0.98807,
+    "articulation_first_share_at_1000_removed": 0.9228,
+    "articulation_first_share_at_3000_removed": 0.35599,
+    "random_share_at_100_removed": 0.99627,
+    "random_share_at_1000_removed": 0.96002,
+    "random_share_at_3000_removed": 0.86151
+  },
+  "demand_responsive": {
+    "route_type": "715",
+    "mode_label": "demand-responsive bus",
+    "trips_streamed": 458,
+    "stops": 153,
+    "directed_edges": 197,
+    "undirected_edges": 194,
+    "connected_components": 2,
+    "largest_component_nodes": 129,
+    "stops_also_served_by_bus": 81,
+    "stops_unique_to_this_mode": 72,
+    "share_of_stops_shared_with_bus": 0.5294,
+    "edges_shared_with_bus": 54
+  }
+}

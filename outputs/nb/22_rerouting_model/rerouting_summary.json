@@ -1,0 +1,59 @@
+{
+  "constants": {
+    "TOP_N_STATIONS": 30,
+    "N_SOURCES": 250,
+    "TARGETS_PER_SOURCE": 80,
+    "MAX_PAIRS_PER_STATION": 400,
+    "MIN_EDGE_SECONDS": 1.0,
+    "DISCONNECT_PENALTY_S": 3600.0,
+    "RANDOM_SEED": 42
+  },
+  "graph": {
+    "source_table": "C:\\Users\\Sean-PC\\Desktop\\LAST SEMESTER\\אלגוריתמים ברשתות\\פרויקט גמר\\outputs\\nb\\18_travel_time_network\\tables\\edges_traveltime.csv",
+    "nodes": 30463,
+    "undirected_edges": 51680,
+    "components": 14,
+    "giant_component_nodes": 30231,
+    "edges_clamped_to_min_seconds": 0
+  },
+  "od_sample": {
+    "pairs_sampled": 20000,
+    "pairs_through_a_candidate": 10308,
+    "share_through_a_candidate": 0.5154
+  },
+  "detours_seconds": {
+    "rerouted_pairs": 6591,
+    "mean": 110.9,
+    "median": 76.5,
+    "p90": 247.0,
+    "max": 769.0,
+    "share_under_60s": 0.3937
+  },
+  "disconnection": {
+    "total_pairs_tested": 6595,
+    "total_pairs_disconnected": 4,
+    "overall_reachable_share": 0.9994
+  },
+  "rank_agreement": {
+    "stations_evaluated": 28,
+    "stations_skipped_no_traffic": 2,
+    "spearman_rho": 0.1921,
+    "spearman_p_value": 0.327378,
+    "top_k": 10,
+    "top_k_overlap": 5,
+    "max_abs_rank_shift": 27,
+    "penalty_sensitivity": {
+      "penalty_1800s_spearman_vs_default": 0.9989,
+      "penalty_3600s_spearman_vs_default": 1.0,
+      "penalty_10800s_spearman_vs_default": 0.9748
+    }
+  },
+  "costliest_closure": {
+    "stop_id": "9048",
+    "stop_name": "בן גוריון/שערי ירושלים",
+    "expected_cost_seconds": 425.5,
+    "mean_detour_seconds": 108.1,
+    "reachable_share": 0.9091,
+    "top_absorbing_stops": "שערי ירושלים/ליפתא (10236) x4 | מחלף חמד (41132) x4 | ויצמן/גבעת שאול (9046) x3 | מחלף בית חורון (8468) x2 | מחסום מכבים (8469) x2"
+  }
+}
