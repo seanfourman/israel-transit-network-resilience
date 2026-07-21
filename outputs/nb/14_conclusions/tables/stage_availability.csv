@@ -1,0 +1,15 @@
+﻿stage,expected_folder,found_folder,present,n_tables,n_figures,last_modified
+00,00_setup_and_data,00_setup_and_data,True,5,3,2026-07-21 08:35
+01,01_data_preparation,01_data_preparation,True,7,4,2026-07-21 08:36
+02,02_graph_construction,02_graph_construction,True,4,2,2026-07-21 09:03
+03,03_descriptive_analysis,03_descriptive_analysis,True,7,5,2026-07-21 08:37
+04,04_centrality_analysis,04_centrality_analysis,True,8,9,2026-07-21 09:04
+05,05_critical_station_isolation,05_critical_station_isolation,True,2,2,2026-07-21 08:39
+06,06_robustness_analysis,06_robustness_analysis,True,4,3,2026-07-21 08:41
+07,07_regional_comparison,07_regional_comparison,True,5,6,2026-07-21 08:42
+08,08_socioeconomic_equity,08_socioeconomic_equity,True,9,6,2026-07-21 09:04
+09,09_community_detection,09_community_detection,True,6,4,2026-07-21 08:47
+10,10_network_model_comparison,10_network_model_comparison,True,4,3,2026-07-21 08:46
+11,11_rail_network_analysis,11_rail_network_analysis,True,10,5,2026-07-21 08:42
+12,12_rail_socioeconomic,12_rail_socioeconomic,True,6,4,2026-07-21 09:05
+13,13_embeddings_link_prediction,13_embeddings_link_prediction,True,7,9,2026-07-21 09:07

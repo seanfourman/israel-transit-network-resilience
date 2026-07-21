@@ -1,0 +1,43 @@
+﻿stage,theme,metric,value,source_file,note
+02-03,scale,active stations,"30,463",network_summary.json (03) / graph_build_summary.json (02),
+02-03,scale,undirected segments,"51,772",network_summary.json (03) / graph_build_summary.json (02),
+02-03,scale,density,0.000112,network_summary.json (03) / graph_build_summary.json (02),
+02-03,scale,average degree,3.40,network_summary.json (03) / graph_build_summary.json (02),
+02-03,scale,largest-component share,99.26%,network_summary.json (03) / graph_build_summary.json (02),
+03,structure,articulation points (cut vertices),900,articulation_points.csv,stations whose removal disconnects the graph
+03,structure,bridges (cut edges),971,bridges.csv,segments whose removal disconnects the graph
+04,operational vs structural,Spearman rho (weighted degree vs betweenness),+0.187,centrality_correlation_spearman.csv,far below 1: the two rankings are not the same stations
+04,operational vs structural,top-50 overlap between the rankings,8.0%,stop_metrics.csv,share of the busiest stations that are also the most central
+04+03,operational vs structural,articulation points among the 100 busiest stations,14,stop_metrics.csv + articulation_points.csv,
+05,substitutability,critical stations examined (top 10% betweenness),"3,047",isolation_summary.csv,
+05,substitutability,critical stations with no nearby alternative,1.8%,isolation_summary.csv,spatial proximity only - service substitutability is not tested
+06,resilience,most damaging attack strategy,degree,auc_summary.csv,ranked by area under the surviving-normalised resilience curve
+06,resilience,AUC of the most damaging targeted attack,0.7655,auc_summary.csv,mean largest-component share among surviving stations
+06,resilience,AUC of the random-failure baseline,0.9760,auc_summary.csv,the gap to the targeted attack is the robust-yet-fragile signature
+06,resilience,targeted-vs-random AUC gap,0.2105,auc_summary.csv,positive = targeted removal hurts more than random failure
+06,resilience,worst largest-component share after removing 50 stations,0.9876,damage_snapshots.csv,strategy: articulation points; normalised by surviving stations
+07,regional,region with the highest share of critical stops,North (11.55%),regional_summary.csv,
+07,regional,spread between the extreme regions,2.64 pp,regional_summary.csv,
+07,regional,Cramer's V (region x criticality),0.0387 (negligible),regional_significance.csv,significant at p = 0.000000 but substantively negligible
+08,equity,national service-per-capita vs socio-economic cluster (Spearman rho),-0.151,socioeconomic_summary.json,"p = 0.000000, n = 2,643"
+08,equity,within-community rho range,-0.691 to 0.431,socioeconomic_summary.json,sign differs from the national figure -> Simpson's paradox
+08,equity,within-community tests significant after BH-FDR,8 of 57,socioeconomic_within_cluster_correlation.csv,
+09,communities,communities detected (headline run),73,community_detection_summary.json,
+09,communities,modularity,0.9448,community_detection_summary.json,high modularity = the network really does split into regional clusters
+09,communities,community count across random seeds,73 to 80,louvain_stability.csv,"quote the range, not a single count"
+09,communities,share of edges crossing a community boundary,7.15%,community_detection_summary.json,
+10,network model,null model closest to the real degree distribution,configuration_degree_sequence (KS = 0.0001),degree_distribution_summary.csv,
+10,network model,Hill tail exponent of the real degree distribution,3.460,degree_distribution_summary.csv,"descriptive tail estimate, not a validated power-law fit"
+10,network model,small-world sigma of the real network,"1,923.995",small_world_ratios.csv,sigma >> 1 indicates small-world structure
+11,rail,rail stations in the graph,n/a,summary.json,
+11,rail,rail articulation points,n/a,summary.json,
+11,rail,rail bridges,n/a,summary.json,
+11,rail,rail network diameter (hops),n/a,summary.json,
+11,rail,worst single-station closure (largest component left),0.5000 of the surviving stations,single_station_damage.csv,station: תל אביב מרכז
+11,rail,rail Spearman rho (weighted degree vs betweenness),+0.665,rail_station_metrics.csv,compare with the national figure in Finding 1
+12,rail equity,largest |rho| among the rail socio-economic tests,-0.267,rail_socioeconomic_correlations.csv,not significant after correction
+12,rail equity,tests significant after BH-FDR,0 of 24,rail_socioeconomic_correlations.csv,"NEGATIVE RESULT: underpowered at this sample size, not evidence of equality"
+13,graph learning (negative),"node2vec link-prediction AUC, leaked vs leakage-free",0.9928 -> 0.8284,link_prediction_results.csv,the apparent advantage was largely train/test leakage
+13,graph learning (negative),best leakage-free link-prediction method,"CCPA (alpha=0.8, subsampled) (AUC = 0.8351)",link_prediction_results.csv,classical heuristics are competitive with the embeddings
+13,graph learning (negative),resilience gain from adding the suggested links,+0.0% (best case),resilience_improvement.csv,NEGATIVE RESULT: adding a handful of edges to a graph of tens of thousands changes nothing measurable
+13,graph learning (negative),critical-station classifier F1 (range across models),0.293 - 0.293,critical_classifier_results.csv,NEGATIVE RESULT: barely distinguishable from guessing at the base rate (F1 = 0.147)

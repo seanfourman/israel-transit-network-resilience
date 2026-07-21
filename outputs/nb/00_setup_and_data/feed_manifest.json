@@ -1,0 +1,22 @@
+{
+  "stage": "00_setup_and_data",
+  "data_dir": "C:\\Users\\Sean-PC\\Desktop\\LAST SEMESTER\\אלגוריתמים ברשתות\\פרויקט גמר\\israel-public-transportation",
+  "feed_service_start": "2026-04-19",
+  "feed_service_end": "2026-05-19",
+  "feed_span_days": 31,
+  "files": 9,
+  "total_size_mb": 836.23,
+  "stop_times_rows": 15711624,
+  "stops": 34932,
+  "routes": 7792,
+  "agencies": 37,
+  "service_ids": 44770,
+  "route_type_counts": {
+    "bus": 6796,
+    "rail": 962,
+    "demand/other bus": 14,
+    "tram/light rail": 8,
+    "trolleybus": 8,
+    "cable tram": 4
+  }
+}

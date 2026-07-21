@@ -1,0 +1,7 @@
+﻿method,auc_hard_negatives,average_precision,auc_random_negatives,delta
+Common Neighbors,0.1486,0.4371,0.6301,-0.4815
+Jaccard,0.0966,0.4127,0.6301,-0.5335
+Adamic-Adar,0.1004,0.4164,0.6301,-0.5297
+Resource Allocation,0.0946,0.4135,0.6301,-0.5355
+Preferential Attachment,0.4044,0.4945,0.4653,-0.0609
+Node2Vec + LR,0.2361,0.3669,0.8284,-0.5923

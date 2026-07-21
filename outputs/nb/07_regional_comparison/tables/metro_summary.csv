@@ -1,0 +1,6 @@
+﻿metro,total_stops,critical_stops,critical_broad_stops,ap_stops,avg_degree,avg_betweenness,max_betweenness,pct_critical,pct_critical_broad,pct_ap,share_of_all_critical,share_of_all_stops,pct_critical_lo,pct_critical_hi,small_sample
+Haifa,4023,491,582,112,3.165,0.00049164,0.0312889552341001,12.2,14.47,2.78,16.1,13.2,11.23,13.25,False
+Jerusalem,3474,352,537,201,3.361,0.00045482,0.0875362008593481,10.13,15.46,5.79,11.6,11.4,9.17,11.18,False
+Periphery,12627,1253,1516,301,3.252,0.00041965,0.112459758222915,9.92,12.01,2.38,41.1,41.5,9.41,10.46,False
+Beer Sheva,1912,178,233,62,3.09,0.00044516,0.0716483547095368,9.31,12.19,3.24,5.8,6.3,8.09,10.69,False
+Tel Aviv,8427,773,961,224,3.817,0.0003598,0.0657855013321716,9.17,11.4,2.66,25.4,27.7,8.58,9.81,False

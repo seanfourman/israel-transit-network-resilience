@@ -1,0 +1,21 @@
+{
+  "sign_convention": "raw Spearman rho; negative = more service per capita in weaker neighbourhoods",
+  "service_variable": "scheduled stop calls per 1,000 residents, at CBS statistical-area level",
+  "degree_source": "trip-adjacency graph (the retired 500 m proximity degree is NOT used)",
+  "national_neighborhood_rho": -0.1508686995355984,
+  "national_neighborhood_p": 6.3307695578443116e-15,
+  "national_neighborhood_n": 2643,
+  "community_level_rho": -0.18153770208564732,
+  "community_level_p": 0.12427115931100077,
+  "community_level_n": 73,
+  "communities_tested": 57,
+  "within_rho_min": -0.6913328984437151,
+  "within_rho_max": 0.4313293584786078,
+  "significant_raw": 16,
+  "significant_fdr_bh": 8,
+  "significant_bonferroni": 3,
+  "expected_false_positives_at_raw_alpha": 2.85,
+  "cbs_layer": "https://services2.arcgis.com/xMRYm7cNgdR5RN6F/arcgis/rest/services/SOEC_Stat11_2021/FeatureServer/27",
+  "cbs_index_value_available": false,
+  "stop_metrics_source": "C:\\Users\\Sean-PC\\Desktop\\LAST SEMESTER\\אלגוריתמים ברשתות\\פרויקט גמר\\outputs\\nb\\04_centrality_analysis\\tables\\stop_metrics.csv"
+}

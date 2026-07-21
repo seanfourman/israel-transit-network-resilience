@@ -1,0 +1,25 @@
+﻿sample,socioeconomic_variable,network_metric,spearman_rho,p_value_two_sided,n_stations,q_value_bh,p_value_holm,significant_after_correction
+all assignments,socio_cluster,degree,-0.12655406397541444,0.3074887640070414,67,,1.0,False
+all assignments,socio_cluster,weighted_degree,0.07520413726967881,0.5452816918905888,67,,1.0,False
+all assignments,socio_cluster,pagerank,-0.05442389706355592,0.6618069389025142,67,,1.0,False
+all assignments,socio_cluster,betweenness,-0.023737291031343175,0.848785368944857,67,,1.0,False
+all assignments,socio_cluster,harmonic,-0.08940507701166951,0.47184346120639586,67,,1.0,False
+all assignments,socio_cluster,stations_outside_largest_component,-0.17852521166800653,0.14833653970542227,67,,1.0,False
+all assignments,socio_index_value,degree,,,0,,,False
+all assignments,socio_index_value,weighted_degree,,,0,,,False
+all assignments,socio_index_value,pagerank,,,0,,,False
+all assignments,socio_index_value,betweenness,,,0,,,False
+all assignments,socio_index_value,harmonic,,,0,,,False
+all assignments,socio_index_value,stations_outside_largest_component,,,0,,,False
+within-polygon only,socio_cluster,degree,-0.2187469274710709,0.15370265186797993,44,,1.0,False
+within-polygon only,socio_cluster,weighted_degree,0.048322569455636386,0.7554281455599912,44,,1.0,False
+within-polygon only,socio_cluster,pagerank,-0.07905003792458729,0.6100075966120432,44,,1.0,False
+within-polygon only,socio_cluster,betweenness,-0.0005174699262054227,0.9973401067690523,44,,1.0,False
+within-polygon only,socio_cluster,harmonic,-0.13659924556212874,0.37660634372059476,44,,1.0,False
+within-polygon only,socio_cluster,stations_outside_largest_component,-0.26735742846100263,0.07934675953898845,44,,1.0,False
+within-polygon only,socio_index_value,degree,,,0,,,False
+within-polygon only,socio_index_value,weighted_degree,,,0,,,False
+within-polygon only,socio_index_value,pagerank,,,0,,,False
+within-polygon only,socio_index_value,betweenness,,,0,,,False
+within-polygon only,socio_index_value,harmonic,,,0,,,False
+within-polygon only,socio_index_value,stations_outside_largest_component,,,0,,,False

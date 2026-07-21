@@ -1,0 +1,6 @@
+﻿distance_band,n_critical_stops,share_pct,verdict
+< 100 m,1749,57.4,substitutable
+100-300 m,1242,40.76,substitutable
+300-500 m,35,1.15,isolated
+500-1000 m,12,0.39,isolated
+> 1 km,9,0.3,isolated

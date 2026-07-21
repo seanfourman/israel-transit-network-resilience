@@ -1,0 +1,7 @@
+﻿route_type,route_type_label,routes,share
+3,bus,6796,0.8722
+2,rail,962,0.1235
+715,demand/other bus,14,0.0018
+0,tram/light rail,8,0.001
+8,trolleybus,8,0.001
+5,cable tram,4,0.0005

@@ -1,0 +1,2 @@
+﻿test,chi2,dof,p_value,n,cramers_v,pct_critical_spread_points,min_expected_count
+chi-square independence (region x is_critical),45.56,3,7.045553509577464e-10,30463,0.0387,2.64,372.6

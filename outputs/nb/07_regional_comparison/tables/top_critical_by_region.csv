@@ -1,0 +1,21 @@
+﻿region,metro,stop_id,stop_name,degree,betweenness,is_ap
+Center,Periphery,17303,ת.התרעננות/דור אלון מגל 6,16,0.112459758222915,False
+Center,Tel Aviv,7562,שדרות בית הלל/כניסה לעיר,29,0.0657855013321716,False
+Center,Tel Aviv,23418,רבי יהודה הנשיא/כניסה לעיר,24,0.0565992919034606,False
+Center,Tel Aviv,748,מחלף קסם,19,0.0472729925206525,False
+Center,Periphery,4132,צומת כפר קרע,14,0.039736220234531,False
+Jerusalem,Jerusalem,41133,מחלף חמד,62,0.0875362008593481,True
+Jerusalem,Jerusalem,7444,דרך האר''י/ כביש 375,29,0.0691705397124144,False
+Jerusalem,Jerusalem,41132,מחלף חמד,44,0.0667127713406123,False
+Jerusalem,Jerusalem,9048,בן גוריון/שערי ירושלים,41,0.0407558352033177,True
+Jerusalem,Jerusalem,9046,ויצמן/גבעת שאול,36,0.0280712069129028,False
+North,Periphery,18876,צומת חנניה צומת שבע,13,0.0438644214041046,False
+North,Periphery,18691,צומת ראש פינה,13,0.0407181579724438,False
+North,Periphery,4179,צומת כרמיאל,11,0.0362234229135072,False
+North,Periphery,21282,צומת שבע,10,0.0357567561911833,False
+North,Haifa,1296,מחלף יגור,26,0.0312889552341001,False
+South,Beer Sheva,27689,מחלף קמה לצפון,24,0.0716483547095368,False
+South,Beer Sheva,29243,תחנת התרעננות/פונדק בית קמה,19,0.0462892375340954,False
+South,Beer Sheva,27623,מרכז רפואי סורוקה/אוניברסיטת בן גוריון,20,0.0259558766737897,True
+South,Periphery,27842,מסעף נתיבות/מרכז העיר,15,0.0222627108772805,False
+South,Beer Sheva,39133,מחלף קמה לדרום,19,0.022202698924369,False
