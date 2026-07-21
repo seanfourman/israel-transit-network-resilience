@@ -41,3 +41,53 @@
 13,graph learning (negative),best leakage-free link-prediction method,"CCPA (alpha=0.8, subsampled) (AUC = 0.8351)",link_prediction_results.csv,classical heuristics are competitive with the embeddings
 13,graph learning (negative),resilience gain from adding the suggested links,+0.0% (best case),resilience_improvement.csv,NEGATIVE RESULT: adding a handful of edges to a graph of tens of thousands changes nothing measurable
 13,graph learning (negative),critical-station classifier F1 (range across models),0.293 - 0.293,critical_classifier_results.csv,NEGATIVE RESULT: barely distinguishable from guessing at the base rate (F1 = 0.147)
+14,multimodal,transport modes present in the feed,6,mode_inventory.csv,
+14,multimodal,share of all scheduled trips run by the largest mode,bus 98.19%,mode_inventory.csv,the merged national graph is dominated by this one mode
+14,multimodal,cut-vertex share of the largest mode,bus: 2.50%,mode_network_summary.csv,
+14,multimodal,largest-component share of the largest mode,bus: 99.99%,mode_network_summary.csv,a single national mesh - essentially every stop is reachable from every other
+14,multimodal,light-rail stations and cut vertices,"138 stations, 128 cut vertices (92.8%)",mode_network_summary.csv,a path/tree graph: almost every interior station is a single point of failure
+14,multimodal,light-rail largest-component share,25.36%,mode_network_summary.csv,disjoint lines - contrast with the bus mesh in the row above
+16,multimodal,shape of the tram/light rail graph,"2x path, 2x tree",minor_modes_summary.csv,"cyclomatic number = 0 - no independent cycles at all, so no alternative route exists anywhere in this mode"
+16,multimodal,shape of the cable tram graph,2x path,minor_modes_summary.csv,"cyclomatic number = 0 - no independent cycles at all, so no alternative route exists anywhere in this mode"
+16,multimodal,shape of the trolleybus graph,"2x path, 1x star",minor_modes_summary.csv,"cyclomatic number = 0 - no independent cycles at all, so no alternative route exists anywhere in this mode"
+16,multimodal,shape of the demand/other bus graph,2x meshed,minor_modes_summary.csv,"cyclomatic number = 43 - independent cycles exist, so some segments can be routed around within the mode"
+15,multimodal,node coverage of the all-mode graph by the bus graph alone,99.03%,bus_summary.json,the national graph is very nearly the bus graph
+15,multimodal,"Spearman rho, bus-only vs all-mode betweenness",0.9578,bus_summary.json,"high, but not 1 - the non-bus modes do move some stations"
+15,multimodal,cut vertices that exist only once other modes are added,149,bus_summary.json,these single points of failure are invisible in a bus-only analysis
+17,multimodal,multimodal transfer hubs identified,"30,466",transfer_hubs.csv,
+17,multimodal,maximum number of modes meeting at one stop,2,transfer_hubs.csv,
+18,travel time,segments with a measured median travel time,"51,680",edges_traveltime.csv / traveltime_summary.json,
+18,travel time,median segment travel time (seconds),66,traveltime_summary.json,
+18,travel time (limitation),sampled station pairs where hop routing and time routing agree,0.33%,traveltime_summary.json,out of 300 pairs - hop-optimal routes are almost never time-optimal
+18,travel time (limitation),median passenger time lost by hop-count routing,"2,443.5 s (40.7 min)",traveltime_summary.json,median duration ratio 1.451 - the hop route takes that many times longer
+18,travel time (limitation),"Spearman rho, travel-time vs hop-count betweenness (same sample)",0.6100,betweenness_agreement.csv,"sampling-noise floor for the same estimator is 0.9558 - the disagreement is real, not noise"
+18,travel time (limitation),"top-50 betweenness overlap, travel-time vs hop-count",24%,betweenness_agreement.csv,noise floor for the same comparison is 76%
+19,time of day,stations active in the thinnest service window,"night: 25,967 of 30,195 (14.0% fewer)",window_summary.csv,off-peak criticality is measured on a materially smaller network
+19,time of day,"largest-component share, busiest vs thinnest window",99.25% vs 98.83%,window_summary.csv,"the surviving night network stays connected - it is smaller, not broken"
+20,time of day,stations that vanish entirely in the off-peak window,"4,224",dynamic_summary.json,"they cannot be ranked off-peak at all, let alone protected"
+20,time of day,worst cross-window betweenness rank agreement,"rho = 0.6604, top-50 overlap 34%",window_rank_agreement.csv,same-window noise floor is rho = 0.9597 - the movement between windows is larger than the sampling noise
+20,time of day,median rank shift between peak and off-peak,"3,409 positions",dynamic_summary.json,measured over the top pool of stations that exist in both windows
+20,time of day,window most exposed to targeted removal,night / degree (gain over random = 0.3353),fragility_summary.csv,"targeting gain = random-baseline AUC minus this strategy AUC, same window"
+21,demand proxy,"demand weight is a population proxy, not ridership",confirmed by the stage (proxy_is_not_ridership = True),demand_summary.json,"CBS population in a distance-decayed catchment x scheduled service - no boardings, no smart-card data, no occupancy anywhere in the project"
+21,demand proxy,stops that could not be matched to a CBS statistical area,"403 of 30,463",demand_summary.json,"they receive no population weight, so their demand-weighted rank is a floor"
+21,demand proxy,"Spearman rho, population proxy vs scheduled service volume",0.3281,demand_summary.json,"weakly related - service is not placed where population is, or vice versa"
+21,demand proxy,demand-weighted vs uniform-control betweenness ranking,"rho = 0.8139, top-50 overlap 58%",rank_agreement.csv,the control isolates the weighting from the resampling
+21,demand proxy,median rank shift when population is weighted in,"2,031 positions",demand_summary.json,measured over the top 2000 stations of the topological ranking
+21,demand proxy,largest gain in rank once population is weighted in,"רבי יהודה הנשיא/בארי: #22,490 -> #1,880",demand_summary.json,POPULATION PROXY - not observed ridership
+21,demand proxy,largest loss in rank once population is weighted in,"תיכון אורט: #718 -> #28,840",demand_summary.json,POPULATION PROXY - not observed ridership
+22,rerouting,median detour after closing a critical station,76.5 s,rerouting_summary.json,p90 = 247 s - the network reroutes cheaply almost everywhere
+22,rerouting,origin-destination pairs left unreachable by a closure,"4 of 6,595 (0.061%)",rerouting_summary.json,closing a single station essentially never disconnects anyone
+22,rerouting,"Spearman rho, betweenness rank vs passenger-time cost rank",0.1921,rerouting_summary.json,p = 0.327378 over 28 candidate stations - topological criticality barely predicts what a closure costs passengers
+22,rerouting,"top-10 overlap, topological vs passenger-time",5 of 10,rerouting_summary.json,
+22,rerouting,costliest single closure in passenger time,בן גוריון/שערי ירושלים (425.5 s expected cost),rerouting_summary.json,"expected cost includes the unreachability penalty of 3,600 s per lost pair"
+23,lens synthesis,criticality lenses defined / available,7 of 8,lens_synthesis_summary.json,missing: multimodal
+23,lens synthesis,mean pairwise Spearman rho between criticality lenses,0.2096,lens_agreement.csv,over 21 lens pairs; range -0.1582 to 0.8232 - the lenses are largely measuring different things
+23,lens synthesis,mean top-50 overlap between criticality lenses,16.2%,lens_agreement.csv,
+23,lens synthesis,agreement: betweenness vs service_volume,"rho = 0.1868, top-50 overlap 8%",lens_agreement.csv,structural vs operational criticality - near-zero overlap is the central claim of the project
+23,lens synthesis,agreement: service_volume vs articulation,"rho = -0.1390, top-50 overlap 0%",lens_agreement.csv,structural vs operational criticality - near-zero overlap is the central claim of the project
+23,lens synthesis,most anti-correlated lens pair,service_volume vs no_walk_alternative (rho = -0.1582),lens_agreement.csv,a negative correlation means the two lenses actively disagree about which stations matter
+23,lens synthesis,stations flagged critical by at least one lens,231,lens_synthesis_summary.json,"out of 30,463 stations"
+23,lens synthesis,stations flagged by exactly one lens,171 (74.0%),lens_synthesis_summary.json,a programme built on one definition of criticality misses the rest
+23,lens synthesis,stations two or more lenses agree on,60,lens_synthesis_summary.json,these are the defensible shortlist candidates
+23,lens synthesis,most lenses ever agreeing on one station,5 of 7,lens_synthesis_summary.json,no station is critical under every definition
+23,lens synthesis,consensus critical-station shortlist,40,critical_station_shortlist.csv,stations ranked by how many lenses place them near the top

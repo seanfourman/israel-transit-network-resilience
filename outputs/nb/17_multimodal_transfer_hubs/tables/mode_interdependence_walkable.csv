@@ -1,0 +1,16 @@
+﻿mode_a,mode_b,interchange_stops
+bus,tram/light rail,363
+bus,rail,324
+bus,demand/other bus,124
+bus,cable tram,51
+bus,trolleybus/taxi-coded,43
+demand/other bus,rail,6
+rail,trolleybus/taxi-coded,6
+demand/other bus,tram/light rail,0
+demand/other bus,trolleybus/taxi-coded,0
+demand/other bus,cable tram,0
+tram/light rail,rail,0
+tram/light rail,trolleybus/taxi-coded,0
+tram/light rail,cable tram,0
+rail,cable tram,0
+trolleybus/taxi-coded,cable tram,0

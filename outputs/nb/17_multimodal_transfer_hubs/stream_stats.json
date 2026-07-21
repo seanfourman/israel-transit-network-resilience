@@ -1,0 +1,20 @@
+{
+  "rows_read": 15711624,
+  "rows_by_mode": {
+    "bus": 15608376,
+    "rail": 14601,
+    "tram/light rail": 70333,
+    "cable tram": 10830,
+    "demand/other bus": 7390,
+    "trolleybus/taxi-coded": 94
+  },
+  "trips_observed": {
+    "bus": 412544,
+    "rail": 1188,
+    "tram/light rail": 2890,
+    "cable tram": 3006,
+    "demand/other bus": 458,
+    "trolleybus/taxi-coded": 47
+  },
+  "elapsed_seconds": 12.7
+}

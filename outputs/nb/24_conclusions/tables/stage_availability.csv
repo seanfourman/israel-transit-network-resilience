@@ -13,3 +13,13 @@
 11,11_rail_network_analysis,11_rail_network_analysis,True,10,5,2026-07-21 08:42
 12,12_rail_socioeconomic,12_rail_socioeconomic,True,6,4,2026-07-21 09:05
 13,13_embeddings_link_prediction,13_embeddings_link_prediction,True,7,9,2026-07-21 09:07
+14,14_multimodal_inventory,14_multimodal_inventory,True,8,3,2026-07-21 13:34
+15,15_bus_network,15_bus_network,True,10,3,2026-07-21 13:35
+16,16_lightrail_and_minor_modes,16_lightrail_and_minor_modes,True,10,7,2026-07-21 13:35
+17,17_multimodal_transfer_hubs,17_multimodal_transfer_hubs,True,8,4,2026-07-21 18:07
+18,18_travel_time_network,18_travel_time_network,True,7,6,2026-07-21 13:37
+19,19_time_of_day_graphs,19_time_of_day_graphs,True,11,5,2026-07-21 13:38
+20,20_dynamic_resilience,20_dynamic_resilience,True,11,5,2026-07-21 13:43
+21,21_demand_weighted_criticality,21_demand_weighted_criticality,True,10,5,2026-07-21 13:44
+22,22_rerouting_model,22_rerouting_model,True,5,4,2026-07-21 13:44
+23,23_critical_station_lenses,23_critical_station_lenses,True,9,6,2026-07-21 13:45
