@@ -27,7 +27,7 @@ Report section numbers refer to `reports/final_report_he.pdf`.
 | Model / algorithm / method — the main contribution | 4 (graph construction, centrality measures, resilience protocol) |
 | Results and findings, with interpretation per research question | 5.1–5.13 |
 | Conclusions | 6, 8 |
-| Length | `reports/final_report_he.pdf`, 17 pages with 18 embedded figures. **Note:** the rubric asks for 6–8 pages; this is a longer, thesis-style figure-rich version. A condensed 8-page cut can be produced from the same source if the rubric is enforced strictly. |
+| Length | `reports/final_report_he.pdf` — the submission report, 9 pages with 10 embedded figures, at the course length guideline. `reports/final_report_he_extended.pdf` is a 17-page figure-rich edition (18 figures) for readers who want the full treatment. |
 | Style, organisation, cleanliness | Formal RTL typography (David serif), numbered sections and figures, limitations stated explicitly |
 
 ## Course themes covered

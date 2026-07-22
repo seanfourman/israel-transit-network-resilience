@@ -164,10 +164,12 @@ every figure and table in the series can be inspected without running anything.
 
 ## Final Report
 
-The formal Hebrew final report is a figure-rich PDF:
+The formal Hebrew final report is a figure-rich PDF, in two editions:
 
-- `reports/final_report_he.pdf` — the report (18 embedded figures, formal RTL typography)
-- `reports/final_report_he.html` — the report source
+- `reports/final_report_he.pdf` — **the submission report** (9 pages, 10 figures,
+  conforms to the course length guideline)
+- `reports/final_report_he_extended.pdf` — extended edition (17 pages, 18 figures)
+- `reports/final_report_he.html`, `reports/final_report_he_extended.html` — the report sources
 - `reports/build_report_pdf.py` — inlines the figures and renders the PDF
 
 The course-guideline coverage checklist is in:
@@ -178,11 +180,12 @@ The 10-slide presentation outline is in:
 
 - `reports/presentation_outline_he.md`
 
-To rebuild the PDF from the HTML source (embeds every figure as base64 and
+To rebuild a PDF from its HTML source (embeds every figure as base64 and
 renders through headless Edge/Chromium):
 
 ```powershell
-python reports\build_report_pdf.py
+python reports\build_report_pdf.py                      # the 9-page submission report
+python reports\build_report_pdf.py final_report_he_extended   # the 17-page edition
 ```
 
 ## Analysis Notes

@@ -17,9 +17,12 @@ import sys
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
-HTML_SRC = REPO / "reports" / "final_report_he.html"
-HTML_RENDER = REPO / "reports" / "_final_report_he.rendered.html"
-PDF_OUT = REPO / "reports" / "final_report_he.pdf"
+# Source HTML basename may be passed as argv[1] (default: final_report_he), so the
+# same builder renders both the conforming and the extended editions.
+STEM = Path(sys.argv[1]).stem if len(sys.argv) > 1 else "final_report_he"
+HTML_SRC = REPO / "reports" / f"{STEM}.html"
+HTML_RENDER = REPO / "reports" / f"_{STEM}.rendered.html"
+PDF_OUT = REPO / "reports" / f"{STEM}.pdf"
 FIG_ROOT = REPO / "outputs" / "nb"
 
 TOKEN = re.compile(r"\{\{FIG:([^}]+)\}\}")
