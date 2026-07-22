@@ -1,7 +1,7 @@
 # Project Guidelines Compliance
 
 Maps each course requirement to a concrete artifact in this repository.
-Report section numbers refer to `reports/final_report_he.md`.
+Report section numbers refer to `reports/final_report_he.pdf`.
 
 ## Submission requirements
 
@@ -27,8 +27,8 @@ Report section numbers refer to `reports/final_report_he.md`.
 | Model / algorithm / method — the main contribution | 4 (graph construction, centrality measures, resilience protocol) |
 | Results and findings, with interpretation per research question | 5.1–5.13 |
 | Conclusions | 6, 8 |
-| Length 6–8 pages | ~2,700 words plus 11 tables |
-| Style, organisation, cleanliness | Numbered sections, limitations stated explicitly in 7 |
+| Length | `reports/final_report_he.pdf`, 17 pages with 18 embedded figures. **Note:** the rubric asks for 6–8 pages; this is a longer, thesis-style figure-rich version. A condensed 8-page cut can be produced from the same source if the rubric is enforced strictly. |
+| Style, organisation, cleanliness | Formal RTL typography (David serif), numbered sections and figures, limitations stated explicitly |
 
 ## Course themes covered
 

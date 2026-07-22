@@ -164,10 +164,11 @@ every figure and table in the series can be inspected without running anything.
 
 ## Final Report
 
-The Hebrew final-report draft is in:
+The formal Hebrew final report is a figure-rich PDF:
 
-- `reports/final_report_he.md`
-- `reports/final_report_he.docx`
+- `reports/final_report_he.pdf` — the report (18 embedded figures, formal RTL typography)
+- `reports/final_report_he.html` — the report source
+- `reports/build_report_pdf.py` — inlines the figures and renders the PDF
 
 The course-guideline coverage checklist is in:
 
@@ -177,10 +178,11 @@ The 10-slide presentation outline is in:
 
 - `reports/presentation_outline_he.md`
 
-To rebuild the Word document from the Markdown source:
+To rebuild the PDF from the HTML source (embeds every figure as base64 and
+renders through headless Edge/Chromium):
 
 ```powershell
-python reports\build_report_docx.py
+python reports\build_report_pdf.py
 ```
 
 ## Analysis Notes

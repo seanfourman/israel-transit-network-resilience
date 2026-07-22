@@ -27,3 +27,7 @@ outputs/nb/21_demand_weighted_criticality/tables/criticality_lens_detail.csv
 outputs/nb/21_demand_weighted_criticality/tables/demand_proxy_detail.csv
 outputs/nb/23_critical_station_lenses/tables/critical_station_lenses.csv
 outputs/nb/23_critical_station_lenses/tables/station_lens_profile.csv
+
+# Report build intermediates (regenerable)
+reports/_final_report_he.rendered.html
+reports/~$*
