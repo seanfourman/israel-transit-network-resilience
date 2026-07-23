@@ -39,7 +39,7 @@ fig, ax = plt.subplots(figsize=(6.2, 5.8), dpi=200)
 
 ax.plot([0, hi], [0, hi], ls="--", lw=1.6, color="#1f2933",
         zorder=1, label="perfect agreement")
-ax.scatter(x, y, s=7, color="#3f6394", alpha=0.28, edgecolors="none", zorder=2)
+ax.scatter(x, y, s=7, color="#0072B2", alpha=0.30, edgecolors="none", zorder=2)
 
 ax.set_xlim(0, hi)
 ax.set_ylim(0, hi)

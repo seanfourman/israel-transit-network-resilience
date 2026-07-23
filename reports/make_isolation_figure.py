@@ -18,8 +18,8 @@ OUT = REPO / "reports" / "figures" / "critical_isolation.png"
 OUT.parent.mkdir(parents=True, exist_ok=True)
 
 d = pd.read_csv(CSV, encoding="utf-8-sig")
-LIGHT, DARK = "#9aa8ba", "#26313d"
-d["color"] = d["verdict"].map({"substitutable": LIGHT, "isolated": DARK})
+SUBST, ISOL = "#0072B2", "#D55E00"
+d["color"] = d["verdict"].map({"substitutable": SUBST, "isolated": ISOL})
 
 plt.rcParams.update({"font.family": ["Arial", "DejaVu Sans"]})
 fig, ax = plt.subplots(figsize=(8.4, 4.6), dpi=200)
@@ -49,8 +49,8 @@ for s in ("left", "bottom"):
     ax.spines[s].set_color("#9aa4af")
 
 legend = [
-    Patch(facecolor=LIGHT, edgecolor="#5b6672", label="Substitutable - alternative within 300 m (98.2%)"),
-    Patch(facecolor=DARK, edgecolor="#5b6672", label="Isolated - genuine single point of failure (1.8%)"),
+    Patch(facecolor=SUBST, edgecolor="#5b6672", label="Substitutable - alternative within 300 m (98.2%)"),
+    Patch(facecolor=ISOL, edgecolor="#5b6672", label="Isolated - genuine single point of failure (1.8%)"),
 ]
 ax.legend(handles=legend, loc="upper right", fontsize=11, frameon=True, framealpha=0.95)
 

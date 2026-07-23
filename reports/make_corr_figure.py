@@ -25,9 +25,9 @@ M = d.values
 labels = ["degree", "weighted\ndegree", "PageRank", "betweenness", "harmonic"]
 n = len(labels)
 
-# sequential ramp: light -> report navy (grayscale-safe)
+# sequential ramp: pale cream -> deep red (colourful, low values recede, high pop)
 cmap = LinearSegmentedColormap.from_list(
-    "navyseq", ["#f3f6f9", "#cdd9e6", "#93aecb", "#4d719b", "#1d3a5f"])
+    "warmseq", ["#fff7ec", "#fdd49e", "#fc8d59", "#e34a33", "#b30000"])
 
 plt.rcParams.update({"font.family": ["Arial", "DejaVu Sans"]})
 fig, ax = plt.subplots(figsize=(6.4, 5.6), dpi=200)
@@ -39,7 +39,7 @@ for i in range(n):
         v = M[i, j]
         ax.text(j, i, f"{v:.2f}", ha="center", va="center",
                 fontsize=14, fontweight=("bold" if i == j else "normal"),
-                color=("white" if v >= 0.58 else "#1f2933"))
+                color=("white" if v >= 0.62 else "#1f2933"))
 
 # highlight the headline dissociation cell(s): weighted degree x betweenness
 key = [(1, 3), (3, 1)]

@@ -27,13 +27,18 @@ LABEL = {
     "barabasi_albert_matched": "BA",
     "watts_strogatz_matched": "WS",
 }
-# highlight: real = dark ink, configuration control = mid grey, rest = light grey
-DARK, MID, LIGHT = "#26313d", "#7f8a97", "#d3d8de"
-COLOR = {"real_transit": DARK, "configuration_degree_sequence": MID}
+# Okabe-Ito colour-blind-safe palette: one fixed hue per model (real = blue anchor)
+PALETTE = {
+    "real_transit": "#0072B2",
+    "erdos_renyi_gnm": "#E69F00",
+    "configuration_degree_sequence": "#009E73",
+    "barabasi_albert_matched": "#CC79A7",
+    "watts_strogatz_matched": "#D55E00",
+}
 
 d = d[d["model"].isin(LABEL)].copy()
 d["label"] = d["model"].map(LABEL)
-d["color"] = d["model"].map(lambda m: COLOR.get(m, LIGHT))
+d["color"] = d["model"].map(PALETTE)
 
 PANELS = [
     ("average_clustering", "Average clustering"),
