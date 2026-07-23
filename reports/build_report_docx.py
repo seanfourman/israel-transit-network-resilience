@@ -27,11 +27,18 @@ SRC = REPO / "reports" / f"{STEM}.html"
 OUT = REPO / "reports" / f"{STEM}.docx"
 FIG_ROOT = REPO / "outputs" / "nb"
 
-NAVY = RGBColor(0x12, 0x31, 0x4F)
-GREY = RGBColor(0x5A, 0x6B, 0x7D)
+# Monochrome by default: a formal black-and-white academic look (like a thesis).
+# Set MONO = False for the navy-accented styling.
+MONO = True
+BLACK = RGBColor(0x00, 0x00, 0x00)
+NAVY = BLACK if MONO else RGBColor(0x12, 0x31, 0x4F)
+GREY = RGBColor(0x33, 0x33, 0x33) if MONO else RGBColor(0x5A, 0x6B, 0x7D)
+HEAD_FILL = "D9D9D9" if MONO else "12314F"   # table-header shading
+HEAD_TEXT = BLACK if MONO else RGBColor(0xFF, 0xFF, 0xFF)
 BODY_FONT = "David"
+HEAD_FONT = "David" if MONO else "Arial"
 BODY_PT = 12          # recommended body size
-LINE = 1.15           # compact-ish so page count is easy to gauge
+LINE = 1.15           # compact-ish so page count is easy to gauge; 1.5 for a formal norm
 
 FIG_TOKEN = re.compile(r"\{\{FIG:([^}]+)\}\}")
 
@@ -64,16 +71,42 @@ def _rtl(paragraph):
     pPr.append(bidi)
 
 
-def _bottom_border(paragraph):
+def _bottom_border(paragraph, color="000000" if MONO else "12314F", sz="8"):
     pPr = paragraph._p.get_or_add_pPr()
     pbdr = OxmlElement("w:pBdr")
     bottom = OxmlElement("w:bottom")
     bottom.set(qn("w:val"), "single")
-    bottom.set(qn("w:sz"), "10")
+    bottom.set(qn("w:sz"), sz)
     bottom.set(qn("w:space"), "2")
-    bottom.set(qn("w:color"), "12314F")
+    bottom.set(qn("w:color"), color)
     pbdr.append(bottom)
     pPr.append(pbdr)
+
+
+def add_title_page(doc):
+    """A conventional Hebrew academic title page (עמוד שער), on its own page."""
+    def cpar(text, size, bold=False, before=0, after=6, font=BODY_FONT, color=BLACK):
+        p = doc.add_paragraph()
+        _rtl(p)
+        p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        p.paragraph_format.space_before = Pt(before)
+        p.paragraph_format.space_after = Pt(after)
+        _style_run(p.add_run(text), size=size, bold=bold, color=color, font=font)
+        return p
+
+    cpar("‹שם המוסד / הפקולטה›", 12, before=70, color=GREY)
+    cpar("פרויקט גמר · הקורס: אלגוריתמים בגרפים", 12, after=6, color=GREY)
+    cpar("תחנות קריטיות", 30, bold=True, before=95)
+    cpar("ניתוח מרכזיות ועמידוּת ברשת התחבורה הציבורית בישראל כרשת מורכבת", 14, before=4, after=8)
+    hr = doc.add_paragraph()
+    hr.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    _bottom_border(hr)
+    hr.paragraph_format.space_after = Pt(4)
+    cpar("מגישים: ‹שם מלא›, ‹שם מלא›, ‹שם מלא›", 12, before=80)
+    cpar("מנחה: ד\"ר אבנר פריאל", 12)
+    cpar("מקור הנתונים: פיד ה-GTFS של משרד התחבורה (אפריל 2026)", 11, before=6, color=GREY)
+    cpar("יולי 2026", 12, before=26)
+    doc.add_page_break()
 
 
 def _collapse(text: str) -> str:
@@ -117,7 +150,7 @@ def heading(doc, text, size=13.5, border=True, space_before=12):
     pf = p.paragraph_format
     pf.space_before = Pt(space_before)
     pf.space_after = Pt(4)
-    _style_run(p.add_run(text), size=size, bold=True, color=NAVY, font="Arial")
+    _style_run(p.add_run(text), size=size, bold=True, color=NAVY, font=HEAD_FONT)
     if border:
         _bottom_border(p)
     return p
@@ -175,10 +208,10 @@ def add_table(doc, table_el):
             _rtl(cell.paragraphs[0])
             cell.paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.CENTER
             run = cell.paragraphs[0].add_run(_collapse(c.get_text()))
-            _style_run(run, size=10, bold=is_head, color=(RGBColor(0xFF, 0xFF, 0xFF) if is_head else None))
+            _style_run(run, size=10, bold=is_head, color=(HEAD_TEXT if is_head else None))
             if is_head:
                 shd = OxmlElement("w:shd")
-                shd.set(qn("w:fill"), "12314F")
+                shd.set(qn("w:fill"), HEAD_FILL)
                 cell._tc.get_or_add_tcPr().append(shd)
     doc.add_paragraph().paragraph_format.space_after = Pt(2)
 
@@ -209,31 +242,8 @@ def main():
     normal.font.name = BODY_FONT
     normal.font.size = Pt(BODY_PT)
 
-    head = soup.find("div", class_="head")
-    if head:
-        for cls, size, bold, color, align in [
-            ("kicker", 9, False, GREY, WD_ALIGN_PARAGRAPH.CENTER),
-            ("subtitle", 12, False, RGBColor(0x33, 0x47, 0x5B), WD_ALIGN_PARAGRAPH.CENTER),
-            ("meta", 9, False, GREY, WD_ALIGN_PARAGRAPH.CENTER),
-        ]:
-            el = head.find(class_=cls)
-            if el and cls == "kicker":
-                p = doc.add_paragraph(); _rtl(p); p.alignment = align
-                _style_run(p.add_run(_collapse(el.get_text())), size=size, color=color, font="Arial")
-        title = head.find("h1")
-        if title:
-            p = doc.add_paragraph(); _rtl(p); p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-            _style_run(p.add_run(_collapse(title.get_text())), size=22, bold=True,
-                       color=RGBColor(0x0D, 0x27, 0x40), font="Arial")
-        for cls in ("subtitle", "meta"):
-            el = head.find(class_=cls)
-            if el:
-                p = doc.add_paragraph(); _rtl(p); p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-                _style_run(p.add_run(_collapse(el.get_text())),
-                           size=12 if cls == "subtitle" else 9,
-                           color=RGBColor(0x33, 0x47, 0x5B) if cls == "subtitle" else GREY,
-                           font="Arial" if cls == "meta" else BODY_FONT)
-        hr = doc.add_paragraph(); _bottom_border(hr); hr.paragraph_format.space_after = Pt(6)
+    # A formal document opens with a dedicated title page.
+    add_title_page(doc)
 
     abs = soup.find("div", class_="abstract")
     if abs:
