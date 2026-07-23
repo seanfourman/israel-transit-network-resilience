@@ -79,12 +79,12 @@ def draw(ax, edges, title, subtitle):
 
 
 plt.rcParams.update({"font.family": ["Arial", "DejaVu Sans"]})
-fig, (axL, axR) = plt.subplots(1, 2, figsize=(13.5, 6.6), dpi=200)
+fig, (axL, axR) = plt.subplots(1, 2, figsize=(13.5, 5.1), dpi=200)
 draw(axL, strict, "Strict definition", "shared stop code  →  1 interchange link")
 draw(axR, walk, "Walkable definition", "modes within 150 m  →  9 interchange links")
-fig.suptitle("How the transport modes connect  —  nodes are modes, link width and number = shared stops",
-             fontsize=13.5, fontweight="bold", color="#1f2933", y=1.0)
-fig.tight_layout(rect=[0, 0, 1, 0.95])
+fig.suptitle("How the transport modes connect  -  nodes are modes, link width and number = shared stops",
+             fontsize=13.5, fontweight="bold", color="#1f2933", y=0.99)
+fig.tight_layout(rect=[0, 0, 1, 0.93])
 fig.savefig(OUT, dpi=200, bbox_inches="tight", facecolor="white")
 print("saved:", OUT, "|", OUT.stat().st_size // 1024, "KB")
 print("strict edges:", strict)
