@@ -1,7 +1,0 @@
-﻿method,auc,average_precision
-Common Neighbors,0.8337,0.8948
-Jaccard,0.6301,0.6301
-Adamic-Adar,0.6301,0.6302
-Resource Allocation,0.6301,0.6302
-Preferential Attachment,0.4653,0.5681
-Node2Vec + LR,0.9928,0.994

@@ -1,5 +1,0 @@
-﻿route_type,mode_label,stop_ids,distinct_stop_names,stop_ids_per_name,stop_ids_with_parent_station
-0,tram/light rail,138,69,2.0,68
-5,cable tram,9,9,1.0,0
-8,trolleybus,10,8,1.25,0
-715,demand/other bus,153,117,1.31,2

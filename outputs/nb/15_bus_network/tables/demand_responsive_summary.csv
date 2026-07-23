@@ -1,2 +1,0 @@
-﻿route_type,mode_label,trips_streamed,stops,directed_edges,undirected_edges,connected_components,largest_component_nodes,stops_also_served_by_bus,stops_unique_to_this_mode,share_of_stops_shared_with_bus,edges_shared_with_bus
-715,demand-responsive bus,458,153,197,194,2,129,81,72,0.5294,54

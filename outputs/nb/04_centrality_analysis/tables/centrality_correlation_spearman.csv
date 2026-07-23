@@ -1,6 +1,0 @@
-﻿,degree,weighted_degree,pagerank,approx_betweenness,approx_harmonic
-degree,1.0,0.4681,0.4877,0.5139,0.4434
-weighted_degree,0.4681,1.0,0.6084,0.1868,0.363
-pagerank,0.4877,0.6084,1.0,0.322,0.099
-approx_betweenness,0.5139,0.1868,0.322,1.0,0.2772
-approx_harmonic,0.4434,0.363,0.099,0.2772,1.0

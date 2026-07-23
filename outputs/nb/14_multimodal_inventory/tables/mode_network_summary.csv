@@ -1,7 +1,0 @@
-﻿mode_label,nodes,edges,components,largest_component_share,avg_degree,articulation_points,bridges
-bus,30169,51387,2,0.9999,3.41,754,812
-demand/other bus,153,194,2,0.8431,2.54,21,12
-tram/light rail,138,134,4,0.2536,1.94,128,134
-rail,67,99,1,1.0,2.96,14,11
-cable tram,9,7,2,0.6667,1.56,5,7
-trolleybus/taxi-coded,8,5,3,0.5,1.25,1,5

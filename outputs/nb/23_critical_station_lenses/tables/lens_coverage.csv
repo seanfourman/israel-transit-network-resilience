@@ -1,8 +1,0 @@
-﻿lens,question,source,metric,higher_metric_is_more_critical,stations_evaluated,coverage_share_of_universe,rows_dropped_outside_universe
-betweenness,Which stations carry the most shortest paths through the network?,04_centrality_analysis/tables/stop_metrics.csv,approx_betweenness,True,30463,1.0,0
-service_volume,Which stations carry the largest scheduled trip volume?,04_centrality_analysis/tables/stop_metrics.csv,weighted_degree,True,30463,1.0,0
-demand_weighted,Which stations matter most once the population served is weighted in?,21_demand_weighted_criticality/tables/demand_weighted_criticality.csv,demand_weighted_rank,False,30463,1.0,0
-peak_hour,Which stations are critical specifically during the peak window?,20_dynamic_resilience/tables/peak_vs_offpeak_centrality.csv [window=afternoon_peak],approx_betweenness,True,30057,0.9867,0
-no_walk_alternative,Which stations have no substitutable stop within walking distance?,05_critical_station_isolation/tables/critical_isolation.csv,nearest_alt_m,True,3047,0.1,0
-articulation,"Among cut vertices, which one strands the most stations when removed?",03_descriptive_analysis/tables/articulation_points.csv (+ 02 edges.csv),stranded_nodes,True,900,0.0295,0
-closure_time_cost,Which closures cost passengers the most travel time?,22_rerouting_analysis/tables/rerouting_results.csv,closure_cost_seconds,True,30,0.001,0

@@ -1,5 +1,0 @@
-﻿,degree,pagerank,betweenness,harmonic
-degree,1.0,0.4877,0.5144,0.4424
-pagerank,0.4877,1.0,0.3227,0.0984
-betweenness,0.5144,0.3227,1.0,0.2713
-harmonic,0.4424,0.0984,0.2713,1.0

@@ -1,5 +1,0 @@
-﻿route_type,mode_label,routes,trips,stops,graph_nodes,directed_edges,undirected_edges,components,largest_component_nodes,largest_component_share,avg_degree,max_degree,density,cyclomatic_number,edges_per_node,articulation_points,articulation_point_share,bridges,bridge_share,shape_class,diameter_largest_component,trips_per_route,stop_calls,calls_per_stop,max_calls_at_a_stop,first_departure,last_departure,service_span_hours,departures_after_midnight,median_headway_busiest_stop_minutes,max_exact_betweenness,exact_betweenness
-0,tram/light rail,8,2890,138,138,134,134,4,35,0.2536,1.94,3,0.01418,0,0.971,128,0.9275,134,1.0,"2x path, 2x tree",34,361.2,70333,509.7,1218,00:00,25:04,25.1,1421,1.0,0.031,True
-5,cable tram,4,3006,9,9,14,7,2,6,0.6667,1.56,2,0.19444,0,0.778,5,0.5556,7,1.0,2x path,5,751.5,10830,1203.3,2402,00:00,24:35,24.6,97,0.7,0.2143,True
-8,trolleybus,8,47,10,8,6,5,3,4,0.5,1.25,3,0.17857,0,0.625,1,0.125,5,1.0,"2x path, 1x star",2,5.9,94,9.4,34,07:00,17:08,10.1,0,8.0,0.1429,True
-715,demand/other bus,14,458,153,153,197,194,2,129,0.8431,2.54,6,0.01668,43,1.268,21,0.1373,12,0.0619,2x meshed,23,32.7,7390,48.3,170,00:03,24:14,24.2,8,7.5,0.2664,True

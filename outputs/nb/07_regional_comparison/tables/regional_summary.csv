@@ -1,5 +1,0 @@
-﻿region,total_stops,critical_stops,critical_broad_stops,ap_stops,avg_degree,avg_betweenness,max_betweenness,pct_critical,pct_critical_broad,pct_ap,share_of_all_critical,share_of_all_stops,pct_critical_lo,pct_critical_hi,small_sample,bridges_touching,bridges_per_1000_stops
-North,10025,1158,1399,273,3.161,0.0004899,0.0438644214041046,11.55,13.96,2.72,38.0,32.9,10.94,12.19,False,275,27.43
-Jerusalem,3743,383,573,211,3.45,0.00044427,0.0875362008593481,10.23,15.31,5.64,12.6,12.3,9.3,11.24,False,225,60.11
-South,3725,350,450,114,3.146,0.00038877,0.0716483547095368,9.4,12.08,3.06,11.5,12.2,8.5,10.38,False,121,32.48
-Center,12970,1156,1407,302,3.641,0.00036374,0.112459758222915,8.91,10.85,2.33,37.9,42.6,8.43,9.42,False,356,27.45

@@ -1,5 +1,0 @@
-﻿model,f1_critical
-Embeddings + LogisticRegression,0.2928
-Embeddings + RandomForest,0.1469
-Degree/clustering + RandomForest,0.35
-Random guess at the base rate,0.2159

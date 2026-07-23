@@ -1,9 +1,0 @@
-﻿scope,metric,spearman_rho,p_value,n,direction
-neighborhood (statistical area),stop_use_per_1000,-0.1508686995355984,6.3307695578443116e-15,2643,weaker neighbourhoods favoured
-neighborhood (statistical area),stops_per_1000,0.03037997320624447,0.11841537169029757,2643,stronger neighbourhoods favoured
-neighborhood (statistical area),stop_use_per_stop,-0.17458130844436445,8.600502511814807e-20,2681,weaker neighbourhoods favoured
-neighborhood (statistical area),avg_trip_graph_degree,-0.04021025634348436,0.037352271183182524,2681,weaker neighbourhoods favoured
-neighborhood (statistical area),critical_stop_share,,,2681,undefined
-stop (pseudo-replicated),stop_use_count,-0.11097631836962323,5.400965260389429e-83,30060,weaker neighbourhoods favoured
-stop (pseudo-replicated),trip_graph_degree,0.017254924634541837,0.0027740506604045333,30060,stronger neighbourhoods favoured
-stop (pseudo-replicated),is_critical,,,30060,undefined

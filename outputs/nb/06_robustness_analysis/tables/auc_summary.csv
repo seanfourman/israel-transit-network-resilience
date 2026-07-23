@@ -1,7 +1,0 @@
-﻿strategy,auc_original,auc_surviving,rank_most_damaging
-degree,0.734,0.7655,1
-betweenness,0.7799,0.8145,2
-articulation points,0.8545,0.8964,3
-pagerank,0.8778,0.9216,4
-weighted degree,0.9122,0.9587,5
-random (baseline),0.9283,0.976,6

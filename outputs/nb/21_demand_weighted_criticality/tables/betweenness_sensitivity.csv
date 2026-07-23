@@ -1,4 +1,0 @@
-﻿variant,k_sources,seconds,spearman_vs_baseline_lens,top50_overlap_vs_baseline,top200_overlap_vs_baseline,top1000_overlap_vs_baseline
-noise_floor_baseline_k150,150,8.8,0.9758,0.68,0.715,0.509
-pure_population_no_service,150,8.8,0.9483,0.64,0.645,0.508
-wide_catchment_1km,150,9.1,0.9722,0.7,0.735,0.518

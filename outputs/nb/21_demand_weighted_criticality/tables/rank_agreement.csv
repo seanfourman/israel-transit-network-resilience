@@ -1,4 +1,0 @@
-﻿lens_a,lens_b,spearman_all_stations,spearman_top1000_union,top50_overlap,top200_overlap,top1000_overlap
-uniform control (same estimator),demand-weighted PROXY,0.8139,0.1243,0.58,0.635,0.461
-topological nb04,demand-weighted PROXY,0.8163,0.1242,0.54,0.635,0.424
-topological nb04,uniform control (same estimator),0.9571,0.318,0.8,0.79,0.507
