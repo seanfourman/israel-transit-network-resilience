@@ -52,8 +52,7 @@ def bar_color(rho, sig):
     return POS if sig else POS_L
 
 colors = [bar_color(r, s) for r, s in zip(bar["rho_use_per_capita"], bar["significant_fdr_05"])]
-labels = [fix_he("%s  (%d neighbourhoods)" % (c, n))
-          for c, n in zip(bar["dominant_city"], bar["n_neighborhoods"])]
+labels = [fix_he(str(c)) for c in bar["dominant_city"]]
 
 plt.rcParams.update({"font.family": ["Arial", "DejaVu Sans"], "axes.unicode_minus": False})
 fig, ax = plt.subplots(figsize=(11, 7.6), dpi=200)
@@ -97,10 +96,9 @@ legend = [
 ax.legend(handles=legend, loc="lower right", fontsize=10, frameon=True, framealpha=0.95)
 
 ax.text(0.015, 0.985,
-        "Lighter bar = not significant after Benjamini–Hochberg FDR correction\n"
-        "(%d of %d tested communities survive FDR; %d would pass at raw p < 0.05)\n"
-        "Shown: the %d largest |ρ| among communities with ≥ %d neighbourhoods"
-        % (n_fdr, n_tested, n_raw, len(bar), FIG_MIN_NEIGHBORHOODS),
+        "Lighter bar = not significant after Benjamini–Hochberg FDR (%d of %d survive)\n"
+        "Shown: the %d largest |ρ|, communities with ≥ %d neighbourhoods"
+        % (n_fdr, n_tested, len(bar), FIG_MIN_NEIGHBORHOODS),
         transform=ax.transAxes, ha="left", va="top", fontsize=9.5, color="#5b6672",
         bbox=dict(boxstyle="round,pad=0.4", fc="#f7f9fb", ec="#d0d7de", lw=1.0))
 
