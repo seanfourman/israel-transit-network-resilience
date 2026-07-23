@@ -86,7 +86,12 @@ for ax, (col, title) in zip(axes, PANELS):
     ax.tick_params(axis="x", labelsize=13, colors="#1f2933", length=0)
     ax.tick_params(axis="y", labelsize=11.5, colors="#5b6672")
 
-fig.tight_layout(pad=1.2, w_pad=2.0)
+# Abbreviation key baked into the figure (LTR — avoids RTL/bidi jumbling in Word)
+key = ("Real: real transit    ·    ER: Erdős–Rényi    ·    "
+       "Config: configuration    ·    BA: Barabási–Albert    ·    "
+       "WS: Watts–Strogatz")
+fig.tight_layout(pad=1.2, w_pad=2.0, rect=[0, 0.08, 1, 1])
+fig.text(0.5, 0.03, key, ha="center", va="bottom", fontsize=9.5, color="#5b6672")
 out = OUT_DIR / "model_metric_comparison.png"
 fig.savefig(out, dpi=200, bbox_inches="tight", facecolor="white")
 print("saved:", out)
