@@ -1,6 +1,6 @@
 # Critical Stations in Israel Public Transportation
 
-Project title: קריטיות תחנה כמושג תלוי-הגדרה — ניתוח רשת התחבורה הציבורית בישראל
+Project title: קריטיות תחנה כמושג תלוי-הגדרה - ניתוח רשת התחבורה הציבורית בישראל
 
 This repository analyzes Israel's public-transportation GTFS feed as a graph. The
 core analysis is the GTFS trip-adjacency graph:
@@ -19,7 +19,7 @@ compare the network against null models, and test each definition against the
 others.
 
 The analysis lives entirely in the numbered notebooks under `notebooks/`. There
-is no separate library, build step, or generated report in this repository — the
+is no separate library, build step, or generated report in this repository - the
 notebooks are the project.
 
 ## Repository Structure
@@ -124,7 +124,7 @@ regressions across the 15.7M rows (0.004%, with no interleaved trip blocks).
 Exact betweenness is expensive on a national network, so betweenness is estimated
 from sampled source nodes on the largest connected component. Raise
 `K_BETWEENNESS` in notebook 04 for a more stable estimate. The estimate is noisy,
-so any percentile threshold built on it inherits that noise — notebook 04 reports
+so any percentile threshold built on it inherits that noise - notebook 04 reports
 a stability check.
 
 Resilience is measured by removing stops in centrality order and tracking the
