@@ -97,7 +97,7 @@ def add_title_page(doc):
     cpar("‹שם המוסד / הפקולטה›", 12, before=70, color=GREY)
     cpar("פרויקט גמר · הקורס: אלגוריתמים בגרפים", 12, after=6, color=GREY)
     cpar("מהי תחנה קריטית?", 30, bold=True, before=95)
-    cpar("מסגרת השוואתית לניתוח מרכזיות ועמידוּת ברשת התחבורה הציבורית בישראל", 14, before=4, after=8)
+    cpar("מסגרת השוואתית לניתוח מרכזיות ועמידות ברשת התחבורה הציבורית בישראל", 14, before=4, after=8)
     hr = doc.add_paragraph()
     hr.alignment = WD_ALIGN_PARAGRAPH.CENTER
     _bottom_border(hr)
