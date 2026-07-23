@@ -52,7 +52,8 @@ def bar_color(rho, sig):
     return POS if sig else POS_L
 
 colors = [bar_color(r, s) for r, s in zip(bar["rho_use_per_capita"], bar["significant_fdr_05"])]
-labels = [fix_he(str(c)) for c in bar["dominant_city"]]
+labels = [fix_he("%s  (%d neighbourhoods)" % (c, n))
+          for c, n in zip(bar["dominant_city"], bar["n_neighborhoods"])]
 
 plt.rcParams.update({"font.family": ["Arial", "DejaVu Sans"], "axes.unicode_minus": False})
 fig, ax = plt.subplots(figsize=(11, 7.6), dpi=200)
