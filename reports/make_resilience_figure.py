@@ -21,14 +21,15 @@ OUT.parent.mkdir(parents=True, exist_ok=True)
 d = pd.read_csv(CSV, encoding="utf-8-sig")
 N = int(d.loc[d["removed"] == 0, "surviving_nodes"].max())
 
-# draw order (bottom of the band -> top) and per-series style
+# Attack strategies use the Okabe-Ito colour-blind-safe palette; the two reference
+# curves (random, ceiling) stay grey so they read as baselines, not competitors.
 STYLE = {
-    "degree":              dict(color="#1f2933", ls="-",  lw=2.4, label="degree (most damaging)"),
-    "betweenness":         dict(color="#1f2933", ls="--", lw=2.0, label="betweenness"),
-    "articulation points": dict(color="#5b6672", ls="-",  lw=1.6, label="articulation points"),
-    "pagerank":            dict(color="#5b6672", ls=(0, (4, 2)), lw=1.4, label="PageRank"),
-    "weighted degree":     dict(color="#9aa4af", ls="-",  lw=1.5, label="weighted degree"),
-    "random (baseline)":   dict(color="#7f8a97", ls="-.", lw=2.0, label="random (baseline)"),
+    "degree":              dict(color="#D55E00", ls="-",  lw=2.6, label="degree (most damaging)"),
+    "betweenness":         dict(color="#0072B2", ls="-",  lw=2.2, label="betweenness"),
+    "articulation points": dict(color="#009E73", ls="-",  lw=2.0, label="articulation points"),
+    "pagerank":            dict(color="#E69F00", ls="-",  lw=2.0, label="PageRank"),
+    "weighted degree":     dict(color="#CC79A7", ls="-",  lw=2.0, label="weighted degree"),
+    "random (baseline)":   dict(color="#6b7580", ls="-.", lw=1.9, label="random (baseline)"),
 }
 
 plt.rcParams.update({"font.family": ["Arial", "DejaVu Sans"]})
@@ -42,7 +43,7 @@ for ax, ycol, sub in [(axL, "lcc_share_original", "Share of the original station
     # (N-k)/N ceiling
     k = np.sort(d["removed"].unique())
     ceil = (N - k) / N if ycol == "lcc_share_original" else np.ones_like(k, dtype=float)
-    ax.plot(k, ceil, color="#c2cad2", ls=":", lw=1.8, zorder=2, label="ceiling (N−k)/N")
+    ax.plot(k, ceil, color="#aab4bd", ls=":", lw=2.0, zorder=2, label="ceiling (N−k)/N")
     ax.set_title(sub, fontsize=12, color="#1f2933", pad=6)
     ax.set_xlabel("Stations removed (k)", fontsize=11.5, color="#1f2933")
     ax.tick_params(labelsize=10.5, colors="#5b6672")
