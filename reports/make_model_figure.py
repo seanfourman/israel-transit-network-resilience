@@ -42,14 +42,19 @@ PANELS = [
 ]
 
 
+import math
+
+
 def fmt(v):
+    """Plain decimal (never scientific): 13.8, 0.097, 0.000031, 0.00013 ..."""
     if v >= 1:
         return f"{v:.1f}"
     if v >= 0.01:
         return f"{v:.3f}"
-    if v >= 0.001:
-        return f"{v:.4f}"
-    return f"{v:.1e}"
+    if v <= 0:
+        return "0"
+    decimals = -int(math.floor(math.log10(v))) + 1   # ~2 significant figures
+    return f"{v:.{decimals}f}"
 
 
 plt.rcParams.update({"font.family": ["Arial", "DejaVu Sans"], "axes.linewidth": 0.8})
