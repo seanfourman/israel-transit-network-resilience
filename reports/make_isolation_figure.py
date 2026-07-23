@@ -49,8 +49,8 @@ for s in ("left", "bottom"):
     ax.spines[s].set_color("#9aa4af")
 
 legend = [
-    Patch(facecolor=LIGHT, edgecolor="#5b6672", label="Substitutable — alternative within 300 m (98.2%)"),
-    Patch(facecolor=DARK, edgecolor="#5b6672", label="Isolated — genuine single point of failure (1.8%)"),
+    Patch(facecolor=LIGHT, edgecolor="#5b6672", label="Substitutable - alternative within 300 m (98.2%)"),
+    Patch(facecolor=DARK, edgecolor="#5b6672", label="Isolated - genuine single point of failure (1.8%)"),
 ]
 ax.legend(handles=legend, loc="upper right", fontsize=11, frameon=True, framealpha=0.95)
 
