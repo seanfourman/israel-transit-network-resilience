@@ -7,4 +7,5 @@ venv/
 # Large GTFS table (816MB) - fetched at runtime, see README
 israel-public-transportation/stop_times.txt
 
-reports/
+# Tables and figures the notebooks regenerate on every run
+outputs/
