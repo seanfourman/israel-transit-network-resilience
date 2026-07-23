@@ -46,8 +46,8 @@ That tree is regenerated on every run and is not tracked in git.
 05_critical_station_isolation  Do critical stations have alternatives?
 06_robustness_analysis         Targeted vs random attack
 07_regional_comparison         Regional and metropolitan differences
-08_socioeconomic_equity        Service vs CBS socioeconomic cluster (Simpson's paradox)
-09_community_detection         Louvain communities and inter-community links
+08_community_detection         Louvain communities and inter-community links
+09_socioeconomic_equity        Service vs CBS socioeconomic cluster (Simpson's paradox)
 10_network_model_comparison    ER / configuration / BA / Watts-Strogatz null models
 11_rail_network_analysis       Heavy rail (route_type=2) only
 12_rail_socioeconomic          Rail centrality vs socioeconomic profile
