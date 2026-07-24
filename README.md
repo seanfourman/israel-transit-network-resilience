@@ -79,6 +79,14 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
+On macOS or Linux:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
 All GTFS files needed by the analysis ship with this repository **except**
 `stop_times.txt` (816 MB), which is hosted separately and fetched on demand:
 
@@ -104,11 +112,18 @@ foreach ($nb in Get-ChildItem notebooks\[0-9][0-9]_*.ipynb | Sort-Object Name) {
 }
 ```
 
+```bash
+for nb in notebooks/[0-9][0-9]_*.ipynb; do
+  python -m nbconvert --to notebook --execute --inplace \
+    --ExecutePreprocessor.timeout=7200 "$nb"
+done
+```
+
 Run them in order. A notebook that depends on an earlier stage fails with an
 explicit message naming the notebook to run first, so the order is enforced rather
 than assumed. The full series takes on the order of ten minutes on a laptop; the
-expensive stages are the sampled betweenness (04), the four null models (10),
-Node2Vec (13), and the resilience and rerouting simulations (06, 20, 22).
+expensive stages are the sampled betweenness (04), the four null models (10), and
+the resilience and rerouting simulations (06, 20, 22).
 
 Expensive steps are exposed as constants near the top of each notebook (for
 example `K_BETWEENNESS`), so a faster smoke run only means lowering those.
@@ -134,9 +149,17 @@ by the number of surviving nodes: dividing by the original count conflates "node
 deleted" with "network fragmented".
 
 Link prediction is evaluated with the edge split performed **before** the
-embeddings are trained. Training Node2Vec on the full graph and then testing on
-held-out edges leaks, and inflates AUC from 0.83 to 0.99; notebook 13 reports the
-honest split plus a hard-negative evaluation that is considerably less flattering.
+embeddings are trained. Learning on the full graph and then testing on held-out
+edges leaks, and inflates AUC from 0.85 to 0.92; notebook 13 reports the honest
+split plus a hard-negative evaluation that is considerably less flattering (0.44,
+against 0.85 on easy random negatives).
+
+The station embeddings are Node2Vec random walks (p = q = 1) turned into vectors
+by factorizing their shifted PPMI co-occurrence matrix with a truncated SVD,
+rather than by training skip-gram in `gensim`. Skip-gram with k negative samples
+implicitly factorizes that same matrix, so the objective is unchanged, and the
+result is deterministic and fast. Dropping the dependency also keeps the notebooks
+installable on Python versions for which `gensim` ships no wheel.
 
 The pipeline compares the real transit graph against reference network models:
 Erdős–Rényi, a degree-sequence configuration model, Barabási–Albert preferential
