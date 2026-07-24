@@ -2,8 +2,15 @@
 
 Project title: קריטיות תחנה כמושג תלוי-הגדרה - ניתוח רשת התחבורה הציבורית בישראל
 
+Final project, Algorithms in Networks (אלגוריתמים ברשתות), Ruppin Academic
+Center. Course lecturer: Dr. Avner Priel.
+Team: שון פורמן, דן חילקביץ', אלמוג טוניאן.
+
 This repository analyzes Israel's public-transportation GTFS feed as a graph. The
-core analysis is the GTFS trip-adjacency graph:
+feed is the Ministry of Transport national feed for the 19 April - 19 May 2026
+service window; the graph has 30,463 active stations and 51,772 undirected
+segments, derived from 15.7M scheduled stop-time records. The core analysis is the
+GTFS trip-adjacency graph:
 
 - nodes are public-transport stops
 - directed edges connect consecutive stops within each scheduled trip
@@ -12,11 +19,14 @@ core analysis is the GTFS trip-adjacency graph:
 
 The starting question is which stations are "critical", and the main finding is
 that criticality is not a single well-defined property: seven reasonable
-definitions (weighted degree, betweenness, articulation, demand, transfer role,
-travel-time centrality, dynamic resilience) rank stations almost independently of
-one another. The notebooks build the graph, measure centrality and resilience,
-compare the network against null models, and test each definition against the
-others.
+definitions - betweenness, service volume, articulation, absence of a walkable
+alternative, demand weighting, peak-hour structure, and closure time cost - rank
+stations almost independently of one another. Their mean pairwise Spearman
+agreement is 0.17 across the 21 pairs, while the same betweenness estimator run
+twice on different samples agrees with itself at 0.96; the disagreement is
+therefore a property of the definitions, not sampling noise. The notebooks build
+the graph, measure centrality and resilience, compare the network against null
+models, and test each definition against the others.
 
 The analysis lives entirely in the numbered notebooks under `notebooks/`. There
 is no separate library, build step, or generated report in this repository - the
